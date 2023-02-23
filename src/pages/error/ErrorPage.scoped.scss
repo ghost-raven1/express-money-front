@@ -1,0 +1,39 @@
+@import 'src/assets/styles/colors';
+
+.page-404 {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: Neue Machina, sans-serif;
+
+  &__btn {
+    margin-top: 25px;
+    padding: 15px;
+    cursor: pointer;
+    background: $white;
+    border-radius: 16px;
+    font-family: Neue Machina, sans-serif;
+    border: none;
+    transition: .3s;
+    &:hover {
+      background: $grey;
+    }
+  }
+
+  &__content {
+    font-size: 48px;
+    cursor: text;
+  }
+
+  &__code {
+    padding-right: 20px;
+    border-right: 2px solid $black;
+  }
+
+  &__text {
+    padding-left: 20px;
+    font-weight: 700;
+  }
+}

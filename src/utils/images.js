@@ -1,0 +1,5 @@
+export const girlWithMoney = 'src/assets/main/MainOfferBlock/GirlWithMoney.png'
+export const mainTariffsBlockDelimiter = 'src/assets/main/MainTariffsBlock/Delimiter.svg'
+export const mainTariffsListCardBasic = 'src/assets/main/MainTariffsBlock/ListCard/Basic.png'
+export const mainTariffsListCardStandard = 'src/assets/main/MainTariffsBlock/ListCard/Standard.png'
+export const mainTariffsListCardPremium = 'src/assets/main/MainTariffsBlock/ListCard/Premium.png'

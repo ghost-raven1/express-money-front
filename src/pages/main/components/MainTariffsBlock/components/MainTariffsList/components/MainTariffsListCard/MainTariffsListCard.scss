@@ -1,0 +1,41 @@
+.tariffs-list-card {
+  color: black;
+  border-radius: 24px;
+  padding-top: 25px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  &__title {
+    padding-bottom: 20px;
+    font-family: Manrope, serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 33px;
+    letter-spacing: 0.01em;
+    &_basic {
+      color: #262B40;
+    }
+    &_standard {
+      color: #FFFFFF;
+    }
+    &_premium {
+      color: #FFFFFF;
+    }
+  }
+  &__img {
+
+  }
+  &-bottom {
+
+  }
+  &_basic {
+    background: linear-gradient(107.62deg, #F3F6FF 0%, #DDE8F8 100%);
+  }
+  &_standard {
+    background: linear-gradient(90.74deg, #0F6DFF 0%, #005CEA 100%);
+  }
+  &_premium {
+    background: linear-gradient(153.6deg, #222738 0%, #101420 100%);
+  }
+}
