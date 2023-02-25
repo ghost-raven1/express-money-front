@@ -36,5 +36,10 @@
   &__button {
     height: 35px;
     width: 35px;
+    transition: .3s ease-in-out;
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.03);
+    }
   }
 }

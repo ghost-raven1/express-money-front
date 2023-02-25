@@ -1,9 +1,10 @@
 import MainReviewsListCard from "./components/MainReviewsBlockCard/MainReviewsListCard.jsx";
 import './MainReviewsList.scss'
-const MainReviewsList = () => {
+import {forwardRef} from "react";
+const MainReviewsList = ({ forwardedRef }) => {
   const reviewsArr = [
     {
-      name: "Жанна",
+      name: "1111",
       city: "Москва",
       date: "12 Февраля 2023",
       text:
@@ -13,7 +14,7 @@ const MainReviewsList = () => {
         "Большое Спасибо",
     },
     {
-      name: "Жанна",
+      name: "2222",
       city: "Москва",
       date: "12 Февраля 2023",
       text:
@@ -23,7 +24,7 @@ const MainReviewsList = () => {
         "Большое Спасибо",
     },
     {
-      name: "Жанна",
+      name: "3333",
       city: "Москва",
       date: "12 Февраля 2023",
       text:
@@ -33,7 +34,7 @@ const MainReviewsList = () => {
         "Большое Спасибо",
     },
     {
-      name: "Жанна",
+      name: "4444",
       city: "Москва",
       date: "12 Февраля 2023",
       text:
@@ -43,7 +44,7 @@ const MainReviewsList = () => {
         "Большое Спасибо",
     },
     {
-      name: "Жанна",
+      name: "5555",
       city: "Москва",
       date: "12 Февраля 2023",
       text:
@@ -53,7 +54,7 @@ const MainReviewsList = () => {
         "Большое Спасибо",
     },
     {
-      name: "Жанна",
+      name: "6666",
       city: "Москва",
       date: "12 Февраля 2023",
       text:
@@ -63,7 +64,7 @@ const MainReviewsList = () => {
         "Большое Спасибо",
     },
     {
-      name: "Жанна",
+      name: "7777",
       city: "Москва",
       date: "12 Февраля 2023",
       text:
@@ -73,7 +74,7 @@ const MainReviewsList = () => {
           "Большое Спасибо",
     },
     {
-      name: "Жанна",
+      name: "8888",
       city: "Москва",
       date: "12 Февраля 2023",
       text:
@@ -83,7 +84,7 @@ const MainReviewsList = () => {
           "Большое Спасибо",
     },
     {
-      name: "Жанна",
+      name: "9999",
       city: "Москва",
       date: "12 Февраля 2023",
       text:
@@ -93,7 +94,7 @@ const MainReviewsList = () => {
           "Большое Спасибо",
     },
     {
-      name: "Жанна",
+      name: "10000",
       city: "Москва",
       date: "12 Февраля 2023",
       text:
@@ -104,7 +105,7 @@ const MainReviewsList = () => {
     },
   ];
   return (
-    <div className="reviews-list">
+    <div className="reviews-list" ref={ forwardedRef }>
       {!!reviewsArr.length &&
         reviewsArr.map((item, idx) => {
           return <MainReviewsListCard key={idx} item={item} />;
@@ -113,4 +114,8 @@ const MainReviewsList = () => {
   );
 };
 
-export default MainReviewsList;
+const Carousel = forwardRef((props, ref) => {
+  return <MainReviewsList {...props} forwardedRef={ref} />;
+});
+
+export default Carousel;
