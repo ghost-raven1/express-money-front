@@ -1,0 +1,36 @@
+.app-head-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  &__title {
+    font-family: Manrope, serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 40px;
+    line-height: 55px;
+    letter-spacing: 0.01em;
+    background: linear-gradient(153.6deg, #222738 0%, #101420 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+    margin-bottom: 15px;
+  }
+  &__subtitle {
+    font-family: Manrope, serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 25px;
+    letter-spacing: 0.01em;
+    color: #848BA4;
+    margin-top: 15px;
+    margin-bottom: 60px;
+  }
+  &__delimiter {
+    width: 62px;
+    height: 12px;
+    align-self: center;
+  }
+}

@@ -14,36 +14,5 @@
   left: 10%;
   padding-left: 30px;
   padding-right: 30px;
-  &-top {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding-top: 50px;
-    &__title {
-      font-family: Manrope, serif;
-      font-style: normal;
-      font-weight: 600;
-      font-size: 40px;
-      line-height: 55px;
-      letter-spacing: 0.01em;
-      color: #010B2E;
-      margin-bottom: 15px;
-    }
-    &__delimiter {
-      width: 62px;
-      height: 12px;
-    }
-    &__subtitle {
-      font-family: Manrope, serif;
-      font-style: normal;
-      font-weight: 500;
-      font-size: 18px;
-      line-height: 25px;
-      letter-spacing: 0.01em;
-      color: #012B6D;
-      margin-top: 15px;
-    }
-  }
 }
 

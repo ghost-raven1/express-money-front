@@ -1,0 +1,40 @@
+.reviews-block {
+  display: flex;
+  flex-direction: column;
+  color: black;
+  background: white; // TODO: Поменять на белый
+  width: 100%;
+  &-top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-left: 160px;
+    margin-right: 160px;
+    &__title {
+      font-family: Manrope, serif;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 40px;
+      line-height: 55px;
+      letter-spacing: 0.01em;
+      color: #262B40;
+      margin-bottom: 25px;
+      margin-top: 80px;
+    }
+    &__buttons-reviews {
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
+    }
+  }
+}
+
+.buttons-reviews {
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 25px;
+  &__button {
+    height: 35px;
+    width: 35px;
+  }
+}

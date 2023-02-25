@@ -1,21 +1,16 @@
 import MainAdvantagesList from "./components/MainAdvantagesList/MainAdvantagesList.jsx";
 import "./MainAdvantagesBlock.scss";
 import { mainAdvantagesBlockDelimiter } from "../../../../utils/images.js";
+import AppHeadSection from "../../../../components/AppHeadSection/AppHeadSection.jsx";
 
 const MainAdvantagesBlock = () => {
   return (
     <div className="advantages">
-      <div className="advantages-top">
-        <div className="advantages-top__title">Преимущества</div>
-        <img
-          className="advantages-top__delimiter"
-          src={mainAdvantagesBlockDelimiter}
-          alt=""
-        />
-        <div className="advantages-top__subtitle">
-          Мы подобрали для вас лучшие предложения
-        </div>
-      </div>
+      <AppHeadSection
+        title="Преимущества"
+        img={mainAdvantagesBlockDelimiter}
+        desc="Мы подобрали для вас лучшие предложения"
+      />
       <MainAdvantagesList />
     </div>
   );

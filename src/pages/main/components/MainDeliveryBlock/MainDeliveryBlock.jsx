@@ -1,6 +1,10 @@
+import './MainDeliveryBlock.scss'
+import MainDeliveryBlockCard from "./components/MainDeliveryBlockCard/MainDeliveryBlockCard.jsx";
 const MainDeliveryBlock = () => {
     return (
-        <div>Удобный способ получения</div>
+        <div className="delivery-block">
+            <MainDeliveryBlockCard />
+        </div>
     )
 }
 
