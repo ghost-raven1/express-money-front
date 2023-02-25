@@ -11,3 +11,4 @@ export const mainDeliveryBlockCardBackground = 'src/assets/main/Delivery/card/Ba
 export const mainReviewsBlockArrowLeft = 'src/assets/main/Reviews/Arrow/ArrowLeft.svg'
 export const mainReviewsBlockArrowRight = 'src/assets/main/Reviews/Arrow/ArrowRight.svg'
 export const mainReviewsBlockQuotes = 'src/assets/main/Reviews/Quotes/Quotes.svg'
+export const mainLoanBlockSmileMan = 'src/assets/main/LoanBlock/SmileMan.png'

@@ -1,0 +1,20 @@
+.header-link {
+  font-family: Manrope, serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 109.1%;
+  text-align: center;
+  letter-spacing: 0.01em;
+  color: #13141C;
+  border: none;
+  background: transparent;
+  transition: .3s ease-in-out;
+  cursor: pointer;
+  &:hover {
+    color: #005CEA;
+  }
+  &_active {
+    color: #005CEA;
+  }
+}

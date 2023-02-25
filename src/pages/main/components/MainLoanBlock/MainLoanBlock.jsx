@@ -1,6 +1,10 @@
+import './MainLoanBlock.scss'
+import MainLoanBlockCard from "./components/MainLoanBlockCard/MainLoanBlockCard.jsx";
 const MainLoanBlock = () => {
     return (
-        <div>Первый заем</div>
+        <div className="loan-block">
+            <MainLoanBlockCard />
+        </div>
     )
 }
 

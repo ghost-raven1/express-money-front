@@ -1,8 +1,10 @@
 .header {
   background: #FFFFFF;
-  padding-top: 19px;
-  padding-bottom: 19px;
-  padding-left: 200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 19px 200px;
+
   &__company {
     font-family: Gilroy, serif;
     font-style: normal;
@@ -10,5 +12,10 @@
     font-size: 24px;
     color: #262B40;
     letter-spacing: .05em;
+    transition: .3s ease-in-out;
+    cursor: pointer;
+    &:hover {
+      transform: scale(1.01);
+    }
   }
 }

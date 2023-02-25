@@ -1,9 +1,10 @@
 import AmountOfCreditForm from "../../forms/AmountOfCreditForm/AmountOfCreditForm.jsx";
-
+import './MainBroadcastBlock.scss'
+import MainBroadcastList from "./components/MainBrodcastList/MainBroadcastList.jsx";
 const MainBroadcastBlock = () => {
     return (
-        <div>
-            Прямая трансляция работы сервиса
+        <div className="broadcast-block">
+            <MainBroadcastList />
             <AmountOfCreditForm />
         </div>
     )

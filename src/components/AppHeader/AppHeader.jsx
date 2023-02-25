@@ -1,8 +1,10 @@
 import "./AppHeader.scss";
 import { useNavigate } from "react-router-dom";
 import { RouterPath } from "../../utils/utils.js";
+import AppHeaderLinksList from "./components/AppHeaderLinksList/AppHeaderLinksList.jsx";
 const AppHeader = () => {
   const navigate = useNavigate();
+
   return (
     <div className="header">
       <div
@@ -11,6 +13,7 @@ const AppHeader = () => {
       >
         Expressmoney
       </div>
+        <AppHeaderLinksList />
     </div>
   );
 };
