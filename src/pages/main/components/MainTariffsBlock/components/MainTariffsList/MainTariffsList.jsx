@@ -3,7 +3,7 @@ import MainTariffsListCard from "./components/MainTariffsListCard/MainTariffsLis
 import {
   mainTariffsListCardBasic,
   mainTariffsListCardPremium,
-  mainTariffsListCardStandard
+  mainTariffsListCardStandard,
 } from "../../../../../../utils/images.js";
 const MainTariffsList = () => {
   const tariffs = [
@@ -13,7 +13,7 @@ const MainTariffsList = () => {
       count: "7",
       countType: "days",
       value: "5000",
-      type: 'basic',
+      type: "basic",
       img: mainTariffsListCardBasic,
     },
     {
@@ -23,7 +23,7 @@ const MainTariffsList = () => {
       countType: "days",
       value: "19 000",
       img: mainTariffsListCardStandard,
-      type: 'standard',
+      type: "standard",
     },
     {
       name: "Премиум",
@@ -32,7 +32,7 @@ const MainTariffsList = () => {
       countType: "years",
       value: "99 000",
       img: mainTariffsListCardPremium,
-      type: 'premium'
+      type: "premium",
     },
   ];
   return (

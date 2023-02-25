@@ -20,15 +20,53 @@ const MainTariffsListCard = ({ item }) => {
       return "tariffs-list-card__title tariffs-list-card__title_premium";
   }
 
+  function cardNumbersColorsStyles(type) {
+    if (type === "basic") {
+      return "tariffs-list-card-bottom__numbers-number";
+    }
+    if (type === "standard") {
+      return "tariffs-list-card-bottom__numbers-number_white";
+    }
+    if (type === "premium") {
+      return "tariffs-list-card-bottom__numbers-number";
+    }
+  }
+
+  function cardTextColorsStyles(type) {
+    if (type === "basic") {
+      return "tariffs-list-card-bottom__text";
+    }
+    if (type === "standard") {
+      return "tariffs-list-card-bottom__text_blue";
+    }
+    if (type === "premium") {
+      return "tariffs-list-card-bottom__text_white";
+    }
+  }
+
   return (
     <div className={cardBackgroundStyles(item.type)}>
       <div className={cardTitleStyles(item.type)}>{item.name}</div>
       <img className="tariffs-list-card__img" src={item.img} alt="" />
       <div className="tariffs-list-card-bottom">
-        <div>
-          {item.price} Руб на {item.count} {countTypeRU(item.countType)}
+        <div className="tariffs-list-card-bottom__numbers">
+          <span className={cardNumbersColorsStyles(item.type)}>
+            {item.price}
+          </span>{" "}
+          <span className={cardTextColorsStyles(item.type)}>Руб на</span>{" "}
+          <span className={cardNumbersColorsStyles(item.type)}>
+            {item.count}
+          </span>{" "}
+          <span className={cardTextColorsStyles(item.type)}>
+            {countTypeRU(item.countType)}
+          </span>
         </div>
-        <div>к возврату {} руб.*</div>
+        <div
+          className={cardTextColorsStyles(item.type)}
+          style={{ fontSize: "16px" }}
+        >
+          К возврату {item.value} руб.*
+        </div>
       </div>
     </div>
   );

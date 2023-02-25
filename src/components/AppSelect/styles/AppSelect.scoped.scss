@@ -1,0 +1,152 @@
+.app-select {
+  display: flex;
+  flex-direction: column;
+  &__error-text {
+    color: #e71616;
+    font-size: 12px;
+  }
+  &__label {
+    font-family: Neue Machina, serif;
+    font-weight: 400;
+    font-size: 14px;
+    color: #6F767E;
+  }
+}
+.req {
+  color: #e71616;
+}
+.no-req {
+  display: none;
+}
+.custom-select-container {
+  padding-top: 4px;
+  padding-bottom: 4px;
+  display: block;
+  height: 100%;
+  min-width: 95px;
+  text-align: center;
+  position: relative;
+  border: 1px solid #E3E3E3;
+  border-radius: 14px;
+  transition: .3s;
+  cursor: pointer;
+  margin-bottom: 5px;
+  &_grey {
+    background: #F8F8F8;
+  }
+  &_white {
+    background-color: white;
+  }
+  &__opened {
+    border-radius: 14px 14px 0 0;
+    transition: .31s;
+  }
+}
+
+.selected-text {
+  padding: 0 20px;
+  max-height: 43px;
+  height: fit-content;
+  word-break: break-all;
+  min-height: 38px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: Roboto, serif;
+  font-weight: 400;
+  font-size: 18px;
+  gap: 5px;
+  color: #1A1D25;
+  &::after {
+    content: "";
+    position: absolute;
+    right: 10px;
+    top: 16px;
+    border: 7px solid transparent;
+  }
+  &_disabled {
+    color: #b1b1b1;
+  }
+}
+
+.selected-text.active::after {
+  top: 8px;
+  border-color: transparent transparent #fff transparent;
+}
+
+ul {
+  margin: 4px 0 0 0;
+  padding: 0;
+  text-align: center;
+}
+
+.select {
+  animation: .5s show ease;
+  &-arrow-up {
+    transform: rotate(180deg);
+  }
+  &-options {
+    position: absolute;
+    cursor: pointer;
+    width: 100.2%;
+    z-index: 100;
+    height: 0;
+    opacity: 0;
+    transition: .2s;
+    max-height: 300px;
+    overflow-y: auto;
+    &__opened {
+      height: 300px;
+      opacity: 1;
+      overflow-y: auto;
+    }
+  }
+  &-option {
+    max-height: 43px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border: 1px solid #E3E3E3;
+    text-align: start;
+    list-style-type: none;
+    padding: 6px 20px;
+    cursor: pointer;
+    transition: .3s;
+    font-family: Roboto, serif;
+    font-weight: 400;
+    font-size: 18px;
+    color: #1A1D25;
+    &:hover {
+      background-color: #dee2e8;
+      color: white;
+    }
+
+    &:last-child {
+      border-radius: 0 0 14px 14px;
+    }
+    &_grey {
+      background: #F8F8F8;
+    }
+    &_white {
+      background-color: white;
+    }
+  }
+}
+
+::-webkit-scrollbar {
+  height: 10px;
+  width: 10px;
+  background-color: #c2c2c2;
+  border-radius: 12px;
+
+  &-thumb {
+    background-color: #CDCDCD;
+    border-radius: 12px;
+
+    &:hover {
+      cursor: grab;
+      background-color: grey;
+    }
+  }
+}

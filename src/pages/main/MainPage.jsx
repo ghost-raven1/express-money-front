@@ -5,7 +5,7 @@ import MainAdvantagesBlock from "./components/MainAdvantagesBlock/MainAdvantages
 import MainHowItWorks from "./components/MainHowItWorksBlock/MainHowItWorks.jsx";
 import MainDeliveryBlock from "./components/MainDeliveryBlock/MainDeliveryBlock.jsx";
 import MainReviewsBlock from "./components/MainReviewsBlock/MainReviewsBlock.jsx";
-import MainLoanBlock from "./components/MainLoanBlock/MainLoanBlock.jsx";
+import AppLoanBlock from "../../components/AppLoanBlock/AppLoanBlock.jsx";
 import MainBroadcastBlock from "./components/MainBroadcastBlock/MainBroadcastBlock.jsx";
 const MainPage = () => {
     return (
@@ -18,7 +18,7 @@ const MainPage = () => {
             <MainHowItWorks />
             <MainDeliveryBlock />
             <MainReviewsBlock />
-            <MainLoanBlock />
+            <AppLoanBlock />
             <MainBroadcastBlock />
         </div>
     )

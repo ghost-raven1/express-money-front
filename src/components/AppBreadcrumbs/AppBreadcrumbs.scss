@@ -1,0 +1,50 @@
+.breadcrumbs {
+  margin-left: 40px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: flex-start;
+  &__arrow {
+    width: 10px;
+    height: 5px;
+    align-self: center;
+  }
+  &__item {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    align-items: center;
+    &-title {
+      transition: .3s ease-in-out;
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      font-family: SF Pro Display, serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 13px;
+      line-height: 16px;
+      letter-spacing: 0.01em;
+      color: #141927;
+      &:hover {
+        color: #0057ff;
+      }
+      &_grey {
+        color: #6F767E;
+        transition: .3s ease-in-out;
+        cursor: pointer;
+        border: none;
+        background: transparent;
+        font-family: SF Pro Display, serif;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 13px;
+        line-height: 16px;
+        letter-spacing: 0.01em;
+        &:hover {
+          color: #0057ff;
+        }
+      }
+    }
+  }
+}

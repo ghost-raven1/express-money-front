@@ -1,5 +1,5 @@
 import "./MainOfferBlock.scss";
-import AmountOfCreditForm from "../../forms/AmountOfCreditForm/AmountOfCreditForm.jsx";
+import AmountOfCreditForm from "../../../../components/AmountOfCreditForm/AmountOfCreditForm.jsx";
 import { girlWithMoney } from "../../../../utils/images.js";
 const MainOfferBlock = () => {
   return (
