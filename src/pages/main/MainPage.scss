@@ -1,4 +1,8 @@
 .main {
   background: #6c6c6c;
   height: fit-content;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

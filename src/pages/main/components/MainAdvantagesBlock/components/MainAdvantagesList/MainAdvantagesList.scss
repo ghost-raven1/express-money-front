@@ -1,0 +1,8 @@
+.advantages-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 35px;
+  margin-bottom: 70px;
+  margin-top: 40px;
+  color: black;
+}

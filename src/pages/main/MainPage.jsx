@@ -11,8 +11,10 @@ const MainPage = () => {
     return (
         <div className="main">
             <MainOfferBlock />
-            <MainTariffsBlock />
-            <MainAdvantagesBlock />
+            <div style={{position: 'relative'}}>
+                <MainTariffsBlock />
+                <MainAdvantagesBlock />
+            </div>
             <MainHowItWorks />
             <MainDeliveryBlock />
             <MainReviewsBlock />
