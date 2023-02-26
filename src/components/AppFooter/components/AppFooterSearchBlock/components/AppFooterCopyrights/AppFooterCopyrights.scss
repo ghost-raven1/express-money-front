@@ -1,0 +1,30 @@
+@mixin footer-copyrights-text-grey-blue {
+  font-family: Manrope, serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 22px;
+  letter-spacing: 0.01em;
+  color: rgba(159, 195, 247, 0.26);
+}
+
+.footer-copyrights {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 50px;
+  &__first {
+    font-family: Manrope, serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: 0.01em;
+    color: #9FC3F7;
+  }
+  &__second {
+    @include footer-copyrights-text-grey-blue;
+  }
+  &__third {
+    @include footer-copyrights-text-grey-blue;
+  }
+}
