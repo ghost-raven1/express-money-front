@@ -1,3 +1,13 @@
 .footer {
-  background: #0079C1;
+  background: linear-gradient(153.6deg, #222738 0%, #101420 100%);
+  &-inner {
+    padding: 50px 200px;
+    &__delimiter {
+      height: 1px;
+      background: rgba(159, 195, 247, 0.25);;
+      width: 100%;
+      margin-top: 50px;
+      margin-bottom: 50px;
+    }
+  }
 }

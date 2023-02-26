@@ -1,0 +1,63 @@
+@mixin footer-nav-panel-title {
+  font-family: Manrope, serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 33px;
+  letter-spacing: 0.01em;
+  margin-bottom: 10px;
+}
+
+@mixin footer-nav-panel-list-item {
+  font-family: Manrope, serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 22px;
+  letter-spacing: 0.01em;
+  color: #9FC3F7;
+  padding: 0;
+  transition: .3s ease-in-out;
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.03);
+  }
+}
+
+@mixin footer-nav-panel-list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.footer-nav-panel {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin-left: 33%;
+  margin-top: 58px;
+  &__left {
+    &-title {
+      @include footer-nav-panel-title;
+    }
+    &-list {
+      @include footer-nav-panel-list;
+      &-item {
+        @include footer-nav-panel-list-item;
+        border: none;
+        background-color: transparent;
+      }
+    }
+  }
+  &__right {
+    &-title {
+      @include footer-nav-panel-title;
+    }
+    &-list {
+      @include footer-nav-panel-list;
+      &-item {
+        @include footer-nav-panel-list-item;
+      }
+    }
+  }
+}

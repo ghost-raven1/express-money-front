@@ -1,0 +1,59 @@
+@mixin footer-info-links-text {
+  font-family: Manrope, serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 22px;
+  letter-spacing: 0.01em;
+  color: rgba(159, 195, 247, 0.26);
+}
+
+@mixin footer-info-links-link {
+  font-family: Manrope, serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 22px;
+  letter-spacing: 0.01em;
+  color: #9FC3F7;
+  transition: .3s ease-in-out;
+  width: fit-content;
+  display: flex;
+  &:hover {
+    transform: scale(1.03);
+  }
+}
+
+.footer-info-links {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  &-first {
+    &-text {
+      @include footer-info-links-text;
+    }
+    &-link {
+      @include footer-info-links-link;
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+  }
+  &-second {
+    &-text {
+      @include footer-info-links-text;
+    }
+    &-link {
+      @include footer-info-links-link;
+      margin-bottom: 20px;
+    }
+  }
+  &-third {
+    &-text {
+      @include footer-info-links-text;
+    }
+    &-link {
+      @include footer-info-links-link;
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+  }
+}
