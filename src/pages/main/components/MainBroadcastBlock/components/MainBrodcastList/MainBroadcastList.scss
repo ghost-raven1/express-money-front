@@ -1,27 +1,25 @@
-.advantages-card {
+.broadcast-list {
   &__title {
     font-family: Manrope, serif;
     font-style: normal;
-    font-weight: 500;
-    font-size: 24px;
-    line-height: 33px;
+    font-weight: 600;
+    font-size: 40px;
+    line-height: 55px;
     letter-spacing: 0.01em;
     background: linear-gradient(153.6deg, #222738 0%, #101420 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     text-fill-color: transparent;
+    justify-content: flex-start;
     display: flex;
-    gap: 10px;
-    margin-bottom: 12px;
+    margin-left: 170px;
   }
-  &__desc {
-    font-family: Manrope, serif;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 22px;
-    letter-spacing: 0.01em;
-    color: #8899B4;
+  &__list {
+    display: flex;
+    flex-direction: column;
+    margin-left: 170px;
+    margin-top: 20px;
+    gap: 30px;
   }
 }

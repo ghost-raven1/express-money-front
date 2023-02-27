@@ -5,4 +5,34 @@
   width: 1200px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  &-inner {
+    margin-left: 54px;
+    margin-top: 62px;
+    &__button {
+      width: 310px;
+    }
+    &__delimiter {
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+    &__title {
+      font-family: Manrope, serif;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 40px;
+      line-height: 55px;
+      letter-spacing: 0.01em;
+      color: #262B40;
+    }
+    &__desc {
+      font-family: Manrope, serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 22px;
+      letter-spacing: 0.01em;
+      color: #8899B4;
+      margin-bottom: 20px;
+    }
+  }
 }

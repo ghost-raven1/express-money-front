@@ -1,34 +1,40 @@
 import MainAdvantagesCard from "./components/MainAdvantagesCard/MainAdvantagesCard.jsx";
 import "./MainAdvantagesList.scss";
+import {
+  mainAdvantagesIcon1, mainAdvantagesIcon2,
+  mainAdvantagesIcon3,
+  mainAdvantagesIcon4,
+  mainAdvantagesIcon5, mainAdvantagesIcon6
+} from "../../../../../../utils/images.js";
 const MainAdvantagesList = () => {
   const advantages = [
     {
-      img: "",
+      img: mainAdvantagesIcon1,
       title: "Моментально",
       desc: "Деньги за 5 минуту после одобрения",
     },
     {
-      img: "",
+      img: mainAdvantagesIcon2,
       title: "Без страховки",
       desc: "Без доп платежей к выданной сумме",
     },
     {
-      img: "",
+      img: mainAdvantagesIcon3,
       title: "Одобрение 99%",
       desc: "Безопасность персональных данных",
     },
     {
-      img: "",
+      img: mainAdvantagesIcon4,
       title: "Без переплат",
       desc: "Погашение займа за 24 часа без комиссии",
     },
     {
-      img: "",
+      img: mainAdvantagesIcon5,
       title: "Любим клиентов",
       desc: "Премиум услуги для постоянных клиентов компании",
     },
     {
-      img: "",
+      img: mainAdvantagesIcon6,
       title: "Работаем честно",
       desc: "Улучшение вашей кредитной истории",
     },

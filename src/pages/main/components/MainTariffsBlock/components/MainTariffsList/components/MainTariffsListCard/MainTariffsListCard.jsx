@@ -1,4 +1,5 @@
 import "./MainTariffsListCard.scss";
+import AppButton from "../../../../../../../../components/AppButton/AppButton.jsx";
 const MainTariffsListCard = ({ item }) => {
   function countTypeRU(countType) {
     if (countType === "days") return "Дней";
@@ -66,6 +67,11 @@ const MainTariffsListCard = ({ item }) => {
           style={{ fontSize: "16px" }}
         >
           К возврату {item.value} руб.*
+        </div>
+        <div className="tariffs-list-card-bottom__button">
+          <AppButton mode={item.type === 'standard' ? 'black' : 'blue'}>
+            ОФОРМИТЬ ЗАЯВКУ
+          </AppButton>
         </div>
       </div>
     </div>

@@ -2,6 +2,7 @@ import "./AmountOfCreditForm.scss";
 import { useState } from "react";
 import AmountOfCreditFormRange from "./components/AmountOfCreditFormRange/AmountOfCreditFormRange.jsx";
 import AppSelect from "../AppSelect/AppSelect.jsx";
+import AppButton from "../AppButton/AppButton.jsx";
 const AmountOfCreditForm = () => {
   const [amount, setAmount] = useState(50000);
   const [days] = useState([{ id: "1", name: "1 день" }]);
@@ -21,7 +22,9 @@ const AmountOfCreditForm = () => {
         </div>
         <AppSelect optionsList={days} />
       </div>
-      // кнопка
+        <AppButton mode="black">
+            ОФОРМИТЬ ЗАЯВКУ
+        </AppButton>
     </div>
   );
 };
