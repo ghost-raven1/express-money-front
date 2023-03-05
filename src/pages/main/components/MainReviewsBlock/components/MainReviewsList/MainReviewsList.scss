@@ -1,10 +1,23 @@
 .reviews-list {
   display: flex;
   flex-direction: row;
+  flex-wrap: nowrap;
   gap: 20px;
   margin-left: 160px;
   padding-bottom: 20px;
-  overflow-x: auto;
   scroll-behavior: smooth;
   height: fit-content;
+  overflow: scroll;
+  @supports (scrollbar-gutter: stable) {
+    overflow: auto;
+    scrollbar-gutter: stable;
+  }
+}
+
+.reviews-list::-webkit-scrollbar {
+  visibility: hidden;
+}
+
+.reviews-list::-webkit-scrollbar-thumb {
+  visibility: hidden;
 }
