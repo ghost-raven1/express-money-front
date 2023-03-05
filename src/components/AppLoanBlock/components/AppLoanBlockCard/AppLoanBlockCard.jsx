@@ -1,6 +1,8 @@
 import './AppLoanBlockCard.scss'
 import {RouterPath} from "../../../../utils/utils.js";
 import {appLoanBlockSmileMan, appLoanBlockSmileMan1, appLoanBlockSmileMan2} from "../../../../utils/images.js";
+import AppButton from "../../../AppButton/AppButton.jsx";
+import SvgSelector from "../../../SvgSelector/SvgSelector.jsx";
 const AppLoanBlockCard = () => {
     const currentPath = window.location.pathname;
     function peoplesImages () {
@@ -14,6 +16,11 @@ const AppLoanBlockCard = () => {
                 <div className="loan-block-card-left__title">Первый заём</div>
                 <div className="loan-block-card-left__desc">
                     0,9% на срок до 21 дня на сумму до 15 000 ₽
+                </div>
+                <div className="main__button-border main__button-border_black">
+                    <AppButton mode="black">
+                        ОФОРМИТЬ ЗАЯВКУ <SvgSelector id="arrow-in-round" />
+                    </AppButton>
                 </div>
             </div>
             <div className="loan-block-card-right">

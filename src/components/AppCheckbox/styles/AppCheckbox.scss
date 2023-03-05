@@ -1,0 +1,60 @@
+
+$checkmarkSize: 20px;
+
+.app-checkbox {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  gap: 5px;
+  animation: .5s show ease;
+  &.disabled {
+    opacity: 0.5;
+    &__content {
+      cursor: default;
+    }
+  }
+  &__content {
+    cursor: pointer;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+  &__input {
+    appearance: none;
+    &:checked + .app-checkbox__checkmark svg {
+      opacity: 1;
+      display: block;
+    }
+  }
+  &__checkmark {
+    width: $checkmarkSize;
+    height: $checkmarkSize;
+    min-width: $checkmarkSize;
+    border: 1px solid #8899B4;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &_active {
+      border: 1px solid transparent;
+    }
+    svg {
+      opacity: 0;
+      transition: .3s;
+    }
+  }
+  &__label {
+    font-family: 'Gilroy', serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 109.1%;
+    text-align: center;
+    letter-spacing: 0.01em;
+    color: #8899B4;
+
+    > span {
+      color: #e71616;
+    }
+  }
+}

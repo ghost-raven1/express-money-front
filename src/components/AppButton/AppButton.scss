@@ -12,8 +12,12 @@
   color: #FFFFFF;
   transition: .3s ease-in-out;
   border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
   &:hover {
-    transform: scale(1.03);
+    transform: scale(1.001);
     cursor: pointer;
   }
   &_black {

@@ -1,5 +1,6 @@
 import "./MainTariffsListCard.scss";
 import AppButton from "../../../../../../../../components/AppButton/AppButton.jsx";
+import SvgSelector from "../../../../../../../../components/SvgSelector/SvgSelector.jsx";
 const MainTariffsListCard = ({ item }) => {
   function countTypeRU(countType) {
     if (countType === "days") return "Дней";
@@ -70,7 +71,7 @@ const MainTariffsListCard = ({ item }) => {
         </div>
         <div className="tariffs-list-card-bottom__button">
           <AppButton mode={item.type === 'standard' ? 'black' : 'blue'}>
-            ОФОРМИТЬ ЗАЯВКУ
+            ОФОРМИТЬ ЗАЯВКУ <SvgSelector id="arrow-in-round" />
           </AppButton>
         </div>
       </div>
