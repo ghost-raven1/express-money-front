@@ -11,7 +11,7 @@ const MainPage = () => {
     return (
         <div className="main">
             <MainOfferBlock />
-            <div style={{position: 'relative'}}>
+            <div style={{position: 'relative', display: 'flex', justifyContent: 'center'}}>
                 <MainTariffsBlock />
                 <MainAdvantagesBlock />
             </div>

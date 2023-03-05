@@ -2,6 +2,7 @@ import "./AppHeader.scss";
 import { useNavigate } from "react-router-dom";
 import { RouterPath } from "../../utils/utils.js";
 import AppHeaderLinksList from "./components/AppHeaderLinksList/AppHeaderLinksList.jsx";
+import AppHeaderPhoneNumber from "./components/AppHeaderPhoneNumber/AppHeaderPhoneNumber.jsx";
 const AppHeader = () => {
   const navigate = useNavigate();
 
@@ -14,6 +15,7 @@ const AppHeader = () => {
         Expressmoney
       </div>
         <AppHeaderLinksList />
+        <AppHeaderPhoneNumber />
     </div>
   );
 };
