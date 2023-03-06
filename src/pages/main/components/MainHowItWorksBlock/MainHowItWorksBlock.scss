@@ -1,6 +1,14 @@
+@import "src/assets/styles/mixins.scss";
+
 .how-it-works {
   height: 430px;
   width: 100%;
   background: #e8ebec;
   padding-top: 330px;
+}
+
+@include _1300 {
+  .how-it-works {
+    padding-top: 380px;
+  }
 }
