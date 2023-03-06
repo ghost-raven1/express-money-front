@@ -1,3 +1,5 @@
+@import "src/assets/styles/mixins.scss";
+
 .broadcast-block {
   color: #1A1D25;
   // TODO: поменять
@@ -43,6 +45,21 @@
         margin-top: 20px;
         padding-top: 20px;
       }
+    }
+  }
+}
+
+@include _1300 {
+  .broadcast-block {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    &__right {
+      margin-right: 1%;
+      margin-left: 1%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
   }
 }

@@ -1,0 +1,11 @@
+@import "src/assets/styles/mixins.scss";
+
+.broadcast-credit-banner__img {
+  width: 100%
+}
+
+@include _1300 {
+  .broadcast-credit-banner__img {
+    width: 530px;
+  }
+}
