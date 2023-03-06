@@ -5,6 +5,7 @@ import {
   mainHowItWorksListCard2,
   mainHowItWorksListCard3,
 } from "../../../../../../utils/images.js";
+import SvgSelector from "../../../../../../components/SvgSelector/SvgSelector.jsx";
 const MainHowItWorksList = () => {
   const cardsArr = [
     {
@@ -30,7 +31,13 @@ const MainHowItWorksList = () => {
     <div className="how-it-works-list">
       {!!cardsArr.length &&
         cardsArr.map((card, idx) => {
-          return <MainHowItWorksListCard item={card} key={idx} />;
+          return (
+              <>
+                <MainHowItWorksListCard item={card} key={idx} />
+                {/*TODO: стрелочки добавить*/}
+                <SvgSelector id="" />
+              </>
+        )
         })}
     </div>
   );
