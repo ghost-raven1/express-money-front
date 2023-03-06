@@ -1,7 +1,10 @@
+@import "src/assets/styles/mixins.scss";
+
 .loan-block-card {
   background: linear-gradient(90.74deg, #0F6DFF 0%, #005CEA 100%);
   border-radius: 40px;
-  width: 1200px;
+  max-width: 1200px;
+  width: 100%;
   height: 367px;
   margin-left: 160px;
   display: flex;
@@ -41,5 +44,11 @@
       width: 480px;
       border-radius: 50%;
     }
+  }
+}
+
+@include _1300 {
+  .loan-block-card {
+    margin-left: 2%;
   }
 }

@@ -1,3 +1,5 @@
+@import "src/assets/styles/mixins.scss";
+
 .header-phone {
   &__number {
     font-family: Manrope, serif;
@@ -21,5 +23,11 @@
     font-size: 13px;
     line-height: 18px;
     color: #8899B4;
+  }
+}
+
+@include _1400 {
+  .header-phone {
+    display: none;
   }
 }

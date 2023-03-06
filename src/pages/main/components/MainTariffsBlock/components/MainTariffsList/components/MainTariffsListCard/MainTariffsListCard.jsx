@@ -51,6 +51,7 @@ const MainTariffsListCard = ({ item }) => {
       <div className={cardTitleStyles(item.type)}>{item.name}</div>
       <img className="tariffs-list-card__img" src={item.img} alt="" />
       <div className="tariffs-list-card-bottom">
+        <div className="tariffs-list-card-bottom__mob-title">{item.name}</div>
         <div className="tariffs-list-card-bottom__numbers">
           <span className={cardNumbersColorsStyles(item.type)}>
             {item.price}

@@ -14,7 +14,8 @@ const AppHeader = () => {
       >
         Expressmoney
       </div>
-        <AppHeaderLinksList />
+        {/*TODO: Включить отображение*/}
+        {/*<AppHeaderLinksList />*/}
         <AppHeaderPhoneNumber />
     </div>
   );

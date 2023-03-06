@@ -1,3 +1,5 @@
+@import "src/assets/styles/mixins.scss";
+
 .tariffs-list-card {
   color: black;
   border-radius: 24px;
@@ -23,10 +25,12 @@
       color: #FFFFFF;
     }
   }
-  &__img {}
   &-bottom {
     margin-top: 20px;
     margin-bottom: 20px;
+    &__mob-title {
+      display: none;
+    }
     &__button {
       margin: 20px 25px 25px;
     }
@@ -87,5 +91,21 @@
   }
   &_premium {
     background: linear-gradient(153.6deg, #222738 0%, #101420 100%);
+  }
+}
+
+@include _1300 {
+  .tariffs-list-card {
+    flex-direction: row;
+    padding-left: 0;
+    padding-top: 0;
+    &-bottom {
+      &__mob-title {
+        display: flex;
+      }
+    }
+    &__title {
+      display: none;
+    }
   }
 }

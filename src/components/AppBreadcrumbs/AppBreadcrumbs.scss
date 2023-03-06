@@ -1,3 +1,5 @@
+@import "src/assets/styles/mixins.scss";
+
 .breadcrumbs {
   margin-left: 40px;
   margin-top: 20px;
@@ -46,5 +48,11 @@
         }
       }
     }
+  }
+}
+
+@include _1400 {
+  .breadcrumbs {
+    display: none;
   }
 }
