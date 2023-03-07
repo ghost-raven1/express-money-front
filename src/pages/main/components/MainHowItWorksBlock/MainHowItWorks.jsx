@@ -8,7 +8,7 @@ const MainHowItWorks = () => {
       <AppHeadSection
         title="Как это работает"
         img={mainAdvantagesBlockDelimiter}
-        desc="Мы подобрали для вас лучшие предложения"
+        desc="Получите деньги в считанные минуты"
       />
       <MainHowItWorksList />
     </div>

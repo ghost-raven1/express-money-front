@@ -9,7 +9,7 @@ const MainAdvantagesBlock = () => {
       <AppHeadSection
         title="Преимущества"
         img={mainAdvantagesBlockDelimiter}
-        desc="Мы подобрали для вас лучшие предложения"
+        desc="Наши продукты лучшие на рынке!"
       />
       <MainAdvantagesList />
     </div>

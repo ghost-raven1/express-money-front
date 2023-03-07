@@ -31,7 +31,7 @@ const MainDeliveryBlockCard = () => {
           </div>
         </div>
       </div>
-      <img src={mainDeliveryBlockCardBackground} alt="" />
+      <div className="delivery-block-card__img" src={mainDeliveryBlockCardBackground} alt="" />
     </div>
   );
 };

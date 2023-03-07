@@ -1,3 +1,5 @@
+@import "src/assets/styles/mixins.scss";
+
 .how-it-works-list-card {
   color: black;
   position: relative;
@@ -48,6 +50,22 @@
       -webkit-text-fill-color: transparent;
       background-clip: text;
       text-fill-color: transparent;
+    }
+  }
+}
+
+@include _1300 {
+  .how-it-works-list-card {
+    height: 115px;
+    &-text {
+      margin-top: 18px;
+      margin-left: 53px;
+    }
+    &__img {
+      left: -18%;
+      bottom: -7px;
+      height: 130px;
+      width: 130px;
     }
   }
 }

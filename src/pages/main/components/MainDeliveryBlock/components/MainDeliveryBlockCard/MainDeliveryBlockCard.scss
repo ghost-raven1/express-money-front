@@ -1,3 +1,5 @@
+@import "src/assets/styles/mixins.scss";
+
 .delivery-block-card {
   background: linear-gradient(107.56deg, #F4F6F8 0%, #F8FBFF 100%);
   border-radius: 40px;
@@ -5,6 +7,12 @@
   width: 1200px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  &__img {
+    // TODO: Поменять
+    background: url("src/assets/main/Delivery/card/Background.png") no-repeat;
+    background-size: cover;
+    border-radius: 0 40px 40px 0;
+  }
   &-inner {
     margin-left: 54px;
     margin-top: 62px;
@@ -33,6 +41,26 @@
       letter-spacing: 0.01em;
       color: #8899B4;
       margin-bottom: 20px;
+    }
+  }
+}
+
+@include _1300 {
+  .delivery-block-card {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-left: 1%;
+    margin-right: 1%;
+    &-inner {
+      margin-left: 0;
+      margin-top: 0;
+    }
+    &__img {
+      margin: 1%;
+      // TODO: Поменять
+      background: url("src/assets/main/Delivery/card/Background1.png") no-repeat;
+      height: 100%;
     }
   }
 }
