@@ -1,3 +1,5 @@
+@import "src/assets/styles/mixins.scss";
+
 @mixin footer-info-links-text {
   font-family: Manrope, serif;
   font-style: normal;
@@ -55,5 +57,18 @@
       margin-top: 20px;
       margin-bottom: 20px;
     }
+  }
+}
+
+@include _1300 {
+  .footer-info-links {
+    grid-gap: 5px;
+  }
+}
+
+@include _1099 {
+  .footer-info-links {
+    display: flex;
+    flex-direction: column;
   }
 }

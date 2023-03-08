@@ -1,3 +1,5 @@
+@import "src/assets/styles/mixins.scss";
+
 .reviews-list {
   display: flex;
   flex-direction: row;
@@ -20,4 +22,10 @@
 
 .reviews-list::-webkit-scrollbar-thumb {
   visibility: hidden;
+}
+
+@include _1300 {
+  .reviews-list {
+    margin-left: 1%;
+  }
 }

@@ -1,3 +1,5 @@
+@import "src/assets/styles/mixins.scss";
+
 .button {
   border-radius: 16px;
   padding: 14px 20px;
@@ -25,5 +27,13 @@
   }
   &_blue {
     background: linear-gradient(90.74deg, #0F6DFF 0%, #005CEA 100%);
+  }
+}
+
+@include _480 {
+  .button {
+    font-size: 0.6rem;
+    padding-top: 2px;
+    padding-bottom: 2px;
   }
 }

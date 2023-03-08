@@ -1,3 +1,5 @@
+@import "src/assets/styles/mixins.scss";
+
 .advantages-card {
   &__title {
     font-family: Manrope, serif;
@@ -23,5 +25,25 @@
     line-height: 22px;
     letter-spacing: 0.01em;
     color: #8899B4;
+  }
+}
+
+@include _991 {
+  .advantages-card__title > img {
+    height: 30px;
+    width: 30px;
+  }
+  .advantages-card {
+    &__title {
+      flex-direction: column;
+    }
+  }
+}
+
+@include _480 {
+  .advantages-card {
+    &__title {
+      font-size: 1rem;
+    }
   }
 }

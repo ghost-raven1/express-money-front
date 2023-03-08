@@ -13,3 +13,21 @@
     height: 581px;
   }
 }
+
+@include _767 {
+  .how-it-works {
+    padding-top: 400px;
+  }
+}
+
+@include _575 {
+  .how-it-works {
+    padding-top: 440px;
+  }
+}
+
+@include _480 {
+  .how-it-works {
+    padding-top: 492px;
+  }
+}

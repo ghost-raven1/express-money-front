@@ -18,10 +18,9 @@ const MainDeliveryBlockCard = () => {
           alt=""
         />
         <div className="delivery-block-card-inner__desc">
-          Картельные сговоры не допускают ситуации, <br />
-          при которой активно развивающиеся страны <br />
-          третьего мира будут функционально <br />
-          разнесены на.
+          Мы работаем со всеми основными карточными системами Росиии и мира.<br />
+
+          Карточные платежи в нашей компании, обрабатываются с использованием<br /> наиболее безопастных технологий основанных на стандартах PCI DSS
         </div>
         <div className="delivery-block-card-inner__button">
           <div className="main__button-border main__button-border_grey">
@@ -31,7 +30,9 @@ const MainDeliveryBlockCard = () => {
           </div>
         </div>
       </div>
-      <div className="delivery-block-card__img" src={mainDeliveryBlockCardBackground} alt="" />
+      <div className="delivery-block-card__img-container">
+        <div className="delivery-block-card__img" />
+      </div>
     </div>
   );
 };

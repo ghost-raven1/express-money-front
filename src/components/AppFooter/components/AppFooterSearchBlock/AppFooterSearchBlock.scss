@@ -1,6 +1,9 @@
+@import "src/assets/styles/mixins.scss";
+
 .footer-search-block {
   display: grid;
   grid-template-columns: 1fr 2fr;
+  grid-gap: 10px;
   &__right {
     margin-top: 13px;
   }
@@ -32,3 +35,13 @@
     }
   }
 }
+
+@include _1400 {
+  .footer-search-block {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 25px;
+  }
+}
+
+@include _575 {}

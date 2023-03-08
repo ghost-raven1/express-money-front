@@ -1,3 +1,5 @@
+@import "src/assets/styles/mixins.scss";
+
 @mixin footer-copyrights-text-grey-blue {
   font-family: Manrope, serif;
   font-style: normal;
@@ -26,5 +28,25 @@
   }
   &__third {
     @include footer-copyrights-text-grey-blue;
+  }
+}
+
+@include _1300 {
+  .footer-copyrights {
+    grid-gap: 5px;
+  }
+}
+
+@include _1099 {
+  .footer-copyrights {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 25px;
+    &__first {
+      font-size: 1.4rem;
+    }
+    &__second {
+      font-size: 1.2rem;
+    }
   }
 }

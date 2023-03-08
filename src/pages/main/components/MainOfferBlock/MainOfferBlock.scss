@@ -61,8 +61,8 @@
     width: 100%;
   }
   .offer {
-    //// TODO: поменять
-    //background: url("src/assets/main/Offer/Backgrounds/mob.svg") no-repeat;
+    // TODO: поменять
+    background: url("src/assets/main/Offer/Backgrounds/mob.svg") no-repeat;
     background-size: cover;
     display: flex;
     flex-direction: column;
@@ -75,6 +75,20 @@
     }
     &-right {
       display: none;
+    }
+  }
+}
+
+@include _991 {
+  .offer {
+    height: fit-content;
+    padding-bottom: 20px;
+    &-left {
+      margin-top: 300px;
+      &__credit-form {
+        margin-left: 2%;
+        margin-right: 2%;
+      }
     }
   }
 }

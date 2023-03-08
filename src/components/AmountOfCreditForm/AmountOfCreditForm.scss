@@ -1,6 +1,8 @@
+@import "src/assets/styles/mixins.scss";
+
 .amount-of-credit-form {
-  width: 481px;
-  height: 290px;
+  max-width: 481px;
+  max-height: 290px;
   background: #FFFFFF;
   border-radius: 24px;
   color: black;
@@ -12,7 +14,7 @@
     margin-top: 42px;
     align-items: center;
     &-percent {
-      font-family: 'Gilroy', serif;
+      font-family: 'Manrope', serif;
       font-style: normal;
       font-weight: 500;
       font-size: 13px;

@@ -100,12 +100,84 @@
     padding-left: 0;
     padding-top: 0;
     &-bottom {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      &__numbers {
+        margin-bottom: 5px;
+      }
       &__mob-title {
         display: flex;
+        font-family: 'Manrope', serif;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 1.5rem;
+        line-height: 25px;
+        letter-spacing: 0.01em;
+        color: #262B40;
+        justify-content: center;
+        margin-bottom: 10px;
+        &_basic {
+          color: #262B40;
+        }
+        &_standard {
+          color: #FFFFFF;
+        }
+        &_premium {
+          color: #FFFFFF;
+        }
       }
     }
     &__title {
       display: none;
+    }
+  }
+}
+
+@include _767 {
+  .tariffs-list-card {
+    &-bottom {
+      margin-bottom: 0;
+      margin-top: 0;
+      &__button {
+        margin-bottom: 0;
+      }
+    }
+    &__img {
+      max-height: 200px;
+      width: inherit;
+    }
+  }
+}
+
+@include _480 {
+  .tariffs-list-card {
+    &-bottom {
+      font-size: 0.4rem;
+      &__text {
+        font-size: 0.8rem;
+        &_blue {
+          font-size: 0.8rem;
+        }
+        &_white {
+          font-size: 0.8rem;
+        }
+      }
+      &__button {
+        margin-top: 0;
+      }
+      &__numbers {
+        margin-bottom: 0;
+      }
+      &__mob {
+        &-title {
+          font-size: 1rem;
+          margin-bottom: 0;
+        }
+      }
+    }
+    &__img {
+      max-height: 130px;
     }
   }
 }

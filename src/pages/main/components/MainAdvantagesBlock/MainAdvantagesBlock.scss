@@ -24,3 +24,27 @@
     margin-right: 1%;
   }
 }
+
+@include _991 {
+  .advantages {
+    bottom: -320px;
+  }
+}
+
+@include _767 {
+  .advantages {
+    bottom: -380px;
+  }
+}
+
+@include _575 {
+  .advantages {
+    bottom: -400px;
+  }
+}
+
+@include _480 {
+  .advantages {
+    bottom: -440px;
+  }
+}

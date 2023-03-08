@@ -8,3 +8,9 @@
   display: flex;
   justify-content: center;
 }
+
+@include _480 {
+  .delivery-block {
+    padding-top: 100px;
+  }
+}

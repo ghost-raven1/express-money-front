@@ -6,6 +6,8 @@
 
 @include _1300 {
   .broadcast-credit-banner__img {
-    width: 530px;
+    max-width: 530px;
+    padding-left: 2%;
+    padding-right: 2%;
   }
 }

@@ -16,7 +16,7 @@ const MainAdvantagesList = () => {
     {
       img: mainAdvantagesIcon2,
       title: "Без страховки",
-      desc: "Без доп платежей к выданной сумме",
+      desc: "Без доп. платежей к выданной сумме",
     },
     {
       img: mainAdvantagesIcon3,

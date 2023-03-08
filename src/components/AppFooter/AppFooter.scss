@@ -1,3 +1,5 @@
+@import "src/assets/styles/mixins.scss";
+
 .footer {
   background: linear-gradient(153.6deg, #222738 0%, #101420 100%);
   &-inner {
@@ -8,6 +10,15 @@
       width: 100%;
       margin-top: 50px;
       margin-bottom: 50px;
+    }
+  }
+}
+
+@include _767 {
+  .footer {
+    &-inner {
+      padding-left: 5%;
+      padding-right: 7%;
     }
   }
 }

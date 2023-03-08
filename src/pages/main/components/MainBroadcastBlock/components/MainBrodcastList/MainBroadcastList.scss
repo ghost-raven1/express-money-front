@@ -38,3 +38,24 @@
     }
   }
 }
+
+@include _767 {
+  .broadcast-list {
+    margin-left: 2%;
+    margin-right: 2%;
+    &__title {
+      text-align: center;
+    }
+  }
+}
+
+@include _575 {
+  .broadcast-list {
+    &__title {
+      text-align: left;
+    }
+    &__list {
+      align-items: flex-start;
+    }
+  }
+}

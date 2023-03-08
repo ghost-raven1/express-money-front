@@ -1,3 +1,5 @@
+@import "src/assets/styles/mixins.scss";
+
 .amount-of-credit-form-range {
   display: flex;
   flex-direction: column;
@@ -138,5 +140,15 @@
 
   &__range:active::-ms-thumb {
     border: none;
+  }
+}
+
+@include _380 {
+  .amount-of-credit-form-range {
+    &-data {
+      &__value {
+        font-size: 1rem;
+      }
+    }
   }
 }

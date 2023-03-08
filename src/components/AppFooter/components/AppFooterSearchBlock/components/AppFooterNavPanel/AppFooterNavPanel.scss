@@ -1,3 +1,5 @@
+@import "src/assets/styles/mixins.scss";
+
 @mixin footer-nav-panel-title {
   font-family: Manrope, serif;
   font-style: normal;
@@ -39,6 +41,7 @@
   &__left {
     &-title {
       @include footer-nav-panel-title;
+      color: white;
     }
     &-list {
       @include footer-nav-panel-list;
@@ -52,6 +55,7 @@
   &__right {
     &-title {
       @include footer-nav-panel-title;
+      color: white;
     }
     &-list {
       @include footer-nav-panel-list;
@@ -59,5 +63,20 @@
         @include footer-nav-panel-list-item;
       }
     }
+  }
+}
+
+@include _1300 {
+  .footer-nav-panel {
+    margin-left: 0;
+    margin-top: 25px;
+  }
+}
+
+@include _1099 {
+  .footer-nav-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
   }
 }

@@ -16,3 +16,16 @@
     padding-bottom: 680px;
   }
 }
+
+@include _767 {
+  .tariffs {
+    padding-top: 25px;
+    padding-bottom: 250px;
+  }
+}
+
+@include _480 {
+  .tariffs {
+    padding-bottom: 90px;
+  }
+}

@@ -1,3 +1,5 @@
+@import "src/assets/styles/mixins.scss";
+
 .app-select {
   display: flex;
   flex-direction: column;
@@ -156,5 +158,13 @@ ul {
       cursor: grab;
       background-color: grey;
     }
+  }
+}
+
+@include _480 {
+  .selected-text {
+    font-size: 0.7rem;
+    padding-left: 10px;
+    padding-right: 10px;
   }
 }

@@ -1,8 +1,10 @@
+@import "src/assets/styles/mixins.scss";
+
 .reviews-block {
   display: flex;
   flex-direction: column;
   color: black;
-  background: white; // TODO: Поменять на белый
+  background: white;
   width: 100%;
   &-top {
     display: flex;
@@ -40,6 +42,15 @@
     &:hover {
       cursor: pointer;
       transform: scale(1.03);
+    }
+  }
+}
+
+@include _1300 {
+  .reviews-block {
+    &-top {
+      margin-left: 1%;
+      margin-right: 4%;
     }
   }
 }

@@ -14,3 +14,11 @@
     justify-content: center;
   }
 }
+
+@include _767 {
+  .tariffs-list {
+    margin-right: 2%;
+    margin-left: 2%;
+    gap: 20px;
+  }
+}
