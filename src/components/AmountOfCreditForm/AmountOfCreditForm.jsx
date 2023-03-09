@@ -33,10 +33,12 @@ const AmountOfCreditForm = () => {
         <AppSelect optionsList={days} mode="grey" />
       </div>
       <div className="main__button-border main__button-border_black">
-        <AppButton mode="black">
-          ОФОРМИТЬ ЗАЯВКУ
-          <SvgSelector id="arrow-in-round" />
-        </AppButton>
+        <a href="https://ru.expressmoney.com/loans/" target='_blank'>
+          <AppButton mode="black">
+            ОФОРМИТЬ ЗАЯВКУ
+            <SvgSelector id="arrow-in-round" />
+          </AppButton>
+        </a>
       </div>
       <div className="amount-of-credit-form__bottom">
         <AppCheckbox label="Карта лояльности" />

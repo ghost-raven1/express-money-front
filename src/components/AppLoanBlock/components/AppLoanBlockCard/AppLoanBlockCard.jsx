@@ -18,9 +18,11 @@ const AppLoanBlockCard = () => {
                     0,9% на срок до 21 дня на сумму до 15 000 ₽
                 </div>
                 <div className="main__button-border main__button-border_black">
+                    <a href="https://ru.expressmoney.com/loans/" target='_blank'>
                     <AppButton mode="black">
                         ОФОРМИТЬ ЗАЯВКУ <SvgSelector id="arrow-in-round" />
                     </AppButton>
+                    </a>
                 </div>
             </div>
             <div className="loan-block-card-right">

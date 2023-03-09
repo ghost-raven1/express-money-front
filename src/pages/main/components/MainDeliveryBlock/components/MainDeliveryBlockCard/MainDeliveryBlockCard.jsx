@@ -24,9 +24,11 @@ const MainDeliveryBlockCard = () => {
         </div>
         <div className="delivery-block-card-inner__button">
           <div className="main__button-border main__button-border_grey">
+            <a href="https://ru.expressmoney.com/loans/" target='_blank'>
             <AppButton mode="blue">
               ОФОРМИТЬ ЗАЯВКУ <SvgSelector id="arrow-in-round" />
             </AppButton>
+            </a>
           </div>
         </div>
       </div>
