@@ -9,6 +9,11 @@ export default defineConfig({
       },
     }),
   ],
+  resolve: {
+    alias: {
+      src: '/src'
+    }
+  },
   server: {
     watch: {
       usePolling: true
