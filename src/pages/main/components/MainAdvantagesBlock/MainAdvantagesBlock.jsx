@@ -1,6 +1,6 @@
 import MainAdvantagesList from "./components/MainAdvantagesList/MainAdvantagesList.jsx";
 import "./MainAdvantagesBlock.scss";
-import { mainAdvantagesBlockDelimiter } from "../../../../utils/images.js";
+import mainAdvantagesBlockDelimiter from 'src/assets/main/Delimiters/Delimiter2.svg';
 import AppHeadSection from "../../../../components/AppHeadSection/AppHeadSection.jsx";
 
 const MainAdvantagesBlock = () => {

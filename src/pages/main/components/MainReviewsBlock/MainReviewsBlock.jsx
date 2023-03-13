@@ -1,8 +1,6 @@
 import './MainReviewsBlock.scss'
-import {
-    mainReviewsBlockArrowLeft,
-    mainReviewsBlockArrowRight
-} from "../../../../utils/images.js";
+import mainReviewsBlockArrowLeft from 'src/assets/main/Reviews/Arrow/ArrowLeft.svg';
+import mainReviewsBlockArrowRight from 'src/assets/main/Reviews/Arrow/ArrowRight.svg';
 import {useRef} from "react";
 import Carousel from "./components/MainReviewsList/MainReviewsList.jsx";
 const MainReviewsBlock = () => {

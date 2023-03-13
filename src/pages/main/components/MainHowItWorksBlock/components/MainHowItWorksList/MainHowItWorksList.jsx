@@ -1,10 +1,8 @@
 import "./MainHowItWorksList.scss";
 import MainHowItWorksListCard from "./components/MainHowItWorksListCard.jsx";
-import {
-  mainHowItWorksListCard1,
-  mainHowItWorksListCard2,
-  mainHowItWorksListCard3,
-} from "../../../../../../utils/images.js";
+import mainHowItWorksListCard1 from 'src/assets/main/HowItWorks/icons/1.png';
+import mainHowItWorksListCard2 from 'src/assets/main/HowItWorks/icons/2.png';
+import mainHowItWorksListCard3 from 'src/assets/main/HowItWorks/icons/3.png';
 import SvgSelector from "../../../../../../components/SvgSelector/SvgSelector.jsx";
 const MainHowItWorksList = () => {
   const cardsArr = [

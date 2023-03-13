@@ -1,6 +1,8 @@
 import './AppLoanBlockCard.scss'
 import {RouterPath} from "../../../../utils/utils.js";
-import {appLoanBlockSmileMan, appLoanBlockSmileMan1, appLoanBlockSmileMan2} from "../../../../utils/images.js";
+import appLoanBlockSmileMan from 'src/assets/LoanBlock/SmileMan.png';
+import appLoanBlockSmileMan1 from 'src/assets/LoanBlock/SmileMan1.png';
+import appLoanBlockSmileMan2 from 'src/assets/LoanBlock/SmileMan2.png';
 import AppButton from "../../../AppButton/AppButton.jsx";
 import SvgSelector from "../../../SvgSelector/SvgSelector.jsx";
 const AppLoanBlockCard = () => {

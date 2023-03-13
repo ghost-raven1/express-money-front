@@ -1,4 +1,4 @@
-import { mainBroadcastCreditBanner } from "../../../../../../utils/images.js";
+import mainBroadcastCreditBanner from 'src/assets/main/Broadcast/Backgrounds/Banner.png';
 import "./MainBroadcastCreditBanner.scss";
 
 const MainBroadcastCreditBanner = () => {

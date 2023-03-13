@@ -1,5 +1,5 @@
 import "./MainReviewsListCard.scss";
-import { mainReviewsBlockQuotes } from "../../../../../../../../utils/images.js";
+import mainReviewsBlockQuotes from 'src/assets/main/Reviews/Quotes/Quotes.svg';
 const MainReviewsListCard = ({ item }) => {
   return (
     <div className="reviews-list-card">

@@ -1,5 +1,5 @@
 import "./MainTariffsBlock.scss";
-import { mainTariffsBlockDelimiter } from "../../../../utils/images.js";
+import mainTariffsBlockDelimiter from 'src/assets/main/Delimiters/Delimiter.svg';
 import MainTariffsList from "./components/MainTariffsList/MainTariffsList.jsx";
 import AppHeadSection from "../../../../components/AppHeadSection/AppHeadSection.jsx";
 const MainTariffsBlock = () => {

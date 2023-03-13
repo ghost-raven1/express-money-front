@@ -14,14 +14,15 @@
     justify-content: center;
   }
   &__img {
-    // TODO: Поменять
     background: url("src/assets/main/Delivery/card/Background.png") no-repeat;
     background-size: cover;
     border-radius: 0 40px 40px 0;
+    width: 100%;
   }
   &-inner {
     margin-left: 54px;
     margin-top: 62px;
+    margin-right: 20px;
     &__button {
       width: 310px;
     }

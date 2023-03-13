@@ -1,11 +1,11 @@
 import MainAdvantagesCard from "./components/MainAdvantagesCard/MainAdvantagesCard.jsx";
 import "./MainAdvantagesList.scss";
-import {
-  mainAdvantagesIcon1, mainAdvantagesIcon2,
-  mainAdvantagesIcon3,
-  mainAdvantagesIcon4,
-  mainAdvantagesIcon5, mainAdvantagesIcon6
-} from "../../../../../../utils/images.js";
+import mainAdvantagesIcon1 from 'src/assets/main/Advantages/icons/1.svg';
+import mainAdvantagesIcon2 from 'src/assets/main/Advantages/icons/2.svg';
+import mainAdvantagesIcon3 from 'src/assets/main/Advantages/icons/3.svg';
+import mainAdvantagesIcon4 from 'src/assets/main/Advantages/icons/4.svg';
+import mainAdvantagesIcon5 from 'src/assets/main/Advantages/icons/5.svg';
+import mainAdvantagesIcon6 from 'src/assets/main/Advantages/icons/6.svg';
 const MainAdvantagesList = () => {
   const advantages = [
     {

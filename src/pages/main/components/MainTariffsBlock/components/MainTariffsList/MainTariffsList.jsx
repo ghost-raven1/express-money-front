@@ -1,10 +1,8 @@
 import "./MainTariffsList.scss";
 import MainTariffsListCard from "./components/MainTariffsListCard/MainTariffsListCard.jsx";
-import {
-  mainTariffsListCardBasic,
-  mainTariffsListCardPremium,
-  mainTariffsListCardStandard,
-} from "../../../../../../utils/images.js";
+import mainTariffsListCardBasic from 'src/assets/main/ListCard/Basic.png';
+import mainTariffsListCardStandard from 'src/assets/main/ListCard/Standard.png';
+import mainTariffsListCardPremium from 'src/assets/main/ListCard/Premium.png';
 const MainTariffsList = () => {
   const tariffs = [
     {

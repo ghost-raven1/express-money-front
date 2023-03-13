@@ -1,5 +1,5 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig, splitVendorChunkPlugin } from "vite";
+import react from "@vitejs/plugin-react";
 export default defineConfig({
   plugins: [
     react({
@@ -8,25 +8,26 @@ export default defineConfig({
         configFile: true,
       },
     }),
+    splitVendorChunkPlugin(),
   ],
   resolve: {
     alias: {
-      src: '/src'
-    }
+      src: "/src",
+    },
   },
   server: {
     watch: {
-      usePolling: true
+      usePolling: true,
     },
     host: true,
     strictPort: true,
-    port: 8000
+    port: 8000,
   },
   css: {
     devSourcemap: true,
   },
   build: {
     chunkSizeWarningLimit: 150,
-    outDir: './build'
+    outDir: "./build",
   },
 });

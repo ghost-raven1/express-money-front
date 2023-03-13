@@ -1,7 +1,8 @@
 import "./FaqPage.scss";
 import AppLoanBlock from "../../components/AppLoanBlock/AppLoanBlock.jsx";
 import AppHeadSection from "../../components/AppHeadSection/AppHeadSection.jsx";
-import {faqBanner, mainTariffsBlockDelimiter} from "../../utils/images.js";
+import faqBanner from 'src/assets/faq/Banner.png';
+import mainTariffsBlockDelimiter from 'src/assets/main/Delimiters/Delimiter.svg';
 const FaqPage = () => {
   return (
     <div className="faq-page">

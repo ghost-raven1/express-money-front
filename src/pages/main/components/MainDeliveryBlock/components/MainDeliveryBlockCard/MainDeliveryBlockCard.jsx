@@ -1,8 +1,5 @@
 import "./MainDeliveryBlockCard.scss";
-import {
-  mainDeliveryBlockCardBackground,
-  mainTariffsBlockDelimiter,
-} from "../../../../../../utils/images.js";
+import mainTariffsBlockDelimiter from 'src/assets/main/Delimiters/Delimiter.svg';
 import AppButton from "../../../../../../components/AppButton/AppButton.jsx";
 import SvgSelector from "../../../../../../components/SvgSelector/SvgSelector.jsx";
 const MainDeliveryBlockCard = () => {

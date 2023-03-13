@@ -1,5 +1,6 @@
 import "./MainBroadcastListCard.scss";
-import {mainBroadcastActionIcon, mainBroadcastLocationIcon} from "../../../../../../../../utils/images.js";
+import mainBroadcastActionIcon from 'src/assets/main/Broadcast/icons/action.svg';
+import mainBroadcastLocationIcon from 'src/assets/main/Broadcast/icons/location.svg';
 const MainBroadcastListCard = ({ transaction }) => {
   return (
     <div className="broadcast-list-card">

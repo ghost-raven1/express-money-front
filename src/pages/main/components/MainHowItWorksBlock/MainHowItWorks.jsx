@@ -1,6 +1,6 @@
 import "./MainHowItWorksBlock.scss";
 import AppHeadSection from "../../../../components/AppHeadSection/AppHeadSection.jsx";
-import { mainAdvantagesBlockDelimiter } from "../../../../utils/images.js";
+import mainAdvantagesBlockDelimiter from 'src/assets/main/Delimiters/Delimiter2.svg';
 import MainHowItWorksList from "./components/MainHowItWorksList/MainHowItWorksList.jsx";
 const MainHowItWorks = () => {
   return (

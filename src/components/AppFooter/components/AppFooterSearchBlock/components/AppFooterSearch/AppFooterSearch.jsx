@@ -1,5 +1,5 @@
 import './AppFooterSearch.scss';
-import {footerSearchIcon} from "../../../../../../utils/images.js";
+import footerSearchIcon from 'src/assets/footer/search/search-icon.svg';
 const AppFooterSearch = () => {
     return (
         <div className="app-footer-search">
