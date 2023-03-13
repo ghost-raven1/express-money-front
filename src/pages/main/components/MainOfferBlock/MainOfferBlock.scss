@@ -7,8 +7,10 @@
   height: 675px;
   width: 100%;
   &-left {
-    margin-left: 120px;
     margin-top: 130px;
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 15%;
   }
   &-right {
     &__img {
@@ -71,6 +73,7 @@
       margin-top: 40px;
       display: flex;
       justify-content: center;
+      margin-right: 0;
     }
     &-right {
       display: none;

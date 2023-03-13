@@ -9,7 +9,7 @@ const MainOfferBlock = () => {
           <div className="credit-form__text_blue">Моментальное одобрение</div>
           <div className="credit-form__credit-text">Экспресс кредит</div>
           <div className="credit-form__credit-text-sub">
-              Воспользуйтесь нашим сервисом и получите решение через <span style={{ color: '#005CEA'}}>5 минут </span>
+              Воспользуйтесь нашим сервисом и получите решение <br /> через <span style={{ color: '#005CEA'}}>5 минут </span>
             после создания заявки
           </div>
           <AmountOfCreditForm />
