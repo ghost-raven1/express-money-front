@@ -9,14 +9,13 @@ export default defineConfig({
       },
     }),
   ],
-  mode: "development",
   server: {
     watch: {
       usePolling: true
     },
     host: true,
     strictPort: true,
-    port: 5173
+    port: 8000
   },
   css: {
     devSourcemap: true,
