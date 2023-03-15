@@ -30,6 +30,22 @@
   }
 }
 
+@include _575 {
+  .button {
+    font-size: 0.65rem;
+  }
+}
+
+@include _480 {
+  .button {
+    font-size: 0.5rem !important;
+  }
+}
+
+@include _380 {
+
+}
+
 @include _480 {
   .button {
     font-size: 0.6rem;

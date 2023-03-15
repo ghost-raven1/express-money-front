@@ -14,7 +14,7 @@ const AmountOfCreditForm = () => {
       <div className="amount-of-credit-form__title">Выберите сумму</div>
       <div className="credit-form-container">
         <div className="credit-form-container__left">
-          <AmountOfCreditFormRange value={amount} setValue={setAmount} />
+          <AmountOfCreditFormRange value={amount} setValue={setAmount} step={1000} />
           <div className="credit-form-container__left-prices">
             <div className="credit-form-container__left-prices-price">
               1000 руб

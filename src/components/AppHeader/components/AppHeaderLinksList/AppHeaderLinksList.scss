@@ -3,7 +3,15 @@
 .header-links-list {
   color: #1A1D25;
   display: flex;
-  gap: 25px;
+  align-items: center;
+  gap: 18px;
+}
+
+@include _1400 {
+  .header-links-list {
+   margin-left: 10px;
+    margin-right: 10px;
+  }
 }
 
 @include _1300 {

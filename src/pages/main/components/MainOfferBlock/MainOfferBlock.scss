@@ -94,3 +94,11 @@
     }
   }
 }
+
+@include _767 {
+  .offer {
+    &-left {
+      margin-top: 225px;
+    }
+  }
+}
