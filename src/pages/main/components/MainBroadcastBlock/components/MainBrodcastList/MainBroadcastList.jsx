@@ -1,7 +1,9 @@
 import "./MainBroadcastList.scss";
 import MainBroadcastListCard from "./components/MainBroadcastListCard/MainBroadcastListCard.jsx";
+import {useLayoutEffect, useState} from "react";
 const MainBroadcastList = () => {
-  const transactionsArr = [
+  const [transactions, setTransactions] = useState([]);
+  const commonTransactionsArr = [
     {
       name: "Василий П.",
       action: "Получил займ 61 000 руб.",
@@ -26,15 +28,46 @@ const MainBroadcastList = () => {
       time: "15 мин. назад",
       location: "Владимир",
     },
+    {
+      name: "Федор Т.",
+      action: "Получил займ 33 000 руб.",
+      time: "23 мин. назад",
+      location: "Москва",
+    },
+    {
+      name: "Василий З.",
+      action: "Погасил 16 000 руб. досрочно",
+      time: "28 мин. назад",
+      location: "Самара",
+    },
   ];
+
+  function getRandomArrayElement(arr) {
+    return arr[Math.floor(Math.random() * arr.length)];
+  }
+
+  function randomTransactions() {
+    // TODO: Добавить исключение повторяющихся
+    setTransactions([
+      getRandomArrayElement(commonTransactionsArr),
+      getRandomArrayElement(commonTransactionsArr),
+      getRandomArrayElement(commonTransactionsArr),
+      getRandomArrayElement(commonTransactionsArr),
+    ]);
+  }
+
+  useLayoutEffect(() => {
+    randomTransactions();
+  }, []);
+
   return (
     <div className="broadcast-list">
       <div className="broadcast-list__title">
         Прямая трансляция работы сервиса
       </div>
       <div className="broadcast-list__list">
-        {!!transactionsArr?.length &&
-          transactionsArr.map((transaction, idx) => {
+        {!!transactions?.length &&
+            transactions.map((transaction, idx) => {
             return (
               <MainBroadcastListCard key={idx} transaction={transaction} />
             );
