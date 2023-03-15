@@ -9,6 +9,7 @@ const AmountOfCreditFormRange = ({
 }) => {
   return (
     <div className="amount-of-credit-form-range">
+      <div className="amount-of-credit-form-range-active" />
       <div className="amount-of-credit-form-range-data">
         <div className="amount-of-credit-form-range-data__text">
           Размер займа

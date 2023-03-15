@@ -2,7 +2,7 @@
 
 .mobile-menu {
   background: #F8F8F8;
-  margin: 5%;
+  margin: 1% 5%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -32,9 +32,10 @@
       color: #1A1D25;
       border: none;
       background: transparent;
-      margin-left: 150px;
       transition: .3s ease-in-out;
       cursor: pointer;
+      margin: 0;
+      padding: 0;
       &:hover {
         transform: scale(1.03);
       }

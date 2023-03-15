@@ -42,7 +42,7 @@ const AppBreadcrumbs = () => {
   function renderBreadcrumbs() {
     if (currentPath !== RouterPath.main) {
       return (
-        <div className="breadcrumbs__item">
+        <div className="breadcrumbs__item" style={{  marginLeft: '40px', marginTop: '20px', marginBottom: '20px'}}>
           <div
             className="breadcrumbs__item-title_grey"
             onClick={() => moveTo(RouterPath.main)}
