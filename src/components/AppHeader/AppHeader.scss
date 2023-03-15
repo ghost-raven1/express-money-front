@@ -69,9 +69,21 @@
   }
 }
 
+@include _1700 {
+  .header {
+    padding: 9px 14%;
+  }
+}
+
 @include _1600 {
   .header {
-    padding: 10px 5%;
+    padding: 9px 12%;
+  }
+}
+
+@include _1500 {
+  .header {
+    padding: 9px 8%;
   }
 }
 
