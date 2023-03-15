@@ -14,7 +14,7 @@ const AppHeader = () => {
       >
         Expressmoney
       </div>
-        {/*<AppHeaderLinksList />*/}
+        <AppHeaderLinksList />
         <AppHeaderPhoneNumber />
     </div>
   );
