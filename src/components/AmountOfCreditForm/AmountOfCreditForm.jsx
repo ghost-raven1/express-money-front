@@ -40,10 +40,10 @@ const AmountOfCreditForm = () => {
           </AppButton>
         </a>
       </div>
-      <div className="amount-of-credit-form__bottom">
-        <AppCheckbox label="Карта лояльности" />
-        <div className="amount-of-credit-form__bottom-percent">1% в сутки</div>
-      </div>
+      {/*<div className="amount-of-credit-form__bottom">*/}
+      {/*  <AppCheckbox label="Карта лояльности" />*/}
+      {/*  <div className="amount-of-credit-form__bottom-percent">1% в сутки</div>*/}
+      {/*</div>*/}
     </div>
   );
 };
