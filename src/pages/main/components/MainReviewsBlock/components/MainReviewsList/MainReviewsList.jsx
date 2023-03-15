@@ -1,113 +1,77 @@
 import MainReviewsListCard from "./components/MainReviewsBlockCard/MainReviewsListCard.jsx";
-import './MainReviewsList.scss'
-import {forwardRef} from "react";
+import "./MainReviewsList.scss";
+import { forwardRef, useEffect, useLayoutEffect, useState } from "react";
 const MainReviewsList = ({ forwardedRef }) => {
-  const reviewsArr = [
+  const [reviews, setReviews] = useState([]);
+  const commonReviewsArr = [
     {
-      name: "1111",
-      city: "Москва",
+      name: "Анна",
+      city: "Сочи",
       date: "12 Февраля 2023",
-      text:
-        "Большое Спасибо \n" +
-        "Большое Спасибо\n" +
-        "Большое Спасибо\n" +
-        "Большое Спасибо",
+      text: "Узнала о сервисе от друзей, работает отлично.",
     },
     {
-      name: "2222",
-      city: "Москва",
-      date: "12 Февраля 2023",
-      text:
-        "Большое Спасибо \n" +
-        "Большое Спасибо\n" +
-        "Большое Спасибо\n" +
-        "Большое Спасибо",
+      name: "Андрей",
+      city: "Томск",
+      date: "17 Февраля 2023",
+      text: "Поддержка помогла разобраться с заполнением анкеты \n, очень удобно, спасибо!",
     },
     {
-      name: "3333",
-      city: "Москва",
-      date: "12 Февраля 2023",
-      text:
-        "Большое Спасибо \n" +
-        "Большое Спасибо\n" +
-        "Большое Спасибо\n" +
-        "Большое Спасибо",
+      name: "Татьяна",
+      city: "Сочи",
+      date: "2 Марта 2023",
+      text: "Займ получила за 10 минут",
     },
     {
-      name: "4444",
-      city: "Москва",
-      date: "12 Февраля 2023",
-      text:
-        "Большое Спасибо \n" +
-        "Большое Спасибо\n" +
-        "Большое Спасибо\n" +
-        "Большое Спасибо",
+      name: "Алексей",
+      city: "Тверь",
+      date: "3 Марта 2023",
+      text: "Большое Спасибо! \n" + "Все быстро, очень доволен.",
     },
     {
-      name: "5555",
-      city: "Москва",
-      date: "12 Февраля 2023",
-      text:
-        "Большое Спасибо \n" +
-        "Большое Спасибо\n" +
-        "Большое Спасибо\n" +
-        "Большое Спасибо",
+      name: "Сергей",
+      city: "Тамбов",
+      date: "8 Марта 2023",
+      text: "Большое Спасибо!",
     },
     {
-      name: "6666",
-      city: "Москва",
-      date: "12 Февраля 2023",
-      text:
-        "Большое Спасибо \n" +
-        "Большое Спасибо\n" +
-        "Большое Спасибо\n" +
-        "Большое Спасибо",
+      name: "Антон",
+      city: "Саратов",
+      date: "5 Марта 2023",
+      text: "Очень доволен! Всем рекомендую.",
     },
     {
-      name: "7777",
-      city: "Москва",
-      date: "12 Февраля 2023",
-      text:
-          "Большое Спасибо \n" +
-          "Большое Спасибо\n" +
-          "Большое Спасибо\n" +
-          "Большое Спасибо",
-    },
-    {
-      name: "8888",
-      city: "Москва",
-      date: "12 Февраля 2023",
-      text:
-          "Большое Спасибо \n" +
-          "Большое Спасибо\n" +
-          "Большое Спасибо\n" +
-          "Большое Спасибо",
-    },
-    {
-      name: "9999",
-      city: "Москва",
-      date: "12 Февраля 2023",
-      text:
-          "Большое Спасибо \n" +
-          "Большое Спасибо\n" +
-          "Большое Спасибо\n" +
-          "Большое Спасибо",
-    },
-    {
-      name: "10000",
-      city: "Москва",
-      date: "12 Февраля 2023",
-      text:
-          "Большое Спасибо \n" +
-          "Большое Спасибо\n" +
-          "Большое Спасибо\n" +
-          "Большое Спасибо",
+      name: "Яна",
+      city: "Минск",
+      date: "8 Марта 2023",
+      text: "Сайт работает отлично, планирую дальнейшее сотрудничество.",
     },
   ];
+
+  function getRandomArrayElement(arr) {
+    return arr[Math.floor(Math.random() * arr.length)];
+  }
+
+  function randomReviews() {
+    // TODO: Добавить исключение повторяющихся
+    setReviews([
+      getRandomArrayElement(commonReviewsArr),
+      getRandomArrayElement(commonReviewsArr),
+      getRandomArrayElement(commonReviewsArr),
+      getRandomArrayElement(commonReviewsArr),
+      getRandomArrayElement(commonReviewsArr),
+      getRandomArrayElement(commonReviewsArr),
+    ]);
+  }
+
+  useLayoutEffect(() => {
+    randomReviews();
+  }, []);
+
   return (
-    <div className="reviews-list" ref={ forwardedRef }>
-      {!!reviewsArr.length &&
-        reviewsArr.map((item, idx) => {
+    <div className="reviews-list" ref={forwardedRef}>
+      {!!reviews.length &&
+        reviews.map((item, idx) => {
           return <MainReviewsListCard key={idx} item={item} />;
         })}
     </div>

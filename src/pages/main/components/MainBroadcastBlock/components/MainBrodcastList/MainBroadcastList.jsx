@@ -3,28 +3,28 @@ import MainBroadcastListCard from "./components/MainBroadcastListCard/MainBroadc
 const MainBroadcastList = () => {
   const transactionsArr = [
     {
-      name: "Дмитрий С.",
-      action: "Получил займ 10 000 руб.",
-      time: "1 мин. назад",
+      name: "Василий П.",
+      action: "Получил займ 61 000 руб.",
+      time: "3 мин. назад",
+      location: "Петрозаводск",
+    },
+    {
+      name: "Семен Я.",
+      action: "Внес 3 800 руб. на счет погашения займа",
+      time: "10 мин. назад",
       location: "Владивосток",
     },
     {
-      name: "Дмитрий С.",
-      action: "Внес 2 800 руб. на счет погашения займа",
-      time: "1 мин. назад",
-      location: "Владивосток",
+      name: "Алексей Ж.",
+      action: "Получил займ 13 000 руб.",
+      time: "4 мин. назад",
+      location: "Саратов",
     },
     {
-      name: "Дмитрий С.",
-      action: "Получил займ 15 000 руб.",
-      time: "1 мин. назад",
-      location: "Владивосток",
-    },
-    {
-      name: "Дмитрий С.",
-      action: "Погасил 3 000 руб. досрочно",
-      time: "1 мин. назад",
-      location: "Владивосток",
+      name: "Степан Х.",
+      action: "Погасил 12 000 руб. досрочно",
+      time: "15 мин. назад",
+      location: "Владимир",
     },
   ];
   return (

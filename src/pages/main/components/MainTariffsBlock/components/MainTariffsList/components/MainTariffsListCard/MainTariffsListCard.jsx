@@ -77,7 +77,7 @@ const MainTariffsListCard = ({ item }) => {
           К возврату {item.value} руб.*
         </div>
         <div className="tariffs-list-card-bottom__button">
-          <a href="https://ru.expressmoney.com/loans/" target='_blank'>
+          <a href="https://platform.expressmoney.com/loans/" target='_blank'>
           <AppButton mode={item.type === 'standard' ? 'black' : 'blue'}>
             ОФОРМИТЬ ЗАЯВКУ <SvgSelector id="arrow-in-round" />
           </AppButton>

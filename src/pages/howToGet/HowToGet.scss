@@ -1,5 +1,11 @@
 .how-to-get {
   color: #1A1D25;
-  height: 100vh;
+  min-height: 100vh;
   text-align: center;
+  &-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+    margin-left: 40px;
+  }
 }

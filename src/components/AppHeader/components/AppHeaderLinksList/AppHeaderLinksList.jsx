@@ -4,8 +4,8 @@ import './AppHeaderLinksList.scss';
 
 const AppHeaderLinksList = () => {
     const linksArr = [
-        {name: 'Как погасить', url: RouterPath.howToRepay},
         {name: 'Как получить', url: RouterPath.howToGet},
+        {name: 'Как погасить', url: RouterPath.howToRepay},
         {name: 'Программа лояльности', url: RouterPath.loyaltyProgram},
         {name: 'О компании', url: RouterPath.aboutCompany},
         {name: 'Вопрос ответы', url: RouterPath.faqPage}
