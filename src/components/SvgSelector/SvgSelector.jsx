@@ -132,6 +132,39 @@ const SvgSelector = ({ id, svgColor, className }) => {
                 </svg>
             )
         }
+        case "login-header-icon": {
+            return (
+                <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12.1758 24.1445C18.8032 24.1445 24.1758 18.7719 24.1758 12.1445C24.1758 5.51711 18.8032 0.144531 12.1758 0.144531C5.54836 0.144531 0.175781 5.51711 0.175781 12.1445C0.175781 18.7719 5.54836 24.1445 12.1758 24.1445Z" fill="url(#paint0_linear_334_276)"/>
+                    <path d="M16.976 17.5443V16.3443C16.976 15.7078 16.7231 15.0974 16.273 14.6473C15.8229 14.1972 15.2125 13.9443 14.576 13.9443H9.77598C9.13946 13.9443 8.52901 14.1972 8.07892 14.6473C7.62883 15.0974 7.37598 15.7078 7.37598 16.3443V17.5443" stroke="white" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M12.1759 11.5446C13.5014 11.5446 14.5759 10.4701 14.5759 9.14463C14.5759 7.81915 13.5014 6.74463 12.1759 6.74463C10.8504 6.74463 9.77588 7.81915 9.77588 9.14463C9.77588 10.4701 10.8504 11.5446 12.1759 11.5446Z" stroke="white" strokeLinecap="round" strokeLinejoin="round"/>
+                    <defs>
+                        <linearGradient id="paint0_linear_334_276" x1="0.175781" y1="0.144531" x2="14.4767" y2="28.9584" gradientUnits="userSpaceOnUse">
+                            <stop stopColor="#222738"/>
+                            <stop offset="1" stopColor="#101420"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+            )
+        }
+        case "login-header-icon-white": {
+            return (
+                <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M11.5605 21.6998C17.1939 21.6998 21.7605 17.1331 21.7605 11.4998C21.7605 5.8665 17.1939 1.2998 11.5605 1.2998C5.92725 1.2998 1.36055 5.8665 1.36055 11.4998C1.36055 17.1331 5.92725 21.6998 11.5605 21.6998Z" stroke="white" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M15.6406 16.0903V15.0703C15.6406 14.5292 15.4256 14.0104 15.0431 13.6278C14.6605 13.2452 14.1416 13.0303 13.6006 13.0303H9.52058C8.97953 13.0303 8.46065 13.2452 8.07808 13.6278C7.6955 14.0104 7.48058 14.5292 7.48058 15.0703V16.0903" stroke="white" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M11.5606 10.9902C12.6872 10.9902 13.6006 10.0768 13.6006 8.95016C13.6006 7.8235 12.6872 6.91016 11.5606 6.91016C10.4339 6.91016 9.52055 7.8235 9.52055 8.95016C9.52055 10.0768 10.4339 10.9902 11.5606 10.9902Z" stroke="white" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+            )
+        }
+        case "header-hamburger-icon-white": {
+            return (
+                <svg width="19" height="13" viewBox="0 0 19 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1.06064 0.833008H18.0606" stroke="white" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M1.06061 6.5H18.0606" stroke="white" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M1.06061 12.166H18.0606" stroke="white" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+            )
+        }
     }
 }
 

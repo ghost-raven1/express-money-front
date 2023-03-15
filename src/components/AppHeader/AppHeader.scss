@@ -5,7 +5,53 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 24px 200px 0;
+  padding: 24px 10% 0;
+  &__button {
+    background: #F3F6FF;
+    border: 1px solid #C6D1E1;
+    border-radius: 14px;
+    font-family: 'Manrope', serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    text-align: center;
+    background: linear-gradient(153.6deg, #222738 0%, #101420 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+    padding: 9px 15px;
+    transition: .3s ease-in-out;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    &:hover {
+      transform: scale(1.03);
+    }
+    &-mob {
+      display: none;
+      background: #9FC3F7;
+      border-radius: 10px;
+      padding: 7px;
+      transition: .3s ease-in-out;
+      &:hover {
+        transform: scale(1.03);
+      }
+    }
+    &-menu {
+      background: linear-gradient(153.6deg, #222738 0%, #101420 100%);
+      border-radius: 10px;
+      padding: 11px 8px;
+      display: none;
+      border: none;
+      cursor: pointer;
+      transition: .3s ease-in-out;
+      &:hover {
+        transform: scale(1.03);
+      }
+    }
+  }
 
   &__company {
     font-family: Gilroy, serif;
@@ -21,9 +67,32 @@
   }
 }
 
+@include _1600 {
+  .header {
+    padding: 10px 5%;
+  }
+}
+
 @include _1400 {
   .header {
     padding: 10px 0;
     justify-content: center;
+  }
+}
+
+@include _1300 {
+  .header {
+    justify-content: space-between;
+    padding-left: 15px;
+    padding-right: 15px;
+    &__button {
+      display: none;
+      &-menu {
+        display: flex;
+      }
+      &-mob {
+        display: flex;
+      }
+    }
   }
 }
