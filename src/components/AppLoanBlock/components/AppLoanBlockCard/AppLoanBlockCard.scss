@@ -9,9 +9,23 @@
   display: flex;
   flex-direction: row;
   position: relative;
+  &-mini {
+    background: linear-gradient(90.74deg, #0F6DFF 0%, #005CEA 100%);
+    border-radius: 40px;
+    max-width: 1200px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+  }
   &-left {
     padding-top: 68px;
     padding-left: 95px;
+    &-mini {
+      padding-top: 20px;
+      padding-left: 20px;
+      padding-bottom: 20px;
+    }
     &__title {
       font-family: Manrope, serif;
       font-style: normal;
@@ -42,6 +56,14 @@
       max-height: 480px;
       max-width: 480px;
       border-radius: 50%;
+      &-mini {
+        position: absolute;
+        bottom: 0;
+        right: 45px;
+        max-height: 240px;
+        max-width: 240px;
+        border-radius: 50%;
+      }
     }
   }
 }
