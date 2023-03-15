@@ -4,11 +4,11 @@ import './AppHeaderLinksList.scss';
 
 const AppHeaderLinksList = () => {
     const linksArr = [
-        {name: 'Как получить', url: RouterPath.howToGet},
-        {name: 'Как погасить', url: RouterPath.howToRepay},
-        {name: 'Программа лояльности', url: RouterPath.loyaltyProgram},
-        {name: 'О компании', url: RouterPath.aboutCompany},
-        {name: 'Вопрос ответы', url: RouterPath.faqPage}
+        {name: 'Как получить', url: RouterPath.howToGet, destination: 'inner'},
+        {name: 'Как погасить', url: 'https://platform.expressmoney.com/loans/', destination: 'out'},
+        {name: 'Программа лояльности', url: RouterPath.loyaltyProgram, destination: 'inner'},
+        {name: 'О компании', url: 'https://platform.expressmoney.com/loans/', destination: 'out'},
+        {name: 'Вопрос ответы', url: 'https://platform.expressmoney.com/loans/', destination: 'out'}
     ]
     return (
         <div className="header-links-list">

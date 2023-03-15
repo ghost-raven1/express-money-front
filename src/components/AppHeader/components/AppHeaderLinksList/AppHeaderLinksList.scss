@@ -1,5 +1,13 @@
+@import "src/assets/styles/mixins.scss";
+
 .header-links-list {
   color: #1A1D25;
   display: flex;
   gap: 25px;
+}
+
+@include _1300 {
+  .header-links-list {
+    display: none;
+  }
 }
