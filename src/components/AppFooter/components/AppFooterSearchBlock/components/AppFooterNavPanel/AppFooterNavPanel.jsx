@@ -4,8 +4,8 @@ import { RouterPath } from "../../../../../../utils/utils.js";
 const AppFooterNavPanel = () => {
   const navigate = useNavigate();
   const leftArr = [
-    { name: "Как получить заем?", url: RouterPath.howToGet },
-    { name: "Как погасить заем?", url: RouterPath.howToRepay },
+    { name: "Как получить заем?", url: 'https://platform.expressmoney.com/loans/'},
+    { name: "Как погасить заем?", url: 'https://platform.expressmoney.com/loans/' },
     { name: "Клубная карта", url: "" },
     { name: "Мобильное приложение", url: "" },
     { name: "Вопросы и ответы", url: RouterPath.faqPage },
@@ -19,7 +19,7 @@ const AppFooterNavPanel = () => {
     { name: "Органы управления", url: "" },
     { name: "Раскрытие информации", url: "" },
     { name: "Документы", url: "" },
-    { name: "Политика конфиденциаальности", url: "" },
+    { name: "Политика конфиденциальности", url: "" },
     { name: "Финансовая отчетность", url: "" },
   ];
   return (
@@ -30,12 +30,13 @@ const AppFooterNavPanel = () => {
           {!!leftArr?.length &&
             leftArr.map((link, idx) => {
               return (
-                <button
+                <a
                   className="footer-nav-panel__left-list-item"
-                  onClick={() => navigate(link.url)}
+                  href={link.url}
+                  target="_blank"
                 >
                   {link.name}
-                </button>
+                </a>
               );
             })}
         </div>
