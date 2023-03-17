@@ -1,6 +1,6 @@
 import "./AmountOfCreditFormRange.scss";
 import PropTypes from "prop-types";
-import {useEffect, useLayoutEffect, useRef, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 const AmountOfCreditFormRange = ({
   setValue,
   value,
@@ -13,6 +13,17 @@ const AmountOfCreditFormRange = ({
   function changeRangeFill () {
     const active = ref.current
     active.style.maxWidth = fillPercent.toString() + '%'
+    if (fillPercent === 1) active.style.height = '70%'
+    if (fillPercent === 2) active.style.height = '75%'
+    if (fillPercent === 3) active.style.height = '85%'
+    if (fillPercent === 4) active.style.height = '90%'
+    if (fillPercent === 5) active.style.height = '95%'
+    if (fillPercent === 6) active.style.height = '98%'
+    if (fillPercent === 8) active.style.height = '99%'
+    if (fillPercent === 9) active.style.height = '100%'
+    if (fillPercent === 97) active.style.borderRadius = '16px 0 0 16px'
+    if (fillPercent === 98) active.style.borderRadius = '16px 13px 13px 16px'
+    if (fillPercent === 99) active.style.borderRadius = '16px'
   }
 
   function fillPercentData () {
@@ -27,7 +38,6 @@ const AmountOfCreditFormRange = ({
 
   return (
     <div className="amount-of-credit-form-range">
-      <div className="amount-of-credit-form-range-active" />
       <div className="amount-of-credit-form-range-data">
         <div className="amount-of-credit-form-range-data_active" ref={ref} />
         <div className="amount-of-credit-form-range-data__text">
