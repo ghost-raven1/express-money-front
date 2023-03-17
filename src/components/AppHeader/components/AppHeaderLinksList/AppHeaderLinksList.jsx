@@ -8,7 +8,7 @@ const AppHeaderLinksList = () => {
         {name: 'Как погасить', url: 'https://platform.expressmoney.com/loans/', destination: 'out'},
         {name: 'Программа лояльности', url: RouterPath.loyaltyProgram, destination: 'inner'},
         {name: 'О компании', url: 'https://platform.expressmoney.com/loans/', destination: 'out'},
-        {name: 'Вопрос ответы', url: 'https://platform.expressmoney.com/loans/', destination: 'out'}
+        {name: 'F.A.Q', url: 'https://platform.expressmoney.com/loans/', destination: 'out'}
     ]
     return (
         <div className="header-links-list">

@@ -2,7 +2,7 @@
 
 .button {
   border-radius: 16px;
-  padding: 14px 20px;
+  padding: 7px 7px;
   width: 100%;
   font-family: Manrope, serif;
   font-style: normal;
@@ -17,7 +17,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 9px;
   &:hover {
     transform: scale(1.001);
     cursor: pointer;

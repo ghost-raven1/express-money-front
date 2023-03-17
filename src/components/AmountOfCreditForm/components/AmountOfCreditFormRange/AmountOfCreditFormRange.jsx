@@ -1,5 +1,6 @@
 import "./AmountOfCreditFormRange.scss";
 import PropTypes from "prop-types";
+import {useEffect, useLayoutEffect, useRef, useState} from "react";
 const AmountOfCreditFormRange = ({
   setValue,
   value,
@@ -7,10 +8,28 @@ const AmountOfCreditFormRange = ({
   minValue,
   step,
 }) => {
+  const ref = useRef();
+  const [fillPercent, setFillPercent] = useState(51)
+  function changeRangeFill () {
+    const active = ref.current
+    active.style.maxWidth = fillPercent.toString() + '%'
+  }
+
+  function fillPercentData () {
+    setFillPercent(value / maxValue * 100)
+  }
+
+  useEffect(() => {
+    fillPercentData()
+    changeRangeFill()
+  }, [value, fillPercent])
+
+
   return (
     <div className="amount-of-credit-form-range">
       <div className="amount-of-credit-form-range-active" />
       <div className="amount-of-credit-form-range-data">
+        <div className="amount-of-credit-form-range-data_active" ref={ref} />
         <div className="amount-of-credit-form-range-data__text">
           Размер займа
         </div>
@@ -22,7 +41,10 @@ const AmountOfCreditFormRange = ({
         max={maxValue}
         min={minValue}
         step={step}
-        onChange={(event) => setValue(event.target.value)}
+        value={value}
+        onChange={(event) => {
+          setValue(event.target.value)
+        }}
       />
     </div>
   );

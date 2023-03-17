@@ -1,6 +1,6 @@
 import "./MainOfferBlock.scss";
 import AmountOfCreditForm from "../../../../components/AmountOfCreditForm/AmountOfCreditForm.jsx";
-import girlWithMoney from 'src/assets/main/Backgrounds/GirlWithMoney.png';
+import girlWithMoney from 'src/assets/main/Backgrounds/GirlWithMoney.svg';
 const MainOfferBlock = () => {
   return (
     <div className="offer">
