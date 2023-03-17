@@ -15,9 +15,10 @@
     &_active {
       position: absolute;
       height: 100%;
-      border: 1px red solid;
       width: 100%;
+      max-width: 51%;
       background: #EEF0F4;
+      border-radius: 16px;
     }
     &__text {
       //background: #EEF0F4;
@@ -33,6 +34,7 @@
       display: flex;
       justify-content: center;
       height: 50px;
+      z-index: 100;
     }
     &__value {
       font-family: SF Pro Display, serif;
@@ -49,6 +51,7 @@
       display: flex;
       justify-content: flex-end;
       padding-right: 20px;
+      z-index: 100;
     }
   }
   &__range {
@@ -60,8 +63,8 @@
     padding: 0;
     background: none;
     bottom: 0;
-    left: 5px;
-    width: 97%;
+    left: 6px;
+    width: 96%;
   }
 
   &__range::-webkit-slider-runnable-track {
