@@ -1,5 +1,6 @@
 import "./AmountOfCreditFormRange.scss";
 import PropTypes from "prop-types";
+import {useState} from "react";
 const AmountOfCreditFormRange = ({
   setValue,
   value,
@@ -7,10 +8,20 @@ const AmountOfCreditFormRange = ({
   minValue,
   step,
 }) => {
+  const [fillPercent, setFillPercent] = useState(0.05)
+  function changeRangeFill () {
+
+  }
+
+  function calcFillPercent () {
+
+  }
+
   return (
     <div className="amount-of-credit-form-range">
       <div className="amount-of-credit-form-range-active" />
       <div className="amount-of-credit-form-range-data">
+        <div className="amount-of-credit-form-range-data_active"/>
         <div className="amount-of-credit-form-range-data__text">
           Размер займа
         </div>

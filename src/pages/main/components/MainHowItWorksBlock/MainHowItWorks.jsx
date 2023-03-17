@@ -5,11 +5,13 @@ import MainHowItWorksList from "./components/MainHowItWorksList/MainHowItWorksLi
 const MainHowItWorks = () => {
   return (
     <div className="how-it-works">
-      <AppHeadSection
-        title="Как это работает"
-        img={mainAdvantagesBlockDelimiter}
-        desc="Получите деньги в считанные минуты"
-      />
+        <div className="how-it-works__head">
+            <AppHeadSection
+                title="Как это работает"
+                img={mainAdvantagesBlockDelimiter}
+                desc="Получите деньги в считанные минуты"
+            />
+        </div>
       <MainHowItWorksList />
     </div>
   );

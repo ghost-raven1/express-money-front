@@ -3,7 +3,6 @@ import { useState } from "react";
 import AmountOfCreditFormRange from "./components/AmountOfCreditFormRange/AmountOfCreditFormRange.jsx";
 import AppSelect from "../AppSelect/AppSelect.jsx";
 import AppButton from "../AppButton/AppButton.jsx";
-import AppCheckbox from "../AppCheckbox/AppCheckbox.jsx";
 import SvgSelector from "../SvgSelector/SvgSelector.jsx";
 const AmountOfCreditForm = () => {
   const [amount, setAmount] = useState(50000);

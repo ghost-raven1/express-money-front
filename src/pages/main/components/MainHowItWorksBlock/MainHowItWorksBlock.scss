@@ -4,7 +4,10 @@
   height: 430px;
   width: 100%;
   background: #e8ebec;
-  padding-top: 330px;
+  padding-top: 307px;
+  &__head {
+    margin-left: -70px;
+  }
 }
 
 @include _1300 {

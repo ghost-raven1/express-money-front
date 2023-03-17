@@ -2,10 +2,11 @@
 
 .advantages-card {
   &__title {
+    align-items: center;
     font-family: Manrope, serif;
     font-style: normal;
     font-weight: 500;
-    font-size: 24px;
+    font-size: 31px;
     line-height: 33px;
     letter-spacing: 0.01em;
     background: linear-gradient(153.6deg, #222738 0%, #101420 100%);
@@ -25,6 +26,8 @@
     line-height: 22px;
     letter-spacing: 0.01em;
     color: #8899B4;
+    white-space: pre;
+    padding-left: 40px;
   }
 }
 

@@ -1,10 +1,11 @@
 @import "src/assets/styles/mixins.scss";
 
 .header-links-list {
+  margin-left: 10px;
   color: #1A1D25;
   display: flex;
   align-items: center;
-  gap: 18px;
+  gap: 20px;
 }
 
 @include _1400 {

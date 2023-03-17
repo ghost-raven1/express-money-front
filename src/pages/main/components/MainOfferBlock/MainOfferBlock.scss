@@ -4,17 +4,28 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   background: #e8ebec;
-  height: 675px;
+  //height: 675px;
+  height: 838px;
   width: 100%;
   &-left {
     margin-top: 130px;
     display: flex;
     justify-content: flex-end;
-    margin-right: 15%;
+    margin-right: -7.5%;
+    &__credit-form {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
   }
   &-right {
     &__img {
-      height: 760px;
+      height: 908px;
+      margin-top: -64px;
+      margin-left: -152px;
+      padding-left: -1px;
+      margin-right: -132px;
     }
   }
 }
@@ -22,14 +33,16 @@
 .credit-form {
   &__text_blue {
     font-family: Manrope, serif;
-    font-weight: 500;
-    font-size: 24px;
+    font-weight: 600;
+    font-size: 30px;
     letter-spacing: 0.01em;
     background: linear-gradient(90.74deg, #0F6DFF 0%, #005CEA 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     text-fill-color: transparent;
+    margin-bottom: 8px;
+    margin-left: -62px;
   }
   &__credit-text {
     font-family: Manrope, serif;
@@ -44,6 +57,9 @@
     -webkit-text-fill-color: transparent;
     background-clip: text;
     text-fill-color: transparent;
+    margin-bottom: 10px;
+    margin-left: -10px;
+    text-align: center;
   }
   &__credit-text-sub {
     font-family: Manrope, serif;
@@ -54,6 +70,7 @@
     letter-spacing: 0.01em;
     color: #848BA4;
     margin-bottom: 30px;
+    margin-left: -28px;
   }
 }
 

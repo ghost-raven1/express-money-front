@@ -11,8 +11,16 @@
     border: 1px solid #EEF0F4;
     border-radius: 16px;
     align-items: center;
-    &__text {
+    position: relative;
+    &_active {
+      position: absolute;
+      height: 100%;
+      border: 1px red solid;
+      width: 100%;
       background: #EEF0F4;
+    }
+    &__text {
+      //background: #EEF0F4;
       font-family: SF Pro Display, serif;
       font-style: normal;
       font-weight: 400;

@@ -6,11 +6,13 @@ import AppHeadSection from "../../../../components/AppHeadSection/AppHeadSection
 const MainAdvantagesBlock = () => {
   return (
     <div className="advantages">
-      <AppHeadSection
-        title="Преимущества"
-        img={mainAdvantagesBlockDelimiter}
-        desc="Наши продукты лучшие на рынке!"
-      />
+        <div className="advantages__head">
+            <AppHeadSection
+                title="Преимущества"
+                img={mainAdvantagesBlockDelimiter}
+                desc="Наши продукты лучшие на рынке!"
+            />
+        </div>
       <MainAdvantagesList />
     </div>
   );
