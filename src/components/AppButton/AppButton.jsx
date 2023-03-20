@@ -1,8 +1,8 @@
 import "./AppButton.scss";
-const AppButton = ({ onClick, mode, children, disabled }) => {
+const AppButton = ({ onClick, mode, children, disabled, className }) => {
   function buttonModesStyles() {
-    if (mode?.includes("black")) return "button button_black";
-    if (mode?.includes("blue")) return "button button_blue";
+    if (mode?.includes("black")) return `button button_black ${className}`;
+    if (mode?.includes("blue")) return `button button_blue ${className}`;
   }
   return (
     <button
