@@ -32,8 +32,15 @@ const AppLayout = ({ mode, isShowNavbar }) => {
     <>
       {/*<AppAlert />*/}
       <YMInitializer
-        accounts={[]}
-        options={{ defer: true, webvisor: true }}
+        accounts={[90466496]}
+        options={{
+          defer: true,
+          webvisor: true,
+          clickmap: true,
+          trackLinks: true,
+          accurateTrackBounce: true,
+          ecommerce: "dataLayer",
+        }}
         version="2"
       />
       <div className="app">
