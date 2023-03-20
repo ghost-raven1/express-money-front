@@ -1,0 +1,87 @@
+@import 'src/assets/styles/colors';
+
+.driver-card {
+  width: 240px;
+  height: 400px;
+  background: $white;
+}
+
+.ymaps-2-1-79 {
+  &-gototech {
+    display: none !important;
+  }
+  &-balloon {
+    box-shadow: none !important;
+  }
+  &-user-selection-none {
+    height: 30px;
+    width: 30px;
+  }
+  &-placemark-overlay {
+    height: 40px;
+    width: 40px;
+  }
+}
+
+.placemark {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  height: 45px;
+  width: 30px;
+  animation: .5s show ease;
+  &__container {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+  &__img {
+    width: 30px;
+    height: 30px;
+    object-fit: cover;
+    border-radius: 86px;
+    filter: drop-shadow(0px 35px 14px rgba(139, 153, 172, 0.02)) drop-shadow(0px 20px 12px rgba(139, 153, 172, 0.08)) drop-shadow(0px 9px 9px rgba(139, 153, 172, 0.13)) drop-shadow(0px 2px 5px rgba(139, 153, 172, 0.15)) drop-shadow(0px 0px 0px rgba(139, 153, 172, 0.15));
+  }
+  &__status {
+    width: 16px;
+    height: 16px;
+    border-radius: 6px;
+    &_green {
+      background: $green-haze;
+      width: 12px;
+      height: 12px;
+      border-radius: 4px;
+      animation: pulse 5s linear infinite;
+      position: absolute;
+      top: 15px;
+      right: 0;
+      z-index: 10;
+    }
+    &_green-outline {
+      width: 12px;
+      height: 12px;
+      border-radius: 4px;
+      border: 3px solid $green-haze;
+      position: absolute;
+      top: 15px;
+      right: 0;
+      z-index: 10;
+    }
+    &_red {
+      width: 12px;
+      height: 12px;
+      border-radius: 8px;
+      animation: pulse 5s linear infinite;
+      position: absolute;
+      top: 15px;
+      right: 0;
+      z-index: 10;
+    }
+  }
+  &__arrow {
+    width: 15px;
+    height: 15px;
+    margin-left: 6px;
+    margin-top: 2px;
+  }
+}

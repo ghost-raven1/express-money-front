@@ -1,8 +1,8 @@
-import { RouterPath } from "../../utils/utils.js";
 import "./AppBreadcrumbs.scss";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import SvgSelector from "../SvgSelector/SvgSelector.jsx";
+import {RouterPath} from "../../utils/constants.js";
 
 const AppBreadcrumbs = () => {
   const navigate = useNavigate();
@@ -42,7 +42,7 @@ const AppBreadcrumbs = () => {
   function renderBreadcrumbs() {
     if (currentPath !== RouterPath.main) {
       return (
-        <div className="breadcrumbs__item" style={{  marginLeft: '40px', marginTop: '20px', marginBottom: '20px'}}>
+        <div className="breadcrumbs__item" style={{ marginTop: '20px', marginBottom: '20px'}}>
           <div
             className="breadcrumbs__item-title_grey"
             onClick={() => moveTo(RouterPath.main)}

@@ -1,11 +1,17 @@
 import "./AppFooterNavPanel.scss";
 import { useNavigate } from "react-router-dom";
-import { RouterPath } from "../../../../../../utils/utils.js";
+import { RouterPath } from "../../../../../../utils/constants.js";
 const AppFooterNavPanel = () => {
   const navigate = useNavigate();
   const leftArr = [
-    { name: "Как получить заем?", url: 'https://platform.expressmoney.com/loans/'},
-    { name: "Как погасить заем?", url: 'https://platform.expressmoney.com/loans/' },
+    {
+      name: "Как получить заем?",
+      url: "https://platform.expressmoney.com/loans/",
+    },
+    {
+      name: "Как погасить заем?",
+      url: "https://platform.expressmoney.com/loans/",
+    },
     { name: "Клубная карта", url: "" },
     { name: "Мобильное приложение", url: "" },
     { name: "Вопросы и ответы", url: RouterPath.faqPage },
@@ -34,6 +40,7 @@ const AppFooterNavPanel = () => {
                   className="footer-nav-panel__left-list-item"
                   href={link.url}
                   target="_blank"
+                  key={idx}
                 >
                   {link.name}
                 </a>
@@ -50,6 +57,7 @@ const AppFooterNavPanel = () => {
             rightArr.map((link, idx) => {
               return (
                 <div
+                  key={idx}
                   className="footer-nav-panel__left-list-item"
                   onClick={() => navigate(link.url)}
                 >

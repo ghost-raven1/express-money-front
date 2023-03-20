@@ -1,6 +1,6 @@
 import "./MainBroadcastList.scss";
 import MainBroadcastListCard from "./components/MainBroadcastListCard/MainBroadcastListCard.jsx";
-import {useLayoutEffect, useState} from "react";
+import {useEffect, useLayoutEffect, useState} from "react";
 const MainBroadcastList = () => {
   const [transactions, setTransactions] = useState([]);
   const commonTransactionsArr = [

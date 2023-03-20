@@ -1,7 +1,7 @@
 import React from "react";
 import "./ErrorPage.scoped.scss";
 import { useNavigate } from "react-router-dom";
-import { RouterPath } from "../../utils/utils";
+import {RouterPath} from "../../utils/constants.js";
 
 const ErrorPage = () => {
   const navigate = useNavigate();

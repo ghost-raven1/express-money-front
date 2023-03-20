@@ -1,5 +1,13 @@
 .about-company {
-  height: 100vh;
+  min-height: 100vh;
   color: #1A1D25;
   text-align: center;
+  &__img {
+    max-width: 1600px;
+    width: 100%;
+  }
+  &-inner {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
 }

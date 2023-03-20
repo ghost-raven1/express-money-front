@@ -7,6 +7,9 @@ import HowToGet from "../pages/howToGet/HowToGet.jsx";
 import LoyaltyProgram from "../pages/loyaltyProgram/LoyaltyProgram.jsx";
 import AboutCompany from "../pages/aboutCompany/AboutCompany.jsx";
 import FaqPage from "../pages/faq/FaqPage.jsx";
+import TechPage from "../pages/techPage/TechPage.jsx";
+import ApplicationPage from "../pages/application/ApplicationPage.jsx";
+import ProfilePage from "../pages/profile/ProfilePage.jsx";
 
 export function checkRoute(mode) {
     const modes = {
@@ -17,6 +20,9 @@ export function checkRoute(mode) {
         aboutCompany: <AboutCompany />,
         faqPage: <FaqPage />,
         error: <ErrorPage />,
+        techPage: <TechPage />,
+        application: <ApplicationPage />,
+        profile: <ProfilePage />
     };
     return modes[mode];
 }
