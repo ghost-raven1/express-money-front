@@ -165,6 +165,24 @@ const SvgSelector = ({ id, svgColor, className }) => {
                 </svg>
             )
         }
+        case "question-arrow-top": {
+            return (
+                <svg className={className} width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0.530273 15.0913C0.530272 7.35932 6.79829 1.09131 14.5303 1.09131C22.2623 1.09131 28.5303 7.35932 28.5303 15.0913C28.5303 22.8233 22.2623 29.0913 14.5303 29.0913C6.79829 29.0913 0.530273 22.8233 0.530273 15.0913Z" stroke="url(#paint0_linear_352_6964)" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M8.93086 17.3914L14.5309 11.7914L20.1309 17.3914" stroke="url(#paint1_linear_352_6964)" strokeLinecap="round" strokeLinejoin="round"/>
+                    <defs>
+                        <linearGradient id="paint0_linear_352_6964" x1="28.5303" y1="29.0913" x2="28.1641" y2="0.734467" gradientUnits="userSpaceOnUse">
+                            <stop stopColor="#0F6DFF"/>
+                            <stop offset="1" stopColor="#005CEA"/>
+                        </linearGradient>
+                        <linearGradient id="paint1_linear_352_6964" x1="20.1309" y1="17.3914" x2="20.0942" y2="11.7193" gradientUnits="userSpaceOnUse">
+                            <stop stopColor="#0F6DFF"/>
+                            <stop offset="1" stopColor="#005CEA"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+            )
+        }
     }
 }
 

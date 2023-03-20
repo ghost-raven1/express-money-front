@@ -13,21 +13,17 @@ const HowToGet = () => {
     "Лица, недавно получившие российское гражданство.",
   ];
   const stepsArr = [
-    {icon: 'how-to-get-step-1', text: 'Зарегестрироваться'},
-    {icon: 'how-to-get-step-2', text: 'Указать личные данные'},
-    {icon: 'how-to-get-step-3', text: 'Выбрать пакет услуг'},
-    {icon: 'how-to-get-step-4', text: 'Подписать договор, введя код из СМС'}
-  ]
+    { icon: "how-to-get-step-1", text: "Зарегестрироваться" },
+    { icon: "how-to-get-step-2", text: "Указать личные данные" },
+    { icon: "how-to-get-step-3", text: "Выбрать пакет услуг" },
+    { icon: "how-to-get-step-4", text: "Подписать договор, введя код из СМС" },
+  ];
   const conditionsArr = [
-      'Минимальная ставка \n' +
-      'займа на карту 0%',
-      'Минимальная сумма \n' +
-      'займа 1000 ₽',
-      'Максимальная сумма \n' +
-      'займа 100 000 ₽',
-      'Максимальный срок \n' +
-      'займа 360 дней'
-  ]
+    "Минимальная ставка \n" + "займа на карту 0%",
+    "Минимальная сумма \n" + "займа 1000 ₽",
+    "Максимальная сумма \n" + "займа 100 000 ₽",
+    "Максимальный срок \n" + "займа 360 дней",
+  ];
   return (
     <div className="how-to-get">
       <div className="how-to-get-container">
@@ -91,17 +87,31 @@ const HowToGet = () => {
         <AmountOfCreditForm />
         {/*// TODO Как это работает блок добавить */}
       </div>
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", textAlign: 'left' }}>
-        <div style={{ display: "flex", flexDirection: 'column', paddingLeft: '40px'}}>
-          <div className="how-to-get-container-left__title" style={{ fontSize: "30px", marginTop: '80px' }}>Четыре простых шага чтобы получить деньги</div>
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "1fr 1fr",
+          textAlign: "left",
+          maxWidth: "1200px",
+          margin: "0 auto",
+        }}
+      >
+        <div style={{ display: "flex", flexDirection: "column" }}>
+          <div
+            className="how-to-get-container-left__title"
+            style={{ fontSize: "30px", marginTop: "80px" }}
+          >
+            Четыре простых шага чтобы получить деньги
+          </div>
           <div className="how-to-get__steps">
-            {stepsArr?.length && stepsArr.map((el, idx) => {
-              return (
+            {stepsArr?.length &&
+              stepsArr.map((el, idx) => {
+                return (
                   <div className="how-to-get__steps-item" key={idx}>
                     <SvgSelector id={el?.icon} /> <div>{el?.text}</div>
                   </div>
-              )
-            })}
+                );
+              })}
           </div>
           <div className="how-to-get-container-left__text">
             Для тех кто обращается к нам первый раз, займ предоставляется в
@@ -123,13 +133,17 @@ const HowToGet = () => {
             лояльности для наших постоянных клиентов.
           </div>
           <div className="how-to-get__conditions-list">
-            {conditionsArr?.length && conditionsArr.map((el, idx) => {
-              return (
+            {conditionsArr?.length &&
+              conditionsArr.map((el, idx) => {
+                return (
                   <div className="how-to-get__conditions-list-item" key={idx}>
-                    <SvgSelector id="how-to-get-condition" /> <div className="how-to-get__conditions-list-item-title">{el}</div>
+                    <SvgSelector id="how-to-get-condition" />{" "}
+                    <div className="how-to-get__conditions-list-item-title">
+                      {el}
+                    </div>
                   </div>
-              )
-            })}
+                );
+              })}
           </div>
           <AppLoanBlock />
         </div>

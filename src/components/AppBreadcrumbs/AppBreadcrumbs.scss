@@ -3,6 +3,8 @@
 .breadcrumbs {
   display: flex;
   justify-content: flex-start;
+  max-width: 1200px;
+  margin: 0 auto;
   &__arrow {
     width: 10px;
     height: 5px;

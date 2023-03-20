@@ -1,17 +1,10 @@
 import "./AppMobileMenu.scss";
 import { useNavigate } from "react-router-dom";
-import { RouterPath } from "../../utils/utils.js";
 import EventEmitter from "../../utils/EventEmitter.js";
+import {links} from "../../utils/constants.js";
 const AppMobileMenu = () => {
   const navigate = useNavigate();
   const currentPath = window.location.pathname;
-  const links = [
-    {name: 'Как получить', url: RouterPath.howToGet, destination: 'inner'},
-    {name: 'Как погасить', url: 'https://platform.expressmoney.com/loans/', destination: 'out'},
-    {name: 'Программа лояльности', url: RouterPath.loyaltyProgram, destination: 'inner'},
-    {name: 'О компании', url: 'https://platform.expressmoney.com/loans/', destination: 'out'},
-    {name: 'Вопрос ответы', url: 'https://platform.expressmoney.com/loans/', destination: 'out'}
-  ];
   function listItemStyles(url) {
     if (currentPath === url)
       return "mobile-menu-list__item mobile-menu-list__item_active";

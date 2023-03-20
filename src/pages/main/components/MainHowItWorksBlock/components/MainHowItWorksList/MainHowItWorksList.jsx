@@ -4,6 +4,7 @@ import mainHowItWorksListCard1 from 'src/assets/main/HowItWorks/icons/1.png';
 import mainHowItWorksListCard2 from 'src/assets/main/HowItWorks/icons/2.png';
 import mainHowItWorksListCard3 from 'src/assets/main/HowItWorks/icons/3.png';
 import SvgSelector from "../../../../../../components/SvgSelector/SvgSelector.jsx";
+import React from "react";
 const MainHowItWorksList = () => {
   const cardsArr = [
     {
@@ -30,11 +31,11 @@ const MainHowItWorksList = () => {
       {!!cardsArr.length &&
         cardsArr.map((card, idx) => {
           return (
-              <>
+              <React.Fragment key={idx}>
                 <MainHowItWorksListCard item={card} key={idx} />
                 {/*TODO: стрелочки добавить*/}
                 <SvgSelector id="" />
-              </>
+              </React.Fragment>
         )
         })}
     </div>

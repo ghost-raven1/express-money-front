@@ -3,6 +3,11 @@
   flex-direction: column;
   justify-content: center;
   text-align: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  &-900 {
+    max-width: 900px;
+  }
   &__title {
     font-family: Manrope, serif;
     font-style: normal;
@@ -16,6 +21,9 @@
     background-clip: text;
     text-fill-color: transparent;
     margin-bottom: 15px;
+    &-24 {
+      font-size: 24px;
+    }
   }
   &__subtitle {
     font-family: Manrope, serif;
