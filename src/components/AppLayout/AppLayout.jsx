@@ -6,7 +6,6 @@ import "../../assets/styles/app.scss";
 import AppBreadcrumbs from "../AppBreadcrumbs/AppBreadcrumbs.jsx";
 import EventEmitter from "src/utils/EventEmitter";
 import AppMobileMenu from "../AppMobileMenu/AppMobileMenu.jsx";
-import { YMInitializer } from "react-yandex-metrika";
 
 const AppLayout = ({ mode, isShowNavbar }) => {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
@@ -31,18 +30,6 @@ const AppLayout = ({ mode, isShowNavbar }) => {
   return (
     <>
       {/*<AppAlert />*/}
-      <YMInitializer
-        accounts={[90466496]}
-        options={{
-          defer: true,
-          webvisor: true,
-          clickmap: true,
-          trackLinks: true,
-          accurateTrackBounce: true,
-          ecommerce: "dataLayer",
-        }}
-        version="2"
-      />
       <div className="app">
         <AppHeader />
         <AppBreadcrumbs />
