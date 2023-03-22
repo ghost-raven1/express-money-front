@@ -9,6 +9,7 @@ import AppMobileMenu from "../AppMobileMenu/AppMobileMenu.jsx";
 
 const AppLayout = ({ mode, isShowNavbar }) => {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
+  //Test
   // const dispatch = useDispatch();
   // const { isShow, currentModalKey, options } = useSelector(
   //   (state) => state.modals

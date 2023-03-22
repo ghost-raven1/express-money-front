@@ -183,6 +183,15 @@ const SvgSelector = ({ id, svgColor, className }) => {
                 </svg>
             )
         }
+        case "uploader-icon": {
+            return (
+                <svg width="83" height="82" viewBox="0 0 83 82" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M81.5303 54.3335V72.1113C81.5303 74.4688 80.5938 76.7297 78.9268 78.3967C77.2598 80.0637 74.9989 81.0002 72.6414 81.0002H10.4192C8.06168 81.0002 5.80076 80.0637 4.13377 78.3967C2.46678 76.7297 1.53027 74.4688 1.53027 72.1113V54.3335" stroke="#8899B4" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M19.3081 32.1113L41.5303 54.3335L63.7525 32.1113" stroke="#8899B4" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M41.5303 54.3333V1" stroke="#8899B4" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+            )
+        }
     }
 }
 

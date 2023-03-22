@@ -1,14 +1,19 @@
 import "./ApplicationPage.scss";
 import AppHeadSection from "../../components/AppHeadSection/AppHeadSection.jsx";
 import mainTariffsBlockDelimiter from "../../assets/main/Delimiters/Delimiter.svg";
-import { useState } from "react";
+import {useEffect, useState} from "react";
 import AppButton from "../../components/AppButton/AppButton.jsx";
 import AppInput from "../../components/AppInput/AppInput.jsx";
 import AppSelect from "../../components/AppSelect/AppSelect.jsx";
 import AppCheckbox from "../../components/AppCheckbox/AppCheckbox.jsx";
 import ApplicationCalculator from "./components/ApplicationCalculator/ApplicationCalculator.jsx";
 import ApplicationHelp from "./components/ApplicationHelp/ApplicationHelp.jsx";
+import AppUploaderWrapper from "../../components/AppUploaderWrapper/AppUploaderWrapper.jsx";
+import { useNavigate } from "react-router-dom";
+import { RouterPath } from "../../utils/constants.js";
+import SvgSelector from "../../components/SvgSelector/SvgSelector.jsx";
 const ApplicationPage = () => {
+  const navigate = useNavigate();
   const [currStep, setCurrStep] = useState(1);
   const [stepsArr, setStepsArr] = useState([
     { title: "Персональные данные", isActive: true },
@@ -22,6 +27,35 @@ const ApplicationPage = () => {
       return "application-stepper__item-line application-stepper__item-line_active";
     if (!isActive) return "application-stepper__item-line";
   }
+
+  function nextStep() {
+    setCurrStep(currStep + 1);
+    setStepsArr((prevSelected) => {
+      const newArray = [...prevSelected];
+      for (let i = 0; i < newArray.length; i += 1) {
+        if (currStep === 1) {
+          newArray[0].isActive = false;
+          newArray[1].isActive = true;
+        }
+        if (currStep === 2) {
+          newArray[1].isActive = false;
+          newArray[2].isActive = true;
+        }
+        if (currStep === 3) {
+          newArray[2].isActive = false;
+          newArray[3].isActive = true;
+        }
+      }
+      return newArray;
+    });
+  }
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    })
+  }, [currStep])
 
   return (
     <div className="application">
@@ -46,22 +80,28 @@ const ApplicationPage = () => {
       {currStep === 1 && (
         <div className="application-step">
           <div className="application-step-left">
-            <div>
-              <div>Личная информация</div>
+            <div className="application-step-left-card">
+              <div className="application-step-left-card__title">
+                Личная информация
+              </div>
               <AppInput label="Фамилия*" />
               <AppInput label="Имя*" />
               <AppInput label="Отчество*" />
-              // Дата рождения
+              {/* TODO: Дата рождения*/}
             </div>
-            <div>
-              <div>Паспортные данные</div>
+            <div className="application-step-left-card">
+              <div className="application-step-left-card__title">
+                Паспортные данные
+              </div>
               <AppInput label="Серия паспорта*" />
-              // Дата выдачи
+              {/* TODO: Дата выдачи*/}
               <AppInput label="Номер паспорта*" />
               <AppInput label="Код подразделения*" />
             </div>
-            <div>
-              <div>Адрес регистрации</div>
+            <div className="application-step-left-card">
+              <div className="application-step-left-card__title">
+                Адрес регистрации
+              </div>
               <AppSelect
                 optionsList={[{ name: "Москва", id: "moscow" }]}
                 label="Город*"
@@ -70,58 +110,85 @@ const ApplicationPage = () => {
                 optionsList={[{ name: "Московская область", id: "moscow" }]}
                 label="Область / Край*"
               />
-                <AppInput label="Улица*" />
-                <AppInput label="Дом*" />
-                <AppInput label="Квартира*" />
+              <AppInput label="Улица*" />
+              <AppInput label="Дом*" />
+              <AppInput label="Квартира*" />
             </div>
-              <div>
-                  <div>Дополнительно</div>
-                  <AppInput label="СНИЛС*" />
-                  <AppInput label="Ежемесячный доход*" />
+            <div className="application-step-left-card">
+              <div className="application-step-left-card__title">
+                Дополнительно
               </div>
-              <div>
-                  <AppCheckbox label="Я даю Согласие на обработку персональных данных." />
-                  <AppCheckbox label="Я подтверждаю и принимаю Согласие и обязательства заемщика." />
-              </div>
-            <AppButton mode="black">Далее</AppButton>
+              <AppInput label="СНИЛС*" />
+              <AppInput label="Ежемесячный доход*" />
+            </div>
+            <div>
+              <AppCheckbox label="Я даю Согласие на обработку персональных данных." />
+              <AppCheckbox label="Я подтверждаю и принимаю Согласие и обязательства заемщика." />
+            </div>
+            <div className="main__button-border main__button-border_black">
+              <AppButton mode="black" onClick={() => nextStep()}>
+                ДАЛЕЕ <SvgSelector id="arrow-in-round" />
+              </AppButton>
+            </div>
           </div>
           <div className="application-step-right">
-              <ApplicationCalculator />
-              <ApplicationHelp />
+            <ApplicationCalculator />
+            <ApplicationHelp />
           </div>
         </div>
       )}
       {currStep === 2 && (
         <div className="application-step">
-            <div className="application-step-left">
-                <AppButton mode="black">Далее</AppButton>
+          <div className="application-step-left">
+            <div className="application-step-left-card">
+              <div className="application-step-left-card__title">
+                Скан паспорта
+              </div>
             </div>
-            <div className="application-step-right">
-                <ApplicationCalculator />
-                <ApplicationHelp />
+            <AppUploaderWrapper />
+            <div className="main__button-border main__button-border_black">
+              <AppButton mode="black" onClick={() => nextStep()}>
+                ДАЛЕЕ <SvgSelector id="arrow-in-round" />
+              </AppButton>
             </div>
+          </div>
+          <div className="application-step-right">
+            <ApplicationCalculator />
+            <ApplicationHelp />
+          </div>
         </div>
       )}
       {currStep === 3 && (
         <div className="application-step">
-            <div className="application-step-left">
-                <AppButton mode="black">Далее</AppButton>
+          <div className="application-step-left">
+            <div className="main__button-border main__button-border_black">
+              <AppButton mode="black" onClick={() => nextStep()}>
+                ДАЛЕЕ <SvgSelector id="arrow-in-round" />
+              </AppButton>
             </div>
-            <div className="application-step-right">
-                <ApplicationCalculator />
-                <ApplicationHelp />
-            </div>
+          </div>
+          <div className="application-step-right">
+            <ApplicationCalculator />
+            <ApplicationHelp />
+          </div>
         </div>
       )}
       {currStep === 4 && (
         <div className="application-step">
-            <div className="application-step-left">
-                <AppButton mode="black">Далее</AppButton>
+          <div className="application-step-left">
+            <div className="main__button-border main__button-border_black">
+              <AppButton
+                mode="black"
+                onClick={() => navigate(RouterPath.techPage)}
+              >
+                ВЕРНУТЬСЯ НА ГЛАВНУЮ <SvgSelector id="arrow-in-round" />
+              </AppButton>
             </div>
-            <div className="application-step-right">
-                <ApplicationCalculator />
-                <ApplicationHelp />
-            </div>
+          </div>
+          <div className="application-step-right">
+            <ApplicationCalculator />
+            <ApplicationHelp />
+          </div>
         </div>
       )}
     </div>
