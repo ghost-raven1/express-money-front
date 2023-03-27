@@ -24,6 +24,7 @@ export const RouterPath = {
     techPage: '/tech-page',
     application: '/application',
     profile: '/profile',
+    auth: '/auth'
     // districtId: "districts/:id"
 }
 
@@ -36,6 +37,7 @@ export const links = [
 ];
 
 export const routes = [
+    { path: RouterPath.auth, mode: "auth" },
     { path: RouterPath.main, mode: "main" },
     { path: RouterPath.howToRepay, mode: 'howToRepay'},
     { path: RouterPath.howToGet, mode: 'howToGet'},
