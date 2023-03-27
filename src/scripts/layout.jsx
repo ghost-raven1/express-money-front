@@ -10,6 +10,7 @@ import FaqPage from "../pages/faq/FaqPage.jsx";
 import TechPage from "../pages/techPage/TechPage.jsx";
 import ApplicationPage from "../pages/application/ApplicationPage.jsx";
 import ProfilePage from "../pages/profile/ProfilePage.jsx";
+import AuthPage from "../pages/authPage/AuthPage.jsx";
 
 export function checkRoute(mode) {
     const modes = {
@@ -22,7 +23,8 @@ export function checkRoute(mode) {
         error: <ErrorPage />,
         techPage: <TechPage />,
         application: <ApplicationPage />,
-        profile: <ProfilePage />
+        profile: <ProfilePage />,
+        auth: <AuthPage />
     };
     return modes[mode];
 }
