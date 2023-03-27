@@ -43,6 +43,7 @@ const AppInput = ({
   }
 
   function labelModes(mode) {
+    if (mode.includes('blue-label')) return 'app-input__label_blue';
     if (!label && mode.includes("emptyLabel")) return "app-input__label_empty";
     if (mode.includes("search")) return "app-input__label_search";
   }
