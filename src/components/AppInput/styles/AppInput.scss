@@ -9,10 +9,30 @@
   animation: .5s show ease;
   position: relative;
   &__label {
-    font-family: Neue Machina, serif;
+    font-family: 'Manrope', serif;
+    font-style: normal;
     font-weight: 400;
     font-size: 14px;
-    color: $pale-sky;
+    line-height: 25px;
+    letter-spacing: 0.01em;
+    background: linear-gradient(153.6deg, #222738 0%, #101420 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+    &_blue {
+      font-family: 'Manrope', serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 25px;
+      letter-spacing: 0.01em;
+      background: linear-gradient(90.74deg, #0F6DFF 0%, #005CEA 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-fill-color: transparent;
+    }
     &_empty {
       height: 14px;
     }
@@ -33,7 +53,7 @@
   }
   &__input {
     padding: 5px 15px;
-    font-family: Roboto, serif;
+    font-family: Manrope, serif;
     max-height: 44px;
     background: $desert-storm;
     border: 1px solid $platinum;

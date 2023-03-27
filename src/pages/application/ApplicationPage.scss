@@ -48,7 +48,177 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     padding: 25px 35px;
-    &-left {}
-    &-right {}
+    &-left {
+      &-card {
+        &__title {
+          font-family: 'Manrope', serif;
+          font-style: normal;
+          font-weight: 600;
+          font-size: 32px;
+          line-height: 44px;
+          letter-spacing: 0.01em;
+          background: linear-gradient(153.6deg, #222738 0%, #101420 100%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+          text-fill-color: transparent;
+        }
+      }
+      &__checkboxes {
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        margin-bottom: 20px;
+        margin-left: -13px;
+      }
+      &__delimiter-line {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        height: 1px;
+        background: #C6D1E1;
+      }
+      &__title {
+        font-family: 'Manrope', serif;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 32px;
+        line-height: 44px;
+        letter-spacing: 0.01em;
+        background: linear-gradient(153.6deg, #222738 0%, #101420 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-fill-color: transparent;
+        margin-bottom: 18px;
+        &-min {
+          font-family: 'Manrope', serif;
+          font-style: normal;
+          font-weight: 600;
+          font-size: 24px;
+          line-height: 44px;
+          letter-spacing: 0.01em;
+          background: linear-gradient(153.6deg, #222738 0%, #101420 100%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+          text-fill-color: transparent;
+          &_grey {
+            background: linear-gradient(153.6deg, #8899B4 0%, #8899B4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+          }
+        }
+        &_blue {
+          background: linear-gradient(153.6deg, #0F6DFF 100%, #005CEA 100%);
+          font-family: 'Manrope', serif;
+          font-style: normal;
+          font-weight: 600;
+          font-size: 32px;
+          line-height: 44px;
+          letter-spacing: 0.01em;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+          text-fill-color: transparent;
+          margin-bottom: 18px;
+        }
+      }
+      &__fill-data {
+        font-family: 'Manrope', serif;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 25px;
+        letter-spacing: 0.01em;
+        background: linear-gradient(153.6deg, #222738 0%, #101420 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-fill-color: transparent;
+        margin-bottom: 20px;
+      }
+      &__link {
+        color: #0F6DFF !important;
+        text-decoration: underline;
+        background: transparent;
+        background-clip: unset;
+        -webkit-text-fill-color: #0F6DFF;
+      }
+      &__text {
+        font-family: 'Manrope', serif;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 22px;
+        color: #8899B4;
+        &-block {
+          margin-top: 48px;
+          display: flex;
+          flex-direction: column;
+          gap: 17px;
+        }
+        &_blue {
+          background: linear-gradient(90.74deg, #0F6DFF 0%, #005CEA 100%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+          text-fill-color: transparent;
+        }
+        &_black {
+          background: linear-gradient(153.6deg, #222738 0%, #101420 100%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+          text-fill-color: transparent;
+        }
+      }
+      &__sms {
+        margin-top: 20px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-bottom: 25px;
+        &-button {
+          font-family: 'Manrope', serif;
+          font-style: normal;
+          font-weight: 400;
+          font-size: 16px;
+          line-height: 22px;
+          letter-spacing: 0.01em;
+          background: linear-gradient(90.74deg, #0F6DFF 0%, #005CEA 100%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent !important;
+          background-clip: text;
+          text-fill-color: transparent;
+          border: none;
+          padding: 0;
+          cursor: pointer;
+        }
+        &-timer {
+          font-family: 'Manrope', serif;
+          font-style: normal;
+          font-weight: 400;
+          font-size: 16px;
+          line-height: 22px;
+          letter-spacing: 0.01em;
+          background: linear-gradient(153.6deg, #222738 0%, #101420 100%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+          text-fill-color: transparent;
+        }
+      }
+    }
+    &-right {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      width: 100%;
+      max-height: fit-content;
+    }
   }
 }

@@ -33,8 +33,9 @@ const MainHowItWorksList = () => {
           return (
               <React.Fragment key={idx}>
                 <MainHowItWorksListCard item={card} key={idx} />
-                {/*TODO: стрелочки добавить*/}
-                <SvgSelector id="" />
+                {idx < 2 && (
+                    <SvgSelector className="how-it-works-list__arrows" id="double-arrow-right" />
+                )}
               </React.Fragment>
         )
         })}

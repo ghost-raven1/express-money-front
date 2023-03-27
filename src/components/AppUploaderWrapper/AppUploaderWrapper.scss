@@ -1,0 +1,33 @@
+.uploader {
+  margin-bottom: 20px;
+  margin-top: 20px;
+  &-text {
+    &__title {
+      font-family: 'Manrope', serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 25px;
+      text-align: center;
+      letter-spacing: 0.01em;
+      background: linear-gradient(153.6deg, #222738 0%, #101420 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-fill-color: transparent;
+    }
+    &__formats {
+      font-family: 'Manrope', serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 22px;
+      text-align: center;
+      background: linear-gradient(90.74deg, #0F6DFF 0%, #005CEA 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-fill-color: transparent;
+    }
+  }
+}

@@ -1,0 +1,32 @@
+.progress {
+  width: 100%;
+  height: 15px;
+  background: #8899B4;
+  border-radius: 19px;
+  position: relative;
+  z-index: 0;
+  margin-bottom: 20px;
+  &__line {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    max-width: 0;
+    background: linear-gradient(90.74deg, #0F6DFF 0%, #005CEA 100%);
+    z-index: 100;
+    border-radius: 16px 0 0 16px;
+  }
+  &__time {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-top: 15px;
+    &-text {
+      font-family: 'Manrope', serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 22px;
+      color: #000000;
+    }
+  }
+}

@@ -1,0 +1,43 @@
+.credit-card {
+  background: url("src/assets/creditCards/application.svg") no-repeat;
+  background-size: contain;
+  height: 303px;
+  width: 65%;
+  margin-bottom: 20px;
+  padding: 22px 28% 22px 22px;
+  &-inner {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap-reverse;
+    padding-left: 14px;
+    gap: 20px;
+    &__bottom {
+      display: flex;
+      gap: 10px;
+      &-card-date {
+        display: flex;
+        flex-direction: column;
+        &-label {
+          font-family: 'Manrope', serif;
+          font-style: normal;
+          font-weight: 400;
+          font-size: 14px;
+          line-height: 25px;
+          letter-spacing: 0.01em;
+          background: linear-gradient(90.74deg, #0F6DFF 0%, #005CEA 100%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+          text-fill-color: transparent;
+          margin-bottom: 5px;
+        }
+        &-selects {
+          display: flex;
+          flex-direction: row;
+          background: #FFFFFF;
+          border-radius: 16px;
+        }
+      }
+    }
+  }
+}

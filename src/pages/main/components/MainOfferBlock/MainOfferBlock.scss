@@ -4,7 +4,6 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   background: #e8ebec;
-  //height: 675px;
   height: 838px;
   width: 100%;
   &-left {
@@ -20,6 +19,77 @@
     }
   }
   &-right {
+    position: relative;
+    &__left {
+      background: #FFFFFF;
+      border: 1px solid #E7ECF4;
+      box-shadow: 0 10px 30px rgba(33, 58, 97, 0.06);
+      border-radius: 12px;
+      transform: rotate(-11.4deg);
+      width: fit-content;
+      padding: 20px 10px;
+      position: absolute;
+      top: 73px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      left: 5%;
+      &-title {
+        font-family: 'SF Pro Display', serif;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 26px;
+        line-height: 31px;
+        letter-spacing: 0.01em;
+        background: linear-gradient(90.74deg, #0F6DFF 0%, #005CEA 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-fill-color: transparent;
+      }
+      &-desc {
+        font-family: 'SF Pro Display', serif;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 17px;
+        letter-spacing: 0.01em;
+        color: #262B40;
+      }
+    }
+    &__right {
+      background: #FFFFFF;
+      border: 1px solid #E7ECF4;
+      box-shadow: 0 10px 30px rgba(33, 58, 97, 0.06);
+      border-radius: 12px;
+      transform: rotate(10.27deg);
+      width: fit-content;
+      padding: 20px 10px;
+      position: absolute;
+      top: 73px;
+      right: 5%;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      &-title {
+        font-family: 'SF Pro Display', serif;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 26px;
+        line-height: 31px;
+        letter-spacing: 0.01em;
+        color: #141927;
+      }
+      &-desc {
+        font-family: 'SF Pro Display', serif;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 17px;
+        letter-spacing: 0.01em;
+        color: #8899B4;
+      }
+    }
     &__img {
       height: 908px;
       margin-top: -64px;

@@ -8,7 +8,7 @@
     font-size: 12px;
   }
   &__label {
-    font-family: SF Pro Display, serif;
+    font-family: Manrope, serif;
     font-weight: 400;
     font-size: 14px;
     color: #6F767E;
@@ -25,7 +25,7 @@
   padding-bottom: 4px;
   display: block;
   height: 100%;
-  min-width: 95px;
+  min-width: 50px;
   text-align: center;
   position: relative;
   border: 1px solid #E3E3E3;
@@ -39,6 +39,10 @@
   &_white {
     background-color: white;
   }
+  &_borderless {
+    border: none;
+    margin-bottom: 0;
+  }
   &__opened {
     border-radius: 14px 14px 0 0;
     transition: .31s;
@@ -50,7 +54,7 @@
   max-height: 43px;
   height: fit-content;
   word-break: break-all;
-  min-height: 38px;
+  min-height: 28px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -73,6 +77,9 @@
     right: 10px;
     top: 16px;
     border: 7px solid transparent;
+  }
+  &_without-word-break {
+    word-break: unset;
   }
   &_disabled {
     color: #b1b1b1;
@@ -123,7 +130,7 @@ ul {
     padding: 6px 20px;
     cursor: pointer;
     transition: .3s;
-    font-family: SF Pro Display, serif;
+    font-family: Manrope, serif;
     font-weight: 400;
     font-size: 18px;
     color: #1A1D25;

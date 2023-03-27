@@ -1,0 +1,45 @@
+.app-help {
+  background: #F3F6FF;
+  border-radius: 24px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  max-width: 335px;
+  min-width: fit-content;
+  width: 100%;
+  gap: 20px;
+  &__title {
+    font-family: 'Manrope', serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 27px;
+    letter-spacing: 0.01em;
+    background: linear-gradient(153.6deg, #222738 0%, #101420 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+  }
+  &__desc {
+    font-family: 'Manrope', serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    color: #8899B4;
+  }
+  &__phone {
+    font-family: 'Manrope', serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    background: linear-gradient(90.74deg, #0F6DFF 0%, #005CEA 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+    text-decoration: dotted #005CEA;
+  }
+}

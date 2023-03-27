@@ -35,7 +35,8 @@ const AppSelect = ({
   );
   const selectedTextStyles = classNames(
     "selected-text",
-    selectedTextStylesIsDisabled()
+    selectedTextStylesIsDisabled(),
+    selectedTextStyleModes()
   );
   const arrowStyles = classNames("select-arrow", flipArrow());
   const selectItemsStyles = classNames("select-options", openSelectStyles());
@@ -79,23 +80,31 @@ const AppSelect = ({
     if (isComponentVisible) return "select-arrow-up";
   }
   function selectOptionStyleModes() {
-    const modes = {
-      grey: "select-option_grey",
-      white: "select-option_white",
-    };
-    return modes[mode];
+    if (!!mode?.length) {
+      if (mode.includes('grey')) return 'select-option_grey'
+      if (mode.includes('white')) return 'select-option_white'
+      if (mode.includes('borderless')) return 'select-option_borderless'
+    }
   }
   function containerStyleModes() {
-    const modes = {
-      grey: "custom-select-container_grey",
-      white: "custom-select-container_white",
-    };
+    if (!!mode?.length) {
+      if (mode.includes('grey')) return 'custom-select-container_grey'
+      if (mode.includes('white')) return 'custom-select-container_white'
+      if (mode.includes('borderless')) return 'custom-select-container_borderless'
+    }
     if (isComponentVisible) return "custom-select-container__opened";
-    return modes[mode];
   }
 
   function selectedTextStylesIsDisabled() {
     if (isDisabled) return "selected-text_disabled";
+  }
+
+  function selectedTextStyleModes() {
+    if (mode?.length) {
+      if (mode.includes("withoutWordBreak")) {
+        return "selected-text_without-word-break";
+      }
+    }
   }
 
   function openSelectStyles() {
