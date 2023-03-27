@@ -192,6 +192,20 @@ const SvgSelector = ({ id, svgColor, className }) => {
                 </svg>
             )
         }
+        case "double-arrow-right": {
+            return (
+                <svg className={className} width="28" height="31" viewBox="0 0 28 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0.960912 1.2587L16.2822 15.6224L0.960911 29.9862" stroke="#0F6DFF" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M11.2823 1.2587L26.6036 15.6224L11.2823 29.9862" stroke="#141927" strokeLinecap="round" strokeLinejoin="round"/>
+                    <defs>
+                        <linearGradient id="paint0_linear_334_437" x1="16.2822" y1="1.2587" x2="15.5781" y2="30.3401" gradientUnits="userSpaceOnUse">
+                            <stop stopColor="#0F6DFF"/>
+                            <stop offset="1" stopColor="#005CEA"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+            )
+        }
     }
 }
 

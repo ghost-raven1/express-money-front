@@ -4,7 +4,7 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
-  gap: 60px;
+  gap: 20px;
   margin-top: 110px;
 }
 
@@ -15,5 +15,8 @@
     margin-top: -12px;
     margin-left: 2%;
     margin-right: 2%;
+    &__arrows {
+      transform: rotate(90deg);
+    }
   }
 }
