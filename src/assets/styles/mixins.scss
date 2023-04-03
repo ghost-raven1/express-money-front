@@ -3,7 +3,7 @@
 // Common
 
 @mixin background-clip {
-  -webkit-background-clip: text;
+  -webkit-background-clip: text !important;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   text-fill-color: transparent;
