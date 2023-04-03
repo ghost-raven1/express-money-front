@@ -15,12 +15,17 @@ import SvgSelector from "../../components/SvgSelector/SvgSelector.jsx";
 import AppProgressbar from "../../components/AppProgressbar/AppProgressbar.jsx";
 import AppSelectGroup from "../../components/AppSelectGroup/AppSelectGroup.jsx";
 import AppCreditCard from "../../components/AppCreditCard/AppCreditCard.jsx";
-import { useDispatch } from "react-redux";
-import { createUserProfileAsync } from "../../store/reducers/profiles.js";
-import {uploadPassportAsync} from "../../store/reducers/storage.js";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  createUserProfileAsync, editUserProfileAsync,
+  getUserProfileAsync,
+} from "../../store/reducers/profiles.js";
+import { uploadPassportAsync } from "../../store/reducers/storage.js";
 const ApplicationPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { userProfile } = useSelector((store) => store.profilesReducer);
+  const { userId } = useSelector((store) => store.usersReducer);
   const [readyToNextStep, setReadyToNextStep] = useState(false);
   const [currStep, setCurrStep] = useState(1);
   const citiesArr = [{ name: "Москва", id: "moscow" }];
@@ -41,19 +46,25 @@ const ApplicationPage = () => {
   const [dayPassId, setDayPassId] = useState();
   const [monthPassId, setMonthPassId] = useState();
   const [yearPassId, setYearPassId] = useState();
-  const [firstName, setFirstName] = useState("111");
-  const [middleName, setMiddleName] = useState("111");
-  const [lastName, setLastName] = useState("111");
-  const [snils, setSnils] = useState("156-936-160 98");
-  const [income, setIncome] = useState(2147483647);
-  const [passportCode, setPassportCode] = useState("");
-  const [passportNumber, setPassportNumber] = useState(323454);
-  const [passportSerial, setPassportSerial] = useState(5677);
+  const [firstName, setFirstName] = useState(userProfile?.first_name);
+  const [middleName, setMiddleName] = useState(userProfile?.middle_name);
+  const [lastName, setLastName] = useState(userProfile?.last_name);
+  const [snils, setSnils] = useState(userProfile?.snils);
+  const [income, setIncome] = useState(userProfile?.income);
+  const [passportCode, setPassportCode] = useState(userProfile?.passport_code);
+  const [passportNumber, setPassportNumber] = useState(
+    userProfile?.passport_number
+  );
+  const [passportSerial, setPassportSerial] = useState(
+    userProfile?.passport_serial
+  );
   const [stateId, setStateId] = useState("");
   const [cityId, setCityId] = useState("");
-  const [street, setStreet] = useState("улица Знаменка");
-  const [streetHouse, setStreetHouse] = useState(5);
-  const [streetApartment, setStreetApartment] = useState(8);
+  const [street, setStreet] = useState(userProfile?.street);
+  const [streetHouse, setStreetHouse] = useState(userProfile?.street_house);
+  const [streetApartment, setStreetApartment] = useState(
+    userProfile?.street_apartment
+  );
   const [passportFiles, setPassportFiles] = useState([]);
 
   function stepperLineStyles(isActive) {
@@ -62,65 +73,93 @@ const ApplicationPage = () => {
     if (!isActive) return "application-stepper__item-line";
   }
 
-  function searchInArr (arr, id) {
-      return arr.filter((el) => el.id === id)
+  function searchInArr(arr, id) {
+    return arr.filter((el) => el.id === id);
+  }
+
+  // TODO: Добавить функцию сравнения для отслеживания изменений полей профиля
+
+  function checkStep(newArray) {
+    if (readyToNextStep) {
+      setCurrStep(currStep + 1);
+      if (currStep === 1) {
+        newArray[0].isActive = false;
+        newArray[1].isActive = true;
+      }
+      if (currStep === 2) {
+        newArray[1].isActive = false;
+        newArray[2].isActive = true;
+      }
+      if (currStep > 3) {
+        newArray[2].isActive = false;
+        newArray[3].isActive = true;
+      }
+    }
   }
 
   function nextStep() {
-    setCurrStep(currStep + 1);
     setStepsArr((prevSelected) => {
       const newArray = [...prevSelected];
       for (let i = 0; i < newArray.length; i += 1) {
         if (currStep === 1) {
-          if (readyToNextStep) {
-            newArray[0].isActive = false;
-            newArray[1].isActive = true;
+          checkStep(newArray);
+          if (!Object.keys(userProfile)?.length) {
+            dispatch(
+              createUserProfileAsync(
+                {
+                  first_name: firstName,
+                  middle_name: middleName,
+                  last_name: lastName,
+                  birth_date: `${yearBirthId}-${monthBirthId}-${dayBirthId}`,
+                  state: searchInArr(statesArr, stateId)?.name,
+                  city: searchInArr(citiesArr, cityId)?.name,
+                  street,
+                  street_house: streetHouse,
+                  street_apartment: streetApartment,
+                  passport_serial: passportSerial,
+                  passport_number: passportNumber,
+                  passport_code: passportCode,
+                  passport_date: `${yearPassId}-${monthPassId}-${dayPassId}`,
+                  income,
+                  snils,
+                },
+                setReadyToNextStep
+              )
+            );
+          } else {
+            dispatch(editUserProfileAsync({
+              first_name: firstName,
+              middle_name: middleName,
+              last_name: lastName,
+              birth_date: !!yearBirthId && !!monthBirthId && !!dayBirthId ? `${yearBirthId}-${monthBirthId}-${dayBirthId}` : userProfile?.birth_date,
+              state: searchInArr(statesArr, stateId)?.name,
+              city: searchInArr(citiesArr, cityId)?.name,
+              street,
+              street_house: streetHouse,
+              street_apartment: streetApartment,
+              passport_serial: passportSerial,
+              passport_number: passportNumber,
+              passport_code: passportCode,
+              passport_date: !!yearPassId && !!monthPassId && !!dayPassId ? `${yearPassId}-${monthPassId}-${dayPassId}` : userProfile?.passport_date,
+              income,
+              snils,
+            }, userId, setReadyToNextStep))
           }
-          dispatch(
-            createUserProfileAsync(
-              {
-                first_name: firstName,
-                middle_name: middleName,
-                last_name: lastName,
-                birth_date: `${yearBirthId}-${monthBirthId}-${dayBirthId}`,
-                state: searchInArr(statesArr, stateId)?.name,
-                city: searchInArr(citiesArr, cityId)?.name,
-                street,
-                street_house: streetHouse,
-                street_apartment: streetApartment,
-                // postal_code: "",
-                // street_building: "",
-                // street_lane: "",
-                // address: "",
-                // address_optional: "",
-                // po_box: "",
-                // government_id_type: "",
-                // government_id_number: "",
-                // government_id_date: "",
-                // passport_issue_name: "",
-                passport_serial: passportSerial,
-                passport_number: passportNumber,
-                passport_code: passportCode,
-                passport_date: `${yearPassId}-${monthPassId}-${dayPassId}`,
-                income,
-                snils,
-              },
-              setReadyToNextStep
-            )
-          );
         }
         if (currStep === 2) {
-          newArray[1].isActive = false;
-          newArray[2].isActive = true;
+          checkStep(newArray);
         }
         if ([3, 4, 5, 6].includes(currStep)) {
-          newArray[2].isActive = false;
-          newArray[3].isActive = true;
+          checkStep(newArray);
         }
       }
       return newArray;
     });
   }
+
+  useEffect(() => {
+    dispatch(getUserProfileAsync(userId));
+  }, []);
 
   useEffect(() => {
     window.scrollTo({
@@ -133,22 +172,25 @@ const ApplicationPage = () => {
     if (currStep === 2) {
       if (passportFiles?.length > 0) {
         // TODO: Доделать запрос отправки паспорта
-        dispatch(uploadPassportAsync({data: {
-            user_id: '',
-            name: '',
-            type: '',
-            is_public: false,
-            file: ''
-          }}))
+        dispatch(
+          uploadPassportAsync({
+            data: {
+              user_id: userId,
+              name: `${firstName} ${lastName}`,
+              type: "passport",
+              is_public: false,
+              file: "", // Уточнить
+            },
+          })
+        );
       }
     }
-  }, [passportFiles])
+  }, [passportFiles]);
 
   useEffect(() => {
     if (currStep === 3) {
-
     }
-  })
+  });
 
   useEffect(() => {
     if (currStep === 4) {
@@ -349,7 +391,10 @@ const ApplicationPage = () => {
                 Скан паспорта
               </div>
             </div>
-            <AppUploaderWrapper files={passportFiles} setFiles={setPassportFiles} />
+            <AppUploaderWrapper
+              files={passportFiles}
+              setFiles={setPassportFiles}
+            />
             <div className="main__button-border main__button-border_black">
               <AppButton mode="black" onClick={() => nextStep()}>
                 ДАЛЕЕ <SvgSelector id="arrow-in-round" />
