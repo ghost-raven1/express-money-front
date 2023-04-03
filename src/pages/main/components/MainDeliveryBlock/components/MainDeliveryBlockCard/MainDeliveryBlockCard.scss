@@ -31,7 +31,7 @@
       margin-bottom: 20px;
     }
     &__title {
-      font-family: Manrope, serif;
+      @include manrope-font;
       font-style: normal;
       font-weight: 600;
       font-size: 40px;
@@ -40,7 +40,7 @@
       color: #262B40;
     }
     &__desc {
-      font-family: Manrope, serif;
+      @include manrope-font;
       font-style: normal;
       font-weight: 400;
       font-size: 16px;

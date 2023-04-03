@@ -1,7 +1,7 @@
 @import "src/assets/styles/mixins.scss";
 
 @mixin footer-info-links-text {
-  font-family: Manrope, serif;
+  @include manrope-font;
   font-style: normal;
   font-weight: 500;
   font-size: 16px;
@@ -11,7 +11,7 @@
 }
 
 @mixin footer-info-links-link {
-  font-family: Manrope, serif;
+  @include manrope-font;
   font-style: normal;
   font-weight: 500;
   font-size: 16px;

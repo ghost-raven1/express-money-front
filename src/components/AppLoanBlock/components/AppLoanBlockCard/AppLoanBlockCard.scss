@@ -27,7 +27,7 @@
       padding-bottom: 20px;
     }
     &__title {
-      font-family: Manrope, serif;
+      @include manrope-font;
       font-style: normal;
       font-weight: 600;
       font-size: 40px;
@@ -36,7 +36,7 @@
       color: #FFFFFF;
     }
     &__desc {
-      font-family: Manrope, serif;
+      @include manrope-font;
       font-style: normal;
       font-weight: 400;
       font-size: 24px;

@@ -1,3 +1,5 @@
+@import 'src/assets/styles/mixins';
+
 .how-to-get {
   color: #1A1D25;
   min-height: 100vh;
@@ -39,20 +41,17 @@
     &-left {
       text-align: left;
       &__title {
-        font-family: 'Manrope', serif;
+        @include manrope-font;
+        @include background-clip;
         font-style: normal;
         font-weight: 600;
         font-size: 40px;
         line-height: 55px;
         letter-spacing: 0.01em;
         background: linear-gradient(153.6deg, #222738 0%, #101420 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        text-fill-color: transparent;
       }
       &__text {
-        font-family: 'Manrope', serif;
+        @include manrope-font;
         font-style: normal;
         font-weight: 400;
         font-size: 18px;
@@ -61,7 +60,7 @@
         color: #8899B4;
       }
       &__info-block {
-        font-family: 'Manrope', serif;
+        @include manrope-font;
         font-style: normal;
         font-weight: 400;
         font-size: 18px;

@@ -35,6 +35,7 @@
       gap: 10px;
       left: 5%;
       &-title {
+        @include background-clip;
         font-family: 'SF Pro Display', serif;
         font-style: normal;
         font-weight: 500;
@@ -42,10 +43,6 @@
         line-height: 31px;
         letter-spacing: 0.01em;
         background: linear-gradient(90.74deg, #0F6DFF 0%, #005CEA 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        text-fill-color: transparent;
       }
       &-desc {
         font-family: 'SF Pro Display', serif;
@@ -102,20 +99,18 @@
 
 .credit-form {
   &__text_blue {
-    font-family: Manrope, serif;
+    @include manrope-font;
+    @include background-clip;
     font-weight: 600;
     font-size: 30px;
     letter-spacing: 0.01em;
     background: linear-gradient(90.74deg, #0F6DFF 0%, #005CEA 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    text-fill-color: transparent;
     margin-bottom: 8px;
     margin-left: -62px;
   }
   &__credit-text {
-    font-family: Manrope, serif;
+    @include manrope-font;
+    @include background-clip;
     font-style: normal;
     font-weight: 800;
     font-size: 48px;
@@ -123,16 +118,12 @@
     letter-spacing: 0.01em;
     text-transform: uppercase;
     background: linear-gradient(153.6deg, #222738 0%, #101420 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    text-fill-color: transparent;
     margin-bottom: 10px;
     margin-left: -10px;
     text-align: center;
   }
   &__credit-text-sub {
-    font-family: Manrope, serif;
+    @include manrope-font;
     font-style: normal;
     font-weight: 400;
     font-size: 16px;

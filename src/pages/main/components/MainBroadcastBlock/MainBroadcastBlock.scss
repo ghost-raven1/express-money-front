@@ -14,6 +14,7 @@
     margin-right: 100px;
     max-width: 521px;
     &-text {
+      @include background-clip;
       margin-top: 20px;
       margin-bottom: 20px;
       text-align: center;
@@ -25,11 +26,8 @@
       text-align: center;
       letter-spacing: 0.01em;
       background: linear-gradient(153.6deg, #222738 0%, #101420 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      text-fill-color: transparent;
       &-wd {
+        @include background-clip;
         border-top: 1px solid white;
         font-family: 'SF Pro Display', serif;
         font-style: normal;
@@ -39,10 +37,6 @@
         text-align: center;
         letter-spacing: 0.01em;
         background: linear-gradient(153.6deg, #222738 0%, #101420 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        text-fill-color: transparent;
         margin-top: 20px;
         padding-top: 20px;
       }

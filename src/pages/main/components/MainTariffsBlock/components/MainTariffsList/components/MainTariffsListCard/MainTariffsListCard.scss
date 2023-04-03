@@ -8,9 +8,9 @@
   display: flex;
   flex-direction: column;
   &__title {
+    @include manrope-font;
     padding-bottom: 19px;
     margin-top: 5px;
-    font-family: Manrope, serif;
     font-style: normal;
     font-weight: 500;
     font-size: 30px;
@@ -37,16 +37,16 @@
       padding-top: 4px;
     }
     &__text {
+      @include manrope-font;
       color: #848BA4;
-      font-family: Manrope, serif;
       font-style: normal;
       font-weight: 500;
       font-size: 18px;
       line-height: 25px;
       letter-spacing: 0.01em;
       &_blue {
+        @include manrope-font;
         color: #11346A;
-        font-family: Manrope, serif;
         font-style: normal;
         font-weight: 500;
         font-size: 18px;
@@ -54,8 +54,8 @@
         letter-spacing: 0.01em;
       }
       &_white {
+        @include manrope-font;
         color: white;
-        font-family: Manrope, serif;
         font-style: normal;
         font-weight: 500;
         font-size: 18px;
@@ -66,16 +66,16 @@
     &__numbers {
       margin-bottom: 20px;
       &-number {
+        @include manrope-font;
         color: #005CEA;
-        font-family: Manrope, serif;
         font-style: normal;
         font-weight: 500;
         font-size: 32px;
         line-height: 33px;
         letter-spacing: 0.01em;
         &_white {
+          @include manrope-font;
           color: #FFFFFF;
-          font-family: Manrope, serif;
           font-style: normal;
           font-weight: 500;
           font-size: 24px;
@@ -109,8 +109,8 @@
         margin-bottom: 5px;
       }
       &__mob-title {
+        @include manrope-font;
         display: flex;
-        font-family: 'Manrope', serif;
         font-style: normal;
         font-weight: 600;
         font-size: 1.5rem;

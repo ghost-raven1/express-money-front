@@ -1,5 +1,7 @@
+@import "src/assets/styles/mixins";
+
 .header-link {
-  font-family: Manrope, serif;
+  @include manrope-font;
   font-style: normal;
   font-weight: 400;
   font-size: 16px;

@@ -17,7 +17,7 @@
     margin-top: 42px;
     align-items: center;
     &-percent {
-      font-family: 'Manrope', serif;
+      @include manrope-font;
       font-style: normal;
       font-weight: 500;
       font-size: 13px;
@@ -28,6 +28,7 @@
     }
   }
   &__title {
+    @include background-clip;
     font-family: SF Pro Display, serif;
     font-style: normal;
     font-weight: 500;
@@ -35,10 +36,6 @@
     line-height: 21px;
     letter-spacing: 0.01em;
     background: linear-gradient(153.6deg, #222738 0%, #101420 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    text-fill-color: transparent;
     margin-bottom: 25px;
     text-align: left;
     margin-top: -15px;
