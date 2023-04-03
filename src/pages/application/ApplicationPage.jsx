@@ -137,7 +137,7 @@ const ApplicationPage = () => {
             user_id: '',
             name: '',
             type: '',
-            is_public: true,
+            is_public: false,
             file: ''
           }}))
       }
