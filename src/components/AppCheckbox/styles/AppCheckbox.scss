@@ -1,3 +1,4 @@
+@import "src/assets/styles/mixins";
 
 $checkmarkSize: 20px;
 
@@ -44,7 +45,7 @@ $checkmarkSize: 20px;
     }
   }
   &__label {
-    font-family: 'Manrope', serif;
+    @include manrope-font;
     font-style: normal;
     font-weight: 500;
     font-size: 13px;

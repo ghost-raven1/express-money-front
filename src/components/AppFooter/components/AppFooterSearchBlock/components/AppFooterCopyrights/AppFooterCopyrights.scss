@@ -1,7 +1,7 @@
 @import "src/assets/styles/mixins.scss";
 
 @mixin footer-copyrights-text-grey-blue {
-  font-family: Manrope, serif;
+  @include manrope-font;
   font-style: normal;
   font-weight: 500;
   font-size: 16px;
@@ -15,7 +15,7 @@
   grid-template-columns: repeat(3, 1fr);
   margin-top: 50px;
   &__first {
-    font-family: Manrope, serif;
+    @include manrope-font;
     font-style: normal;
     font-weight: 500;
     font-size: 16px;

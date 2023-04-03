@@ -8,20 +8,17 @@
   padding: 9px 19%;
   height: fit-content;
   &__button {
+    @include manrope-font;
+    @include background-clip;
     background: #F3F6FF;
     border: 1px solid #C6D1E1;
     border-radius: 14px;
-    font-family: 'Manrope', serif;
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
     line-height: 22px;
     text-align: center;
     background: linear-gradient(153.6deg, #222738 0%, #101420 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    text-fill-color: transparent;
     padding: 9px 15px;
     transition: .3s ease-in-out;
     display: flex;

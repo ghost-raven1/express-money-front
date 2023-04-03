@@ -4,7 +4,7 @@ import AmountOfCreditForm from "../../components/AmountOfCreditForm/AmountOfCred
 import SvgSelector from "../../components/SvgSelector/SvgSelector.jsx";
 const HowToGet = () => {
   const reqsArr = [
-    "Возраст: от 18 лет",
+    "Возраст: от 20 лет",
     "Гражданство: РФ",
     "Необходимые документы: паспорт гражданина РФ",
     "Наличие доступа в интернет и мобильного телефона",
@@ -13,7 +13,7 @@ const HowToGet = () => {
     "Лица, недавно получившие российское гражданство.",
   ];
   const stepsArr = [
-    { icon: "how-to-get-step-1", text: "Зарегестрироваться" },
+    { icon: "how-to-get-step-1", text: "Зарегистрироваться" },
     { icon: "how-to-get-step-2", text: "Указать личные данные" },
     { icon: "how-to-get-step-3", text: "Выбрать пакет услуг" },
     { icon: "how-to-get-step-4", text: "Подписать договор, введя код из СМС" },

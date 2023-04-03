@@ -3,7 +3,8 @@
 .header-phone {
   margin-left: 20px;
   &__number {
-    font-family: Manrope, serif;
+    @include manrope-font;
+    @include background-clip;
     font-style: normal;
     font-weight: 500;
     font-size: 20px;
@@ -11,14 +12,10 @@
     text-align: center;
     letter-spacing: 0.065em;
     background: linear-gradient(153.6deg, #222738 0%, #101420 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    text-fill-color: transparent;
     border-bottom: 1px dotted #101420;
   }
   &__desc {
-    font-family: Manrope, serif;
+    @include manrope-font;
     font-style: normal;
     font-weight: 400;
     font-size: 13px;

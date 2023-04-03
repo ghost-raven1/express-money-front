@@ -1,3 +1,5 @@
+@import 'src/assets/styles/mixins';
+
 .app-head-section {
   display: flex;
   flex-direction: column;
@@ -9,24 +11,21 @@
     max-width: 900px;
   }
   &__title {
-    font-family: Manrope, serif;
+    @include manrope-font;
+    @include background-clip;
     font-style: normal;
     font-weight: 600;
     font-size: 40px;
     line-height: 55px;
     letter-spacing: 0.01em;
     background: linear-gradient(153.6deg, #222738 0%, #101420 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    text-fill-color: transparent;
     margin-bottom: 15px;
     &-24 {
       font-size: 24px;
     }
   }
   &__subtitle {
-    font-family: Manrope, serif;
+    @include manrope-font;
     font-style: normal;
     font-weight: 500;
     font-size: 18px;

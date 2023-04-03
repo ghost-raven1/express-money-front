@@ -1,3 +1,5 @@
+@import 'src/assets/styles/mixins';
+
 .progress {
   width: 100%;
   height: 15px;
@@ -21,7 +23,7 @@
     justify-content: space-between;
     padding-top: 15px;
     &-text {
-      font-family: 'Manrope', serif;
+      @include manrope-font;
       font-style: normal;
       font-weight: 400;
       font-size: 16px;

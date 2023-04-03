@@ -11,7 +11,7 @@ const AboutCompany = () => {
         <div className="about-company-inner__map">
           <AppMapWrapper
             mapPointsList={[{ latitude: "55.749633", longitude: "37.537434" }]}
-            height="109vh"
+            height="70vh"
             zoom={15}
           />
         </div>

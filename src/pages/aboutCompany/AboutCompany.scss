@@ -1,3 +1,6 @@
+@import "src/assets/styles/mixins";
+@import "src/assets/styles/colors";
+
 .about-company {
   min-height: 100vh;
   color: #1A1D25;
@@ -18,7 +21,7 @@
       padding: 44px 47px;
       &-block {
         &-title {
-          font-family: 'Manrope', serif;
+          @include manrope-font;
           font-style: normal;
           font-weight: 600;
           font-size: 40px;
@@ -27,7 +30,7 @@
           color: #FFFFFF;
         }
         &-phone {
-          font-family: 'Manrope', serif;
+          @include manrope-font;
           font-style: normal;
           font-weight: 600;
           font-size: 20px;
@@ -37,7 +40,7 @@
           text-decoration: #FFFFFF dotted;
         }
         &-city {
-          font-family: 'Manrope', serif;
+          @include manrope-font;
           font-style: normal;
           font-weight: 600;
           font-size: 20px;
@@ -59,17 +62,14 @@
           flex-direction: column;
           gap: 25px;
           &-title {
-            font-family: 'Manrope', serif;
+            @include manrope-font;
+            @include background-clip;
             font-style: normal;
             font-weight: 600;
             font-size: 30px;
             line-height: 41px;
             letter-spacing: 0.01em;
             background: linear-gradient(153.6deg, #222738 0%, #101420 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-fill-color: transparent;
           }
           &-input {}
           &-button {

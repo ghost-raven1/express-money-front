@@ -13,7 +13,7 @@
     margin-left: 202px;
     margin-right: 195px;
     &__title {
-      font-family: Manrope, serif;
+      @include manrope-font;
       font-style: normal;
       font-weight: 600;
       font-size: 40px;

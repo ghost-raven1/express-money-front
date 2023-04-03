@@ -1,3 +1,5 @@
+@import "src/assets/styles/mixins";
+
 .app-footer-search {
   background: linear-gradient(107.62deg, #F3F6FF 0%, #BFCEE2 100%);
   height: 60px;
@@ -15,7 +17,7 @@
     position: absolute;
   }
   &__input {
-    font-family: Manrope, serif;
+    @include manrope-font;
     font-style: normal;
     font-weight: 400;
     font-size: 20px;
@@ -31,7 +33,7 @@
     background: linear-gradient(90.74deg, #0F6DFF 0%, #005CEA 100%);
     border-radius: 12px;
     border: none;
-    font-family: Manrope, serif;
+    @include manrope-font;
     font-style: normal;
     font-weight: 400;
     font-size: 16px;

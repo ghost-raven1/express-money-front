@@ -8,7 +8,7 @@
     font-size: 12px;
   }
   &__label {
-    font-family: Manrope, serif;
+    @include manrope-font;
     font-weight: 400;
     font-size: 14px;
     color: #6F767E;
@@ -50,6 +50,7 @@
 }
 
 .selected-text {
+  @include background-clip;
   padding: 0 20px;
   max-height: 43px;
   height: fit-content;
@@ -67,10 +68,6 @@
   line-height: 19px;
   letter-spacing: 0.01em;
   background: linear-gradient(153.6deg, #222738 0%, #101420 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  text-fill-color: transparent;
   &::after {
     content: "";
     position: absolute;
@@ -119,6 +116,7 @@ ul {
     }
   }
   &-option {
+    @include manrope-font;
     max-height: 43px;
     height: 100%;
     display: flex;
@@ -130,7 +128,6 @@ ul {
     padding: 6px 20px;
     cursor: pointer;
     transition: .3s;
-    font-family: Manrope, serif;
     font-weight: 400;
     font-size: 18px;
     color: #1A1D25;

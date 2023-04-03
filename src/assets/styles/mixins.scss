@@ -1,14 +1,32 @@
 @import 'colors';
 
+// Common
+
+@mixin background-clip {
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}
+
 // Fonts
+
+@mixin manrope-font {
+  font-family: 'Manrope', serif;
+}
+
+@mixin sf-pro-display-font {
+  font-family: SF Pro Display, serif;
+}
+
+// Font Size
 
 @mixin font-20 {
   font-style: normal;
-  font-weight: 400;
+  font-weight: 600;
   font-size: 20px;
 }
 @mixin font-16 {
-  font-family: Roboto, serif;
   font-weight: 400;
   font-size: 16px;
 }
