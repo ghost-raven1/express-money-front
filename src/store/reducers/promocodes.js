@@ -14,7 +14,7 @@ export const getPromocodeAsync = (code) => async (dispatch) => {
       console.log("r?.data", r?.data);
     })
     .catch((e) => {
-      console.log("error", e);
+      console.error("error promocodes/promocode/${code}", e);
     });
 };
 

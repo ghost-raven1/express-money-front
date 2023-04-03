@@ -15,9 +15,16 @@ import SvgSelector from "../../components/SvgSelector/SvgSelector.jsx";
 import AppProgressbar from "../../components/AppProgressbar/AppProgressbar.jsx";
 import AppSelectGroup from "../../components/AppSelectGroup/AppSelectGroup.jsx";
 import AppCreditCard from "../../components/AppCreditCard/AppCreditCard.jsx";
+import { useDispatch } from "react-redux";
+import { createUserProfileAsync } from "../../store/reducers/profiles.js";
+import {uploadPassportAsync} from "../../store/reducers/storage.js";
 const ApplicationPage = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [readyToNextStep, setReadyToNextStep] = useState(false);
   const [currStep, setCurrStep] = useState(1);
+  const citiesArr = [{ name: "Москва", id: "moscow" }];
+  const statesArr = [{ name: "Московская область", id: "moscow" }];
   const [stepsArr, setStepsArr] = useState([
     { title: "Персональные данные", isActive: true },
     { title: "Паспорт (cкан)", isActive: false },
@@ -34,11 +41,29 @@ const ApplicationPage = () => {
   const [dayPassId, setDayPassId] = useState();
   const [monthPassId, setMonthPassId] = useState();
   const [yearPassId, setYearPassId] = useState();
+  const [firstName, setFirstName] = useState("111");
+  const [middleName, setMiddleName] = useState("111");
+  const [lastName, setLastName] = useState("111");
+  const [snils, setSnils] = useState("156-936-160 98");
+  const [income, setIncome] = useState(2147483647);
+  const [passportCode, setPassportCode] = useState("");
+  const [passportNumber, setPassportNumber] = useState(323454);
+  const [passportSerial, setPassportSerial] = useState(5677);
+  const [stateId, setStateId] = useState("");
+  const [cityId, setCityId] = useState("");
+  const [street, setStreet] = useState("улица Знаменка");
+  const [streetHouse, setStreetHouse] = useState(5);
+  const [streetApartment, setStreetApartment] = useState(8);
+  const [passportFiles, setPassportFiles] = useState([]);
 
   function stepperLineStyles(isActive) {
     if (isActive)
       return "application-stepper__item-line application-stepper__item-line_active";
     if (!isActive) return "application-stepper__item-line";
+  }
+
+  function searchInArr (arr, id) {
+      return arr.filter((el) => el.id === id)
   }
 
   function nextStep() {
@@ -47,8 +72,42 @@ const ApplicationPage = () => {
       const newArray = [...prevSelected];
       for (let i = 0; i < newArray.length; i += 1) {
         if (currStep === 1) {
-          newArray[0].isActive = false;
-          newArray[1].isActive = true;
+          if (readyToNextStep) {
+            newArray[0].isActive = false;
+            newArray[1].isActive = true;
+          }
+          dispatch(
+            createUserProfileAsync(
+              {
+                first_name: firstName,
+                middle_name: middleName,
+                last_name: lastName,
+                birth_date: `${yearBirthId}-${monthBirthId}-${dayBirthId}`,
+                state: searchInArr(statesArr, stateId)?.name,
+                city: searchInArr(citiesArr, cityId)?.name,
+                street,
+                street_house: streetHouse,
+                street_apartment: streetApartment,
+                // postal_code: "",
+                // street_building: "",
+                // street_lane: "",
+                // address: "",
+                // address_optional: "",
+                // po_box: "",
+                // government_id_type: "",
+                // government_id_number: "",
+                // government_id_date: "",
+                // passport_issue_name: "",
+                passport_serial: passportSerial,
+                passport_number: passportNumber,
+                passport_code: passportCode,
+                passport_date: `${yearPassId}-${monthPassId}-${dayPassId}`,
+                income,
+                snils,
+              },
+              setReadyToNextStep
+            )
+          );
         }
         if (currStep === 2) {
           newArray[1].isActive = false;
@@ -69,6 +128,27 @@ const ApplicationPage = () => {
       behavior: "smooth",
     });
   }, [currStep]);
+
+  useEffect(() => {
+    if (currStep === 2) {
+      if (passportFiles?.length > 0) {
+        // TODO: Доделать запрос отправки паспорта
+        dispatch(uploadPassportAsync({data: {
+            user_id: '',
+            name: '',
+            type: '',
+            is_public: true,
+            file: ''
+          }}))
+      }
+    }
+  }, [passportFiles])
+
+  useEffect(() => {
+    if (currStep === 3) {
+
+    }
+  })
 
   useEffect(() => {
     if (currStep === 4) {
@@ -132,9 +212,24 @@ const ApplicationPage = () => {
               <div className="application-step-left-card__title">
                 Личная информация
               </div>
-              <AppInput label="Фамилия*" mode="white"/>
-              <AppInput label="Имя*" mode="white" />
-              <AppInput label="Отчество*" mode="white" />
+              <AppInput
+                label="Фамилия*"
+                mode="white"
+                onInput={setLastName}
+                value={lastName}
+              />
+              <AppInput
+                label="Имя*"
+                mode="white"
+                onInput={setFirstName}
+                value={firstName}
+              />
+              <AppInput
+                label="Отчество*"
+                mode="white"
+                onInput={setMiddleName}
+                value={middleName}
+              />
               <AppSelectGroup
                 type="birth"
                 setCurrDayId={setDayBirthId}
@@ -149,7 +244,12 @@ const ApplicationPage = () => {
               <div className="application-step-left-card__title">
                 Паспортные данные
               </div>
-              <AppInput label="Серия паспорта*" mode="white" />
+              <AppInput
+                label="Серия паспорта*"
+                mode="white"
+                onInput={setPassportSerial}
+                value={passportSerial}
+              />
               <AppSelectGroup
                 type="date"
                 setCurrDayId={setDayPassId}
@@ -158,8 +258,18 @@ const ApplicationPage = () => {
                 currMonthId={monthPassId}
                 label="Дата выдачи*"
               />
-              <AppInput label="Номер паспорта*" mode="white" />
-              <AppInput label="Код подразделения*" mode="white" />
+              <AppInput
+                label="Номер паспорта*"
+                mode="white"
+                onInput={setPassportNumber}
+                value={passportNumber}
+              />
+              <AppInput
+                label="Код подразделения*"
+                mode="white"
+                onInput={setPassportCode}
+                value={passportCode}
+              />
             </div>
             <div className="application-step-left__delimiter-line" />
             <div className="application-step-left-card">
@@ -167,24 +277,53 @@ const ApplicationPage = () => {
                 Адрес регистрации
               </div>
               <AppSelect
-                optionsList={[{ name: "Москва", id: "moscow" }]}
+                optionsList={citiesArr}
                 label="Город*"
+                onInput={setCityId}
+                value={cityId}
               />
               <AppSelect
-                optionsList={[{ name: "Московская область", id: "moscow" }]}
+                optionsList={statesArr}
                 label="Область / Край*"
+                onInput={setStateId}
+                value={stateId}
               />
-              <AppInput label="Улица*" mode="white" />
-              <AppInput label="Дом*" mode="white" />
-              <AppInput label="Квартира*" mode="white" />
+              <AppInput
+                label="Улица*"
+                mode="white"
+                onInput={setStreet}
+                value={street}
+              />
+              <AppInput
+                label="Дом*"
+                mode="white"
+                onInput={setStreetHouse}
+                value={streetHouse}
+              />
+              <AppInput
+                label="Квартира*"
+                mode="white"
+                onInput={setStreetApartment}
+                value={streetApartment}
+              />
             </div>
             <div className="application-step-left__delimiter-line" />
             <div className="application-step-left-card">
               <div className="application-step-left-card__title">
                 Дополнительно
               </div>
-              <AppInput label="СНИЛС*" mode="white" />
-              <AppInput label="Ежемесячный доход*" mode="white" />
+              <AppInput
+                label="СНИЛС*"
+                mode="white"
+                onInput={setSnils}
+                value={snils}
+              />
+              <AppInput
+                label="Ежемесячный доход*"
+                mode="white"
+                onInput={setIncome}
+                value={income}
+              />
             </div>
             <div className="application-step-left__checkboxes">
               <AppCheckbox label="Я даю Согласие на обработку персональных данных." />
@@ -210,7 +349,7 @@ const ApplicationPage = () => {
                 Скан паспорта
               </div>
             </div>
-            <AppUploaderWrapper />
+            <AppUploaderWrapper files={passportFiles} setFiles={setPassportFiles} />
             <div className="main__button-border main__button-border_black">
               <AppButton mode="black" onClick={() => nextStep()}>
                 ДАЛЕЕ <SvgSelector id="arrow-in-round" />
@@ -232,7 +371,9 @@ const ApplicationPage = () => {
                 (для зачисления займа)
               </span>
             </div>
-            <div className="application-step-left__fill-data">Заполните данные</div>
+            <div className="application-step-left__fill-data">
+              Заполните данные
+            </div>
             <AppCreditCard />
             <div className="main__button-border main__button-border_black">
               <AppButton mode="black" onClick={() => nextStep()}>

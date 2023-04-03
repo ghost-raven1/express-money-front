@@ -10,6 +10,7 @@ const TechPage = () => {
             <div className="tech-page__title">Ссылки на новые разделы: </div>
             <div className="tech-page__buttons">
                 <AppButton mode="black" onClick={() => navigate(RouterPath.auth)}>Авторизация</AppButton>
+                <AppButton mode="black" onClick={() => navigate(RouterPath.registration)}>Регистрация</AppButton>
                 <AppButton mode="black" onClick={() => navigate(RouterPath.profile)}>Личный кабинет</AppButton>
                 <AppButton mode="black" onClick={() => navigate(RouterPath.application)}>Заявка</AppButton>
                 <AppButton mode="black" onClick={() => navigate(RouterPath.aboutCompany)}>О компании</AppButton>
