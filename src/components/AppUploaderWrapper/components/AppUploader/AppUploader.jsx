@@ -3,11 +3,10 @@ import { useCallback, useState } from "react";
 import AppUploaderDropzone from "./components/AppUploaderDropzone/AppUploaderDropzone.jsx";
 import AppUploaderImageGrid from "./components/AppUploaderImageGrid/AppUploaderImageGrid.jsx";
 import cuid from "cuid";
-const AppUploader = () => {
+const AppUploader = ({files, setFiles}) => {
   // TODO: Добавить валидацию
   // TODO: Дизайн для удаления документа
   // TODO: Если не картинка
-  const [files, setFiles] = useState([]);
   const onDrop = useCallback((acceptedFiles) => {
     acceptedFiles.map((file) => {
       console.log('file', file);

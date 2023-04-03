@@ -9,12 +9,12 @@ const smsSlice = createSlice({
 
 export const postSmsAsync = (data) => async (dispatch) => {
   await api
-    .post(`/sms/`, data)
+    .post(`/sms`, data)
     .then((r) => {
       console.log("r?.data", r?.data);
     })
     .catch((e) => {
-      console.log("error", e);
+      console.error("error /sms", e);
     });
 };
 

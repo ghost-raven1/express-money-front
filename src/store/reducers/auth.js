@@ -9,7 +9,8 @@ const authSlice = createSlice({
   },
   reducers: {
     setToken(state, value) {
-      state.token = value.payload;
+      localStorage.setItem('access', value.payload?.access);
+      localStorage.setItem('refresh', value.payload?.refresh);
     },
     setUserId(state, value) {
       state.userId = value.payload;
@@ -17,51 +18,51 @@ const authSlice = createSlice({
   },
 });
 
-export const postTokenAsync = (params) => async (dispatch) => {
+export const authAsync = ({data}) => async (dispatch) => {
   // Получение токена
   await api
-    .post(`/token/`, params)
+    .post(`/token`, data)
     .then((r) => {
-      console.log("r?.data", r?.data);
+      console.log('Получение токена и вход ==> успешно')
       dispatch(setToken(r?.data));
     })
     .catch((e) => {
-      console.log("error", e);
+      console.error("Получение токена и вход ==> ошибка", e?.response?.data?.detail);
     });
 };
 
-export const postTokenRefreshAsync = (params) => async (dispatch) => {
+export const postTokenRefreshAsync = ({params}) => async (dispatch) => {
   await api
-    .post(`/token_refresh/`, params)
+    .post(`/token_refresh`, params)
     .then((r) => {
-      console.log("r?.data", r?.data);
-      // dispatch(setToken(r?.data));
+      console.log('Обновление токена ==> успешно', r?.data)
     })
     .catch((e) => {
-      console.log("error", e);
+      console.error("Обновление токена ==> ошибка", e);
     });
 };
 
-export const postUsersSendPassword = (params) => async (dispatch) => {
+export const postUsersSendPasswordAsync = ({params}) => async (dispatch) => {
   await api
-    .post(`/users/send_password/`, params)
+    .post(`/users/send_password`, params)
     .then((r) => {
       console.log("r?.data", r?.data);
       dispatch(setUserId(r?.data?.user));
     })
     .catch((e) => {
-      console.log("error", e);
+      console.error("error /users/send_password", e);
     });
 };
 
-export const postUsersUser = (params) => async (dispatch) => {
+export const createUserAsync = ({data}) => async (dispatch) => {
   await api
-    .post(`/users/user/`, params)
+    .post(`/users/user_create`, data)
     .then((r) => {
-      console.log("r?.data", r?.data);
+      console.log("Регистрация пользователя ==> успешно", r?.data?.user);
+      localStorage.setItem('userId', r?.data?.user)
     })
     .catch((e) => {
-      console.log("error", e);
+      console.error("Регистрация пользователя ==> ошибка", e);
     });
 };
 

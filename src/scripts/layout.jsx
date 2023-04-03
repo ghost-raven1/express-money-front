@@ -11,22 +11,29 @@ import TechPage from "../pages/techPage/TechPage.jsx";
 import ApplicationPage from "../pages/application/ApplicationPage.jsx";
 import ProfilePage from "../pages/profile/ProfilePage.jsx";
 import AuthPage from "../pages/authPage/AuthPage.jsx";
+import ProtectedRoute from "../components/AppLayout/ProtectedRoute.jsx";
+import RegistrationPage from "../pages/registrationPage/RegistrationPage.jsx";
 
 export function checkRoute(mode) {
-    const modes = {
-        main: <MainPage />,
-        howToRepay: <HowToRepayPage />,
-        howToGet: <HowToGet />,
-        loyaltyProgram: <LoyaltyProgram />,
-        aboutCompany: <AboutCompany />,
-        faqPage: <FaqPage />,
-        error: <ErrorPage />,
-        techPage: <TechPage />,
-        application: <ApplicationPage />,
-        profile: <ProfilePage />,
-        auth: <AuthPage />
-    };
-    return modes[mode];
+  const modes = {
+    main: <MainPage />,
+    howToRepay: <HowToRepayPage />,
+    howToGet: <HowToGet />,
+    loyaltyProgram: <LoyaltyProgram />,
+    aboutCompany: <AboutCompany />,
+    faqPage: <FaqPage />,
+    error: <ErrorPage />,
+    techPage: <TechPage />,
+    application: (
+      <ProtectedRoute>
+        <ApplicationPage />
+      </ProtectedRoute>
+    ),
+    auth: <AuthPage />,
+    registration: <RegistrationPage />,
+    profile: <ProfilePage />,
+  };
+  return modes[mode];
 }
 
 // export function modalRender(options, closeModal, currentModalKey) {

@@ -3,23 +3,32 @@ import api from "../api";
 
 const usersSlice = createSlice({
   name: "users",
-  initialState: {},
-  reducers: {},
+  initialState: {
+    userId: '',
+    username: ''
+  },
+  reducers: {
+    setUserDataIdUsername(state, value) {
+      state.userId = value.payload?.id;
+      state.username = value?.payload?.username;
+    }
+  },
 });
 
-export const getUserByIdAsync = (params) => async (dispatch) => {
+export const getUserByIdAsync = ({username}) => async (dispatch) => {
   await api
-    .get(`/users/user_id/${params?.username}`, { params: params })
+    .get(`/users/user_id/${username}`)
     .then((r) => {
-      console.log("r?.data", r?.data);
+      console.log("Получение id пользователя ==> успешно", r?.data);
+      dispatch(setUserDataIdUsername(r?.data))
     })
     .catch((e) => {
-      console.log("error", e);
+      console.error("Получение id пользователя ==> ошибка", e);
     });
 };
 
 // users/user
 
-export const {} = usersSlice.actions;
+export const {setUserDataIdUsername} = usersSlice.actions;
 
 export default usersSlice.reducer;
