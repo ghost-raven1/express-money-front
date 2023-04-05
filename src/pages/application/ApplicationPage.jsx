@@ -195,7 +195,7 @@ const ApplicationPage = () => {
                   income,
                   snils,
                 },
-                userId,
+                userId || localStorage.getItem('userId'),
                 setReadyToNextStep
               )
             );
