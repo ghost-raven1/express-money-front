@@ -1,10 +1,9 @@
 import "./ApplicationPage.scss";
 import AppHeadSection from "../../components/AppHeadSection/AppHeadSection.jsx";
 import mainTariffsBlockDelimiter from "../../assets/main/Delimiters/Delimiter.svg";
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import AppButton from "../../components/AppButton/AppButton.jsx";
 import AppInput from "../../components/AppInput/AppInput.jsx";
-import AppSelect from "../../components/AppSelect/AppSelect.jsx";
 import AppCheckbox from "../../components/AppCheckbox/AppCheckbox.jsx";
 import ApplicationCalculator from "./components/ApplicationCalculator/ApplicationCalculator.jsx";
 import ApplicationHelp from "./components/ApplicationHelp/ApplicationHelp.jsx";
@@ -17,7 +16,8 @@ import AppSelectGroup from "../../components/AppSelectGroup/AppSelectGroup.jsx";
 import AppCreditCard from "../../components/AppCreditCard/AppCreditCard.jsx";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  createUserProfileAsync, editUserProfileAsync,
+  createUserProfileAsync,
+  editUserProfileAsync,
   getUserProfileAsync,
 } from "../../store/reducers/profiles.js";
 import { uploadPassportAsync } from "../../store/reducers/storage.js";
@@ -28,8 +28,6 @@ const ApplicationPage = () => {
   const { userId } = useSelector((store) => store.usersReducer);
   const [readyToNextStep, setReadyToNextStep] = useState(false);
   const [currStep, setCurrStep] = useState(1);
-  const citiesArr = [{ name: "Москва", id: "moscow" }];
-  const statesArr = [{ name: "Московская область", id: "moscow" }];
   const [stepsArr, setStepsArr] = useState([
     { title: "Персональные данные", isActive: true },
     { title: "Паспорт (cкан)", isActive: false },
@@ -40,12 +38,24 @@ const ApplicationPage = () => {
   const [smsTimer, setSmsTimer] = useState(60);
   const [isActiveSmsTimer, setIsActiveSmsTimer] = useState(true);
   const [firstRenderSmsTimer, setFirstRenderSmsTimer] = useState(false);
-  const [dayBirthId, setDayBirthId] = useState();
-  const [monthBirthId, setMonthBirthId] = useState();
-  const [yearBirthId, setYearBirthId] = useState();
-  const [dayPassId, setDayPassId] = useState();
-  const [monthPassId, setMonthPassId] = useState();
-  const [yearPassId, setYearPassId] = useState();
+  const [dayBirthId, setDayBirthId] = useState(
+    getNumberFromDate({ type: "day", date: userProfile?.birth_date })
+  );
+  const [monthBirthId, setMonthBirthId] = useState(
+    getNumberFromDate({ type: "month", date: userProfile?.birth_date })
+  );
+  const [yearBirthId, setYearBirthId] = useState(
+    getNumberFromDate({ type: "year", date: userProfile?.birth_date })
+  );
+  const [dayPassId, setDayPassId] = useState(
+    getNumberFromDate({ type: "day", date: userProfile?.passport_date })
+  );
+  const [monthPassId, setMonthPassId] = useState(
+    getNumberFromDate({ type: "month", date: userProfile?.passport_date })
+  );
+  const [yearPassId, setYearPassId] = useState(
+    getNumberFromDate({ type: "year", date: userProfile?.passport_date })
+  );
   const [firstName, setFirstName] = useState(userProfile?.first_name);
   const [middleName, setMiddleName] = useState(userProfile?.middle_name);
   const [lastName, setLastName] = useState(userProfile?.last_name);
@@ -58,8 +68,8 @@ const ApplicationPage = () => {
   const [passportSerial, setPassportSerial] = useState(
     userProfile?.passport_serial
   );
-  const [stateId, setStateId] = useState("");
-  const [cityId, setCityId] = useState("");
+  const [state, setState] = useState(userProfile?.state);
+  const [city, setCity] = useState(userProfile?.city);
   const [street, setStreet] = useState(userProfile?.street);
   const [streetHouse, setStreetHouse] = useState(userProfile?.street_house);
   const [streetApartment, setStreetApartment] = useState(
@@ -73,11 +83,37 @@ const ApplicationPage = () => {
     if (!isActive) return "application-stepper__item-line";
   }
 
-  function searchInArr(arr, id) {
-    return arr.filter((el) => el.id === id);
+  function getNumberFromDate({ type, date }) {
+    if (!!date?.length) {
+      const dateArr = date?.split("-");
+      if (type === "year") return dateArr[0];
+      if (type === "month") return dateArr[1].replace(/0/g, "");
+      if (type === "day") return dateArr[2].replace(/0/g, "");
+    }
   }
 
-  // TODO: Добавить функцию сравнения для отслеживания изменений полей профиля
+  function checkChanges() {
+    const changes = [];
+    if (userProfile?.first_name !== firstName) changes.push("firstName");
+    if (userProfile?.middle_name !== middleName) changes.push("middleName");
+    if (userProfile?.last_name !== lastName) changes.push("lastName");
+    if (userProfile?.snils !== snils) changes.push("snils");
+    if (userProfile?.income !== income) changes.push("income");
+    if (userProfile?.passport_code !== passportCode)
+      changes.push("passportCode");
+    if (userProfile?.passport_number !== passportNumber)
+      changes.push("passportNumber");
+    if (userProfile?.passport_serial !== passportSerial)
+      changes.push("passportSerial");
+    if (userProfile?.street !== street) changes.push("street");
+    if (userProfile?.street_house !== streetHouse) changes.push("streetHouse");
+    if (userProfile?.street_apartment !== streetApartment)
+      changes.push("streetApartment");
+    if (userProfile?.state !== state) changes.push("state");
+    if (userProfile?.city !== city) changes.push("city");
+    if (changes?.length === 0) return false;
+    if (changes?.length > 0) return true;
+  }
 
   function checkStep(newArray) {
     if (readyToNextStep) {
@@ -110,40 +146,61 @@ const ApplicationPage = () => {
                   first_name: firstName,
                   middle_name: middleName,
                   last_name: lastName,
-                  birth_date: `${yearBirthId}-${monthBirthId}-${dayBirthId}`,
-                  state: searchInArr(statesArr, stateId)?.name,
-                  city: searchInArr(citiesArr, cityId)?.name,
+                  birth_date:
+                    !!yearBirthId && !!monthBirthId && !!dayBirthId
+                      ? `${yearBirthId}-${monthBirthId}-${dayBirthId}`
+                      : userProfile?.birth_date,
+                  state,
+                  city,
                   street,
                   street_house: streetHouse,
                   street_apartment: streetApartment,
                   passport_serial: passportSerial,
                   passport_number: passportNumber,
                   passport_code: passportCode,
-                  passport_date: `${yearPassId}-${monthPassId}-${dayPassId}`,
+                  passport_date:
+                    !!yearPassId && !!monthPassId && !!dayPassId
+                      ? `${yearPassId}-${monthPassId}-${dayPassId}`
+                      : userProfile?.passport_date,
                   income,
                   snils,
                 },
                 setReadyToNextStep
               )
             );
+          }
+          if (checkChanges() === true) {
+            dispatch(
+              editUserProfileAsync(
+                {
+                  first_name: firstName,
+                  middle_name: middleName,
+                  last_name: lastName,
+                  birth_date:
+                    !!yearBirthId && !!monthBirthId && !!dayBirthId
+                      ? `${yearBirthId}-${monthBirthId}-${dayBirthId}`
+                      : userProfile?.birth_date,
+                  state,
+                  city,
+                  street,
+                  street_house: streetHouse,
+                  street_apartment: streetApartment,
+                  passport_serial: passportSerial,
+                  passport_number: passportNumber,
+                  passport_code: passportCode,
+                  passport_date:
+                    !!yearPassId && !!monthPassId && !!dayPassId
+                      ? `${yearPassId}-${monthPassId}-${dayPassId}`
+                      : userProfile?.passport_date,
+                  income,
+                  snils,
+                },
+                userId,
+                setReadyToNextStep
+              )
+            );
           } else {
-            dispatch(editUserProfileAsync({
-              first_name: firstName,
-              middle_name: middleName,
-              last_name: lastName,
-              birth_date: !!yearBirthId && !!monthBirthId && !!dayBirthId ? `${yearBirthId}-${monthBirthId}-${dayBirthId}` : userProfile?.birth_date,
-              state: searchInArr(statesArr, stateId)?.name,
-              city: searchInArr(citiesArr, cityId)?.name,
-              street,
-              street_house: streetHouse,
-              street_apartment: streetApartment,
-              passport_serial: passportSerial,
-              passport_number: passportNumber,
-              passport_code: passportCode,
-              passport_date: !!yearPassId && !!monthPassId && !!dayPassId ? `${yearPassId}-${monthPassId}-${dayPassId}` : userProfile?.passport_date,
-              income,
-              snils,
-            }, userId, setReadyToNextStep))
+            setReadyToNextStep(true);
           }
         }
         if (currStep === 2) {
@@ -157,8 +214,8 @@ const ApplicationPage = () => {
     });
   }
 
-  useEffect(() => {
-    dispatch(getUserProfileAsync(userId));
+  useLayoutEffect(() => {
+    dispatch(getUserProfileAsync(userId || localStorage.getItem("userId")));
   }, []);
 
   useEffect(() => {
@@ -167,6 +224,41 @@ const ApplicationPage = () => {
       behavior: "smooth",
     });
   }, [currStep]);
+
+  useEffect(() => {
+    // Заполнение профиля
+    setFirstName(userProfile?.first_name);
+    setMiddleName(userProfile?.middle_name);
+    setLastName(userProfile?.last_name);
+    setPassportSerial(userProfile?.passport_serial);
+    setPassportNumber(userProfile?.passport_number);
+    setPassportCode(userProfile?.passport_code);
+    setCity(userProfile?.city);
+    setState(userProfile?.state);
+    setStreet(userProfile?.street);
+    setStreetHouse(userProfile?.street_house);
+    setStreetApartment(userProfile?.street_apartment);
+    setSnils(userProfile?.snils);
+    setIncome(userProfile?.income);
+    setDayBirthId(
+      getNumberFromDate({ type: "day", date: userProfile?.birth_date })
+    );
+    setMonthBirthId(
+      getNumberFromDate({ type: "month", date: userProfile?.birth_date })
+    );
+    setYearBirthId(
+      getNumberFromDate({ type: "year", date: userProfile?.birth_date })
+    );
+    setDayPassId(
+      getNumberFromDate({ type: "day", date: userProfile?.passport_date })
+    );
+    setMonthPassId(
+      getNumberFromDate({ type: "month", date: userProfile?.passport_date })
+    );
+    setYearPassId(
+      getNumberFromDate({ type: "year", date: userProfile?.passport_date })
+    );
+  }, [userProfile]);
 
   useEffect(() => {
     if (currStep === 2) {
@@ -277,7 +369,9 @@ const ApplicationPage = () => {
                 setCurrDayId={setDayBirthId}
                 setCurrYearId={setYearBirthId}
                 setCurrMonthId={setMonthBirthId}
+                currYearId={yearBirthId}
                 currMonthId={monthBirthId}
+                currDayId={dayBirthId}
                 label="Дата рождения*"
               />
             </div>
@@ -297,7 +391,9 @@ const ApplicationPage = () => {
                 setCurrDayId={setDayPassId}
                 setCurrYearId={setYearPassId}
                 setCurrMonthId={setMonthPassId}
+                currYearId={yearPassId}
                 currMonthId={monthPassId}
+                currDayId={dayPassId}
                 label="Дата выдачи*"
               />
               <AppInput
@@ -318,17 +414,11 @@ const ApplicationPage = () => {
               <div className="application-step-left-card__title">
                 Адрес регистрации
               </div>
-              <AppSelect
-                optionsList={citiesArr}
-                label="Город*"
-                onInput={setCityId}
-                value={cityId}
-              />
-              <AppSelect
-                optionsList={statesArr}
+              <AppInput label="Город*" onInput={setCity} value={city} />
+              <AppInput
                 label="Область / Край*"
-                onInput={setStateId}
-                value={stateId}
+                onInput={setState}
+                value={state}
               />
               <AppInput
                 label="Улица*"
