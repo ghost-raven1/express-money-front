@@ -1,18 +1,17 @@
 import AppInput from "../../components/AppInput/AppInput.jsx";
 import AppButton from "../../components/AppButton/AppButton.jsx";
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { authAsync } from "../../store/reducers/auth.js";
 import "./AuthPage.scss";
 import { getUserByIdAsync } from "../../store/reducers/users.js";
 import AppPhoneInput from "../../components/AppPhoneInput/AppPhoneInput.jsx";
-import { useNavigate } from "react-router-dom";
-import { getUserProfileAsync } from "../../store/reducers/profiles.js";
+import {RouterPath} from "../../utils/constants.js";
+import {useNavigate} from "react-router-dom";
 
 const AuthPage = () => {
-  const { userId } = useSelector((store) => store.usersReducer);
-  const navigate = useNavigate();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [username, setUsername] = useState("+79528078160");
   const [password, setPassword] = useState("tree199522");
   function sendData() {
@@ -29,11 +28,8 @@ const AuthPage = () => {
         username,
       })
     );
+    navigate(RouterPath.application)
   }
-
-  useEffect(() => {
-      if (userId) dispatch(getUserProfileAsync(userId, navigate));
-  }, [userId]);
 
   return (
     <div className="auth">

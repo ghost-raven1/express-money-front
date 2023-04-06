@@ -33,7 +33,7 @@
       display: flex;
       flex-direction: column;
       gap: 10px;
-      left: 5%;
+      left: 15%;
       &-title {
         @include background-clip;
         font-family: 'SF Pro Display', serif;
@@ -90,7 +90,7 @@
     &__img {
       height: 908px;
       margin-top: -64px;
-      margin-left: -152px;
+      //margin-left: -152px;
       padding-left: -1px;
       margin-right: -132px;
     }

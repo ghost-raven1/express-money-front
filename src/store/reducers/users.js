@@ -10,6 +10,7 @@ const usersSlice = createSlice({
   reducers: {
     setUserDataIdUsername(state, value) {
       state.userId = value.payload?.id;
+      localStorage.setItem('userId', value.payload?.id);
       state.username = value?.payload?.username;
     }
   },
