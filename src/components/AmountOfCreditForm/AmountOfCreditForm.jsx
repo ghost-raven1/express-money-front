@@ -71,7 +71,7 @@ const AmountOfCreditForm = () => {
               })}
           </div>
           <div className="credit-form-container__left-text">
-            К возврату {calcAmount + interests} ₽
+            К возврату {+calcAmount + interestsData} ₽
           </div>
         </div>
         <AppSelect optionsList={days} mode="grey" onInput={setCalcPeriod} />
@@ -87,7 +87,7 @@ const AmountOfCreditForm = () => {
       <div className="amount-of-credit-form__bottom">
       {/*  <AppCheckbox label="Карта лояльности" />*/}
       <div className="amount-of-credit-form__bottom-percent">
-        {interestsData}% в сутки
+        {interests}% в сутки
       </div>
       </div>
     </div>
