@@ -11,7 +11,7 @@ const ApplicationCalculator = () => {
   function calcReturnDate() {
     const today = new Date();
     today.setDate(today.getDate() + +calcPeriod);
-    const day = today.getDay().toString();
+    const day = today.getDate().toString();
     const month = today.getMonth().toString();
     const year = today.getFullYear().toString();
     setReturnDay(day);
