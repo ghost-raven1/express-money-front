@@ -27,30 +27,24 @@ const AppSelectGroup = ({
     { id: "12", name: "Декабрь" },
   ]);
   const [years, setYears] = useState([]);
-  const [selectedDay, setSelectedDay] = useState(
-    searchItemInArr(days, currDayId)
-  );
-  const [selectedMonth, setSelectedMonth] = useState(
-    searchItemInArr(months, currMonthId)
-  );
-  const [selectedYear, setSelectedYear] = useState(
-    searchItemInArr(years, currYearId)
-  );
+  const [selectedDay, setSelectedDay] = useState({});
+  const [selectedMonth, setSelectedMonth] = useState({});
+  const [selectedYear, setSelectedYear] = useState({});
   function fillDays() {
     let daysArr = [];
     if (["1", "3", "5", "7", "8", "10", "12"].includes(currMonthId)) {
       for (let i = 1; i < 32; i += 1) {
-        daysArr.push({ id: i, name: i });
+        daysArr.push({ id: i.toString(), name: i.toString() });
       }
     }
     if (["4", "6", "9", "11"].includes(currMonthId)) {
       for (let i = 1; i < 31; i += 1) {
-        daysArr.push({ id: i, name: i });
+        daysArr.push({ id: i.toString(), name: i.toString() });
       }
     }
     if (currMonthId === "2") {
       for (let i = 1; i < 29; i += 1) {
-        daysArr.push({ id: i, name: i });
+        daysArr.push({ id: i.toString(), name: i.toString() });
       }
     }
     setDays(daysArr);
@@ -59,13 +53,13 @@ const AppSelectGroup = ({
     const yearsArr = [];
     const currDate = new Date().getFullYear();
     if (type === "birth") {
-      for (let i = 1920; i < currDate - 20; i += 1) {
-        yearsArr.push({ id: i, name: i });
+      for (let i = 1952; i < currDate - 20; i += 1) {
+        yearsArr.push({ id: i.toString(), name: i.toString() });
       }
     }
     if (type === "date") {
-      for (let i = 1920; i < currDate; i += 1) {
-        yearsArr.push({ id: i, name: i });
+      for (let i = 1952; i < currDate; i += 1) {
+        yearsArr.push({ id: i.toString(), name: i.toString() });
       }
     }
     setYears(yearsArr);
@@ -77,14 +71,21 @@ const AppSelectGroup = ({
 
   useLayoutEffect(() => {
     fillYears();
+    fillDays();
   }, []);
 
   useEffect(() => {
-    fillDays();
-    setSelectedYear(searchItemInArr(years, currYearId));
     setSelectedMonth(searchItemInArr(months, currMonthId));
-    setSelectedDay(searchItemInArr(days, currDayId));
+    fillDays();
   }, [currMonthId]);
+
+  useEffect(() => {
+    setSelectedYear(searchItemInArr(years, currYearId));
+  }, [setYears, currYearId])
+
+  useEffect(() => {
+    setSelectedDay(searchItemInArr(days, currDayId));
+  }, [setDays, currDayId, days])
 
   return (
     <div className="select-group">

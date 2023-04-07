@@ -20,7 +20,7 @@ const AmountOfCreditForm = () => {
   ]);
   const [freePeriodData, setFreePeriodData] = useState(freePeriod);
   const [interestsData, setInterestsData] = useState(interests);
-  const [calcAmount, setCalcAmount] = useState(50000); // id_amount_requested
+  const [calcAmount, setCalcAmount] = useState(15000); // id_amount_requested
   const [calcPeriod, setCalcPeriod] = useState(1); // id_period_requested
   // const [calcPromocode, setPromocode] = useState(); // id_promocode_code
 

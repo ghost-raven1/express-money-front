@@ -474,6 +474,7 @@ const ApplicationPage = () => {
         </div>
       )}
       {currStep === 2 && (
+          // TODO: Добавление скана паспорта после добавления сразу верификация
         <div className="application-step">
           <div className="application-step-left">
             <div className="application-step-left-card">
@@ -498,6 +499,7 @@ const ApplicationPage = () => {
         </div>
       )}
       {currStep === 3 && (
+          // TODO: Добавление карты
         <div className="application-step">
           <div className="application-step-left">
             <div className="application-step-left__title-min">
