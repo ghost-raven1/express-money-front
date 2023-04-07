@@ -1,7 +1,12 @@
 import "./MainTariffsListCard.scss";
 import AppButton from "../../../../../../../../components/AppButton/AppButton.jsx";
 import SvgSelector from "../../../../../../../../components/SvgSelector/SvgSelector.jsx";
+import {useNavigate} from "react-router-dom";
+import {RouterPath} from "../../../../../../../../utils/constants.js";
+import {makeAApplication} from "../../../../../../../../scripts/common.js";
 const MainTariffsListCard = ({ item }) => {
+  const navigate = useNavigate();
+
   function countTypeRU(countType) {
     if (countType === "days") return "Дней";
     else return "Год";
@@ -77,11 +82,11 @@ const MainTariffsListCard = ({ item }) => {
           К возврату {item.value} руб.*
         </div>
         <div className="tariffs-list-card-bottom__button">
-          <a href="https://platform.expressmoney.com/loans/" target='_blank'>
-          <AppButton mode={item.type === 'standard' ? 'black' : 'blue'}>
+          {/*<a href="https://platform.expressmoney.com/loans/" target='_blank'>*/}
+          <AppButton mode={item.type === 'standard' ? 'black' : 'blue'} onClick={() => makeAApplication({navigate, routerPath: RouterPath.application})}>
             ОФОРМИТЬ ЗАЯВКУ <SvgSelector id="arrow-in-round" />
           </AppButton>
-          </a>
+          {/*</a>*/}
         </div>
       </div>
     </div>
