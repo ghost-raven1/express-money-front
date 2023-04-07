@@ -2,6 +2,7 @@ import AppUploader from "./components/AppUploader/AppUploader.jsx";
 import './AppUploaderWrapper.scss';
 
 const AppUploaderWrapper = ({files, setFiles}) => {
+
     return (
         <div className="uploader">
             <AppUploader files={files} setFiles={setFiles} />

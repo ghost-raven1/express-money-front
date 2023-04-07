@@ -133,75 +133,98 @@ const ApplicationPage = () => {
     }
   }
 
+  function createUserProfile () {
+    dispatch(
+        createUserProfileAsync(
+            {
+              first_name: firstName,
+              middle_name: middleName,
+              last_name: lastName,
+              birth_date:
+                  !!yearBirthId && !!monthBirthId && !!dayBirthId
+                      ? `${yearBirthId}-${monthBirthId}-${dayBirthId}`
+                      : userProfile?.birth_date,
+              state,
+              city,
+              street,
+              street_house: streetHouse,
+              street_apartment: streetApartment,
+              passport_serial: passportSerial,
+              passport_number: passportNumber,
+              passport_code: passportCode,
+              passport_date:
+                  !!yearPassId && !!monthPassId && !!dayPassId
+                      ? `${yearPassId}-${monthPassId}-${dayPassId}`
+                      : userProfile?.passport_date,
+              income,
+              snils,
+            },
+            setReadyToNextStep
+        )
+    );
+  }
+
+  function editUserProfile () {
+    dispatch(
+        editUserProfileAsync(
+            {
+              first_name: firstName,
+              middle_name: middleName,
+              last_name: lastName,
+              birth_date:
+                  !!yearBirthId && !!monthBirthId && !!dayBirthId
+                      ? `${yearBirthId}-${monthBirthId}-${dayBirthId}`
+                      : userProfile?.birth_date,
+              state,
+              city,
+              street,
+              street_house: streetHouse,
+              street_apartment: streetApartment,
+              passport_serial: passportSerial,
+              passport_number: passportNumber,
+              passport_code: passportCode,
+              passport_date:
+                  !!yearPassId && !!monthPassId && !!dayPassId
+                      ? `${yearPassId}-${monthPassId}-${dayPassId}`
+                      : userProfile?.passport_date,
+              income,
+              snils,
+            },
+            userId || localStorage.getItem('userId'),
+            setReadyToNextStep
+        )
+    );
+  }
+
+  function uploadPassport () {
+    const file = passportFiles[0];
+    const fileType = file?.size;
+    const fileName = file?.name;
+    console.log('passportFiles[0]', passportFiles[0])
+    console.log('fileType', fileType)
+    console.log('fileName', fileName)
+    // dispatch(
+    //     uploadPassportAsync({
+    //       data: {
+    //         user_id: userId,
+    //         name: `${firstName} ${lastName}`,
+    //         type: "passport",
+    //         is_public: false,
+    //         file: passportFiles[0],
+    //       },
+    //     })
+    // );
+  }
+
   function nextStep() {
     setStepsArr((prevSelected) => {
       const newArray = [...prevSelected];
       for (let i = 0; i < newArray.length; i += 1) {
         if (currStep === 1) {
           checkStep(newArray);
-          if (!Object.keys(userProfile)?.length) {
-            dispatch(
-              createUserProfileAsync(
-                {
-                  first_name: firstName,
-                  middle_name: middleName,
-                  last_name: lastName,
-                  birth_date:
-                    !!yearBirthId && !!monthBirthId && !!dayBirthId
-                      ? `${yearBirthId}-${monthBirthId}-${dayBirthId}`
-                      : userProfile?.birth_date,
-                  state,
-                  city,
-                  street,
-                  street_house: streetHouse,
-                  street_apartment: streetApartment,
-                  passport_serial: passportSerial,
-                  passport_number: passportNumber,
-                  passport_code: passportCode,
-                  passport_date:
-                    !!yearPassId && !!monthPassId && !!dayPassId
-                      ? `${yearPassId}-${monthPassId}-${dayPassId}`
-                      : userProfile?.passport_date,
-                  income,
-                  snils,
-                },
-                setReadyToNextStep
-              )
-            );
-          }
-          if (checkChanges() === true) {
-            dispatch(
-              editUserProfileAsync(
-                {
-                  first_name: firstName,
-                  middle_name: middleName,
-                  last_name: lastName,
-                  birth_date:
-                    !!yearBirthId && !!monthBirthId && !!dayBirthId
-                      ? `${yearBirthId}-${monthBirthId}-${dayBirthId}`
-                      : userProfile?.birth_date,
-                  state,
-                  city,
-                  street,
-                  street_house: streetHouse,
-                  street_apartment: streetApartment,
-                  passport_serial: passportSerial,
-                  passport_number: passportNumber,
-                  passport_code: passportCode,
-                  passport_date:
-                    !!yearPassId && !!monthPassId && !!dayPassId
-                      ? `${yearPassId}-${monthPassId}-${dayPassId}`
-                      : userProfile?.passport_date,
-                  income,
-                  snils,
-                },
-                userId || localStorage.getItem('userId'),
-                setReadyToNextStep
-              )
-            );
-          } else {
-            setReadyToNextStep(true);
-          }
+          if (!Object.keys(userProfile)?.length) createUserProfile()
+          if (checkChanges() === true) editUserProfile ()
+          else setReadyToNextStep(true);
         }
         if (currStep === 2) {
           checkStep(newArray);
@@ -264,17 +287,7 @@ const ApplicationPage = () => {
     if (currStep === 2) {
       if (passportFiles?.length > 0) {
         // TODO: Доделать запрос отправки паспорта
-        dispatch(
-          uploadPassportAsync({
-            data: {
-              user_id: userId,
-              name: `${firstName} ${lastName}`,
-              type: "passport",
-              is_public: false,
-              file: "", // Уточнить
-            },
-          })
-        );
+        uploadPassport()
       }
     }
   }, [passportFiles]);

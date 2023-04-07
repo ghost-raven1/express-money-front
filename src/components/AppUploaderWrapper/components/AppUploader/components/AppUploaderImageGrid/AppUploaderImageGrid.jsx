@@ -7,8 +7,7 @@ const Image = ({ file, deleteFile }) => {
 };
 
 const AppUploaderImageGrid = ({ files, deleteFile }) => {
-  console.log('files', files)
-  const renderImage = (file, index) => {
+  const renderImage = (file) => {
     return <Image file={file} key={file.id} deleteFile={deleteFile} />;
   };
 
