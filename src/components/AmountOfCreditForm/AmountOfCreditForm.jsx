@@ -10,7 +10,6 @@ import {useNavigate} from "react-router-dom";
 import {RouterPath} from "../../utils/constants.js";
 import {makeAApplication} from "../../scripts/common.js";
 const AmountOfCreditForm = () => {
-  // TODO: Проверить логику
   const priceLabels = ["1000 руб", "50 000 руб", "100 000 руб"];
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -23,25 +22,16 @@ const AmountOfCreditForm = () => {
     { id: "30", name: "30 дней" },
   ]);
   const [freePeriodData, setFreePeriodData] = useState(freePeriod);
-  const [interestsData, setInterestsData] = useState(interests);
+  const [interestsData, setInterestsData] = useState(interests || 1.00);
   const [calcAmount, setCalcAmount] = useState(15000); // id_amount_requested
   const [calcPeriod, setCalcPeriod] = useState(1); // id_period_requested
-  // const [calcPromocode, setPromocode] = useState(); // id_promocode_code
 
   function calcInterests() {
     const i =
       ((calcAmount * interests) / 100) *
       (calcPeriod - freePeriodData);
-    console.log("interests", i);
     setInterestsData(i);
   }
-
-  // get_promocode_product(_event):
-  //     calc_promocode.value = calc_promocode.value.upper()
-  //     if len(calc_promocode.value) > 4:
-  //         url = f"{API}/promocodes/promocode/{calc_promocode.value}"
-  //         ajax.get(url, oncomplete=set_promocode_product, mode="json")
-  //         change_table(None)
 
   useLayoutEffect(() => {
     dispatch(getDefaultProductAsync());
@@ -94,7 +84,7 @@ const AmountOfCreditForm = () => {
       <div className="amount-of-credit-form__bottom">
       {/*  <AppCheckbox label="Карта лояльности" />*/}
       <div className="amount-of-credit-form__bottom-percent">
-        {interests}% в сутки
+        {interests || 1.00}% в сутки
       </div>
       </div>
     </div>

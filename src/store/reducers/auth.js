@@ -43,6 +43,8 @@ export const postTokenRefreshAsync =
       .post(`/token_refresh`, params)
       .then((r) => {
         console.log("Обновление токена ==> успешно", r?.data);
+        // localStorage.setItem("access", "");
+        // localStorage.setItem("refresh", "");
       })
       .catch((e) => {
         console.error("Обновление токена ==> ошибка", e);
