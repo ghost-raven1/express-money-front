@@ -3,8 +3,11 @@ import appLoanBlockSmileMan from 'src/assets/LoanBlock/SmileMan.png';
 import AppButton from "../../../AppButton/AppButton.jsx";
 import SvgSelector from "../../../SvgSelector/SvgSelector.jsx";
 import {RouterPath} from "../../../../utils/constants.js";
+import {useNavigate} from "react-router-dom";
+import {makeAApplication} from "../../../../scripts/common.js";
 const AppLoanBlockCard = () => {
     const currentPath = window.location.pathname;
+    const navigate = useNavigate();
 
     function peoplesImages () {
         if (currentPath === RouterPath.main) return appLoanBlockSmileMan
@@ -35,11 +38,11 @@ const AppLoanBlockCard = () => {
                     0,9% на срок до 21 дня на сумму до 15 000 ₽
                 </div>
                 <div className="main__button-border main__button-border_black">
-                    <a href="https://platform.expressmoney.com/loans/" target='_blank'>
-                    <AppButton mode="black">
+                    {/*<a href="https://platform.expressmoney.com/loans/" target='_blank'>*/}
+                    <AppButton mode="black" onClick={() => makeAApplication({navigate, routerPath: RouterPath.application})}>
                         ОФОРМИТЬ ЗАЯВКУ <SvgSelector id="arrow-in-round" />
                     </AppButton>
-                    </a>
+                    {/*</a>*/}
                 </div>
             </div>
             <div className="loan-block-card-right">

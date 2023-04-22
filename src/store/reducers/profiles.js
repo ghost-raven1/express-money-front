@@ -66,6 +66,26 @@ export const editUserProfileAsync =
       });
   };
 
+export const getUserFilesAsync = () => async (dispatch) => {
+    await api.get(`profiles/document`, {headers})
+        .then((r) => {
+            console.log('Получение файлов пользователя ===> успешно', r?.data)
+        })
+        .catch((e) => {
+            console.log('Получение файлов пользователя ===> ошибка', e)
+        })
+}
+
+export const getLoansStatusAsync = ({data}) => async (dispatch) => {
+    await api.get(`/profiles/no_loans/`, data)
+        .then((r) => {
+            console.log('Получение статуса наличия займов у пользователя ===> успешно', r?.data)
+        })
+        .catch((e) => {
+            console.error('Получение статуса наличия займов у пользователя ===> ошибка', e)
+        })
+}
+
 export const { setUserProfile } = profilesSlice.actions;
 
 export default profilesSlice.reducer;

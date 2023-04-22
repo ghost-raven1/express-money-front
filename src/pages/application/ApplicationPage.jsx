@@ -1,7 +1,7 @@
 import "./ApplicationPage.scss";
 import AppHeadSection from "../../components/AppHeadSection/AppHeadSection.jsx";
 import mainTariffsBlockDelimiter from "../../assets/main/Delimiters/Delimiter.svg";
-import { useEffect, useLayoutEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import AppButton from "../../components/AppButton/AppButton.jsx";
 import AppInput from "../../components/AppInput/AppInput.jsx";
 import AppCheckbox from "../../components/AppCheckbox/AppCheckbox.jsx";
@@ -18,14 +18,21 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   createUserProfileAsync,
   editUserProfileAsync,
+  getLoansStatusAsync,
+  getUserFilesAsync,
   getUserProfileAsync,
 } from "../../store/reducers/profiles.js";
-import { uploadPassportAsync } from "../../store/reducers/storage.js";
+import {
+  createBankCardAsync,
+  getBankCardListAsync,
+} from "../../store/reducers/bankCards.js";
+import { getUserIpAsync } from "../../store/reducers/users.js";
 const ApplicationPage = () => {
+  const stepsDebug = true; // Отображение текущего шага на вкладке
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { userProfile } = useSelector((store) => store.profilesReducer);
-  const { userId } = useSelector((store) => store.usersReducer);
+  const { userId, userIp } = useSelector((store) => store.usersReducer);
   const [readyToNextStep, setReadyToNextStep] = useState(false);
   const [currStep, setCurrStep] = useState(1);
   const [stepsArr, setStepsArr] = useState([
@@ -75,7 +82,12 @@ const ApplicationPage = () => {
   const [streetApartment, setStreetApartment] = useState(
     userProfile?.street_apartment
   );
-  const [passportFiles, setPassportFiles] = useState([]);
+  const [cardNumber, setCardNumber] = useState();
+  const [cardOwnerName, setCardOwnerName] = useState();
+  const [CVV, setCVV] = useState();
+  const [cardYear, setCardYear] = useState();
+  const [cardMonth, setCardMonth] = useState();
+  const [cardCryptogram, setCardCryptogram] = useState("");
 
   function stepperLineStyles(isActive) {
     if (isActive)
@@ -133,96 +145,167 @@ const ApplicationPage = () => {
     }
   }
 
+  function getLoansStatus() {
+    dispatch(
+      getLoansStatusAsync({
+        passport_serial: passportSerial,
+        passport_number: passportNumber,
+        snils,
+      })
+    );
+  }
+
+  function createUserProfile() {
+    dispatch(
+      createUserProfileAsync(
+        {
+          first_name: firstName,
+          middle_name: middleName,
+          last_name: lastName,
+          birth_date:
+            !!yearBirthId && !!monthBirthId && !!dayBirthId
+              ? `${yearBirthId}-${monthBirthId}-${dayBirthId}`
+              : userProfile?.birth_date,
+          state,
+          city,
+          street,
+          street_house: streetHouse,
+          street_apartment: streetApartment,
+          passport_serial: passportSerial,
+          passport_number: passportNumber,
+          passport_code: passportCode,
+          passport_date:
+            !!yearPassId && !!monthPassId && !!dayPassId
+              ? `${yearPassId}-${monthPassId}-${dayPassId}`
+              : userProfile?.passport_date,
+          income,
+          snils,
+        },
+        setReadyToNextStep
+      )
+    );
+  }
+
+  function editUserProfile() {
+    dispatch(
+      editUserProfileAsync(
+        {
+          first_name: firstName,
+          middle_name: middleName,
+          last_name: lastName,
+          birth_date:
+            !!yearBirthId && !!monthBirthId && !!dayBirthId
+              ? `${yearBirthId}-${monthBirthId}-${dayBirthId}`
+              : userProfile?.birth_date,
+          state,
+          city,
+          street,
+          street_house: streetHouse,
+          street_apartment: streetApartment,
+          passport_serial: passportSerial,
+          passport_number: passportNumber,
+          passport_code: passportCode,
+          passport_date:
+            !!yearPassId && !!monthPassId && !!dayPassId
+              ? `${yearPassId}-${monthPassId}-${dayPassId}`
+              : userProfile?.passport_date,
+          income,
+          snils,
+        },
+        userId || localStorage.getItem("userId"),
+        setReadyToNextStep
+      )
+    );
+  }
+
+  function getUserFiles() {
+    dispatch(getUserFilesAsync());
+  }
+
+  function getUserIp() {
+    dispatch(getUserIpAsync());
+  }
+
   function nextStep() {
     setStepsArr((prevSelected) => {
       const newArray = [...prevSelected];
       for (let i = 0; i < newArray.length; i += 1) {
         if (currStep === 1) {
           checkStep(newArray);
-          if (!Object.keys(userProfile)?.length) {
-            dispatch(
-              createUserProfileAsync(
-                {
-                  first_name: firstName,
-                  middle_name: middleName,
-                  last_name: lastName,
-                  birth_date:
-                    !!yearBirthId && !!monthBirthId && !!dayBirthId
-                      ? `${yearBirthId}-${monthBirthId}-${dayBirthId}`
-                      : userProfile?.birth_date,
-                  state,
-                  city,
-                  street,
-                  street_house: streetHouse,
-                  street_apartment: streetApartment,
-                  passport_serial: passportSerial,
-                  passport_number: passportNumber,
-                  passport_code: passportCode,
-                  passport_date:
-                    !!yearPassId && !!monthPassId && !!dayPassId
-                      ? `${yearPassId}-${monthPassId}-${dayPassId}`
-                      : userProfile?.passport_date,
-                  income,
-                  snils,
-                },
-                setReadyToNextStep
-              )
-            );
-          }
-          if (checkChanges() === true) {
-            dispatch(
-              editUserProfileAsync(
-                {
-                  first_name: firstName,
-                  middle_name: middleName,
-                  last_name: lastName,
-                  birth_date:
-                    !!yearBirthId && !!monthBirthId && !!dayBirthId
-                      ? `${yearBirthId}-${monthBirthId}-${dayBirthId}`
-                      : userProfile?.birth_date,
-                  state,
-                  city,
-                  street,
-                  street_house: streetHouse,
-                  street_apartment: streetApartment,
-                  passport_serial: passportSerial,
-                  passport_number: passportNumber,
-                  passport_code: passportCode,
-                  passport_date:
-                    !!yearPassId && !!monthPassId && !!dayPassId
-                      ? `${yearPassId}-${monthPassId}-${dayPassId}`
-                      : userProfile?.passport_date,
-                  income,
-                  snils,
-                },
-                userId || localStorage.getItem('userId'),
-                setReadyToNextStep
-              )
-            );
-          } else {
-            setReadyToNextStep(true);
-          }
+          if (!Object.keys(userProfile)?.length) createUserProfile();
+          if (checkChanges() === true) editUserProfile();
+          else setReadyToNextStep(true);
         }
-        if (currStep === 2) {
-          checkStep(newArray);
-        }
-        if ([3, 4, 5, 6].includes(currStep)) {
-          checkStep(newArray);
-        }
+        if (currStep === 2) checkStep(newArray);
+        if ([3, 4, 5, 6].includes(currStep)) checkStep(newArray);
       }
       return newArray;
     });
   }
 
-  useLayoutEffect(() => {
+  function getCryptogram() {
+    console.log("getCryptogram");
+    // Только прод
+    const checkout = new cp.Checkout({
+      // publicId: 'pk_c63d4b0ffd91892fa153deefd786d',
+      publicId: "pk_154a4c3310309b4983347d4ae36a8",
+    });
+    const fieldValues = {
+      cvv: CVV,
+      expDateMonth: cardMonth,
+      expDateYear: cardYear,
+      cardNumber,
+    };
+    checkout
+      .createPaymentCryptogram(fieldValues)
+      .then((cryptogram) => {
+        console.log("Создание криптограммы ==> успешно", cryptogram);
+        setCardCryptogram(cryptogram);
+      })
+      .catch((errors) => {
+        console.error("Создание криптограммы ==> ошибка", errors);
+      });
+  }
+
+  function getBankCardList() {
+    dispatch(getBankCardListAsync({}));
+  }
+
+  function createBankCard() {
+    console.log('cardNumber', cardNumber)
+    console.log('userIp', userIp, localStorage.getItem('userIp'))
+    console.log('number', cardNumber?.toString()?.slice(-4))
+    console.log('bin', cardNumber?.toString()?.slice(0, 6))
+    dispatch(
+      createBankCardAsync({
+        data: {
+          bin: cardNumber?.toString()?.slice(0, 6),
+          number: cardNumber?.toString()?.slice(-4),
+          expiry_year: cardYear,
+          expiry_month: +cardMonth,
+          // ip: userIp || localStorage.getItem('userIp'),
+          ip: '2600:1900:2001:12::8',
+          cryptogram: cardCryptogram,
+        }
+      })
+    );
+  }
+
+  useEffect(() => {
     dispatch(getUserProfileAsync(userId || localStorage.getItem("userId")));
   }, []);
 
   useEffect(() => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
+    if (!!currStep) {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+      getUserIp();
+    }
+    if (currStep === 1) getLoansStatus();
+    if (currStep === 2) getUserFiles();
+    if (currStep === 3) getBankCardList();
   }, [currStep]);
 
   useEffect(() => {
@@ -261,28 +344,14 @@ const ApplicationPage = () => {
   }, [userProfile]);
 
   useEffect(() => {
-    if (currStep === 2) {
-      if (passportFiles?.length > 0) {
-        // TODO: Доделать запрос отправки паспорта
-        dispatch(
-          uploadPassportAsync({
-            data: {
-              user_id: userId,
-              name: `${firstName} ${lastName}`,
-              type: "passport",
-              is_public: false,
-              file: "", // Уточнить
-            },
-          })
-        );
-      }
+    // Получение криптограммы
+    if (CVV?.length === 3) {
+      getCryptogram();
+      setTimeout(() => {
+        createBankCard();
+      }, 1000)
     }
-  }, [passportFiles]);
-
-  useEffect(() => {
-    if (currStep === 3) {
-    }
-  });
+  }, [CVV]);
 
   useEffect(() => {
     if (currStep === 4) {
@@ -339,9 +408,13 @@ const ApplicationPage = () => {
             );
           })}
       </div>
-      {currStep === 1 && (
-        <div className="application-step">
+      <div className="application-step">
+        {currStep === 1 && (
+          // Заполнение данных профиля пользователя
           <div className="application-step-left">
+            {!!stepsDebug && (
+              <div style={{ color: "black" }}>currStep: {currStep}</div>
+            )}
             <div className="application-step-left-card">
               <div className="application-step-left-card__title">
                 Личная информация
@@ -467,39 +540,32 @@ const ApplicationPage = () => {
               </AppButton>
             </div>
           </div>
-          <div className="application-step-right">
-            <ApplicationCalculator />
-            <ApplicationHelp />
-          </div>
-        </div>
-      )}
-      {currStep === 2 && (
-        <div className="application-step">
+        )}
+        {currStep === 2 && (
+          // Добавление паспорта
           <div className="application-step-left">
+            {!!stepsDebug && (
+              <div style={{ color: "black" }}>currStep: {currStep}</div>
+            )}
             <div className="application-step-left-card">
               <div className="application-step-left-card__title">
                 Скан паспорта
               </div>
             </div>
-            <AppUploaderWrapper
-              files={passportFiles}
-              setFiles={setPassportFiles}
-            />
+            <AppUploaderWrapper type="passport" maxFiles={1} disabled={false} />
             <div className="main__button-border main__button-border_black">
               <AppButton mode="black" onClick={() => nextStep()}>
                 ДАЛЕЕ <SvgSelector id="arrow-in-round" />
               </AppButton>
             </div>
           </div>
-          <div className="application-step-right">
-            <ApplicationCalculator />
-            <ApplicationHelp />
-          </div>
-        </div>
-      )}
-      {currStep === 3 && (
-        <div className="application-step">
+        )}
+        {currStep === 3 && (
+          // Заполнение данных банковской карты
           <div className="application-step-left">
+            {!!stepsDebug && (
+              <div style={{ color: "black" }}>currStep: {currStep}</div>
+            )}
             <div className="application-step-left__title-min">
               Банковская карта{" "}
               <span className="application-step-left__title-min application-step-left__title-min_grey">
@@ -509,22 +575,26 @@ const ApplicationPage = () => {
             <div className="application-step-left__fill-data">
               Заполните данные
             </div>
-            <AppCreditCard />
+            <AppCreditCard
+              setCardNumber={setCardNumber}
+              setCardOwnerName={setCardOwnerName}
+              setCVV={setCVV}
+              setYear={setCardYear}
+              setMonth={setCardMonth}
+            />
             <div className="main__button-border main__button-border_black">
               <AppButton mode="black" onClick={() => nextStep()}>
                 ДАЛЕЕ <SvgSelector id="arrow-in-round" />
               </AppButton>
             </div>
           </div>
-          <div className="application-step-right">
-            <ApplicationCalculator />
-            <ApplicationHelp />
-          </div>
-        </div>
-      )}
-      {currStep === 4 && (
-        <div className="application-step">
+        )}
+        {currStep === 4 && (
+          // Подготовка выдачи кредита
           <div className="application-step-left">
+            {!!stepsDebug && (
+              <div style={{ color: "black" }}>currStep: {currStep}</div>
+            )}
             <div className="application-step-left__title">
               Ожидайте, мы готовим Ваш кредит
             </div>
@@ -546,15 +616,13 @@ const ApplicationPage = () => {
               </div>
             </div>
           </div>
-          <div className="application-step-right">
-            <ApplicationCalculator />
-            <ApplicationHelp />
-          </div>
-        </div>
-      )}
-      {currStep === 5 && (
-        <div className="application-step">
+        )}
+        {currStep === 5 && (
+          // Ввод кода подтверждения
           <div className="application-step-left">
+            {!!stepsDebug && (
+              <div style={{ color: "black" }}>currStep: {currStep}</div>
+            )}
             <div className="application-step-left__title">
               Для получения введите код
             </div>
@@ -589,15 +657,13 @@ const ApplicationPage = () => {
               </AppButton>
             </div>
           </div>
-          <div className="application-step-right">
-            <ApplicationCalculator />
-            <ApplicationHelp />
-          </div>
-        </div>
-      )}
-      {currStep === 6 && (
-        <div className="application-step">
+        )}
+        {currStep === 6 && (
+          // Завершение заявки
           <div className="application-step-left">
+            {!!stepsDebug && (
+              <div style={{ color: "black" }}>currStep: {currStep}</div>
+            )}
             <div className="application-step-left__title">
               Уведомление:
               <div className="application-step-left__title application-step-left__title_blue">
@@ -613,12 +679,12 @@ const ApplicationPage = () => {
               </AppButton>
             </div>
           </div>
-          <div className="application-step-right">
-            <ApplicationCalculator />
-            <ApplicationHelp />
-          </div>
+        )}
+        <div className="application-step-right">
+          <ApplicationCalculator />
+          <ApplicationHelp />
         </div>
-      )}
+      </div>
     </div>
   );
 };

@@ -6,10 +6,13 @@ import AppButton from "../AppButton/AppButton.jsx";
 import SvgSelector from "../SvgSelector/SvgSelector.jsx";
 import { useDispatch, useSelector } from "react-redux";
 import { getDefaultProductAsync } from "../../store/reducers/products.js";
+import {useNavigate} from "react-router-dom";
+import {RouterPath} from "../../utils/constants.js";
+import {makeAApplication} from "../../scripts/common.js";
 const AmountOfCreditForm = () => {
-  // TODO: Проверить логику
   const priceLabels = ["1000 руб", "50 000 руб", "100 000 руб"];
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { freePeriod, interests } = useSelector(
     (state) => state.productsReducer
   );
@@ -19,25 +22,16 @@ const AmountOfCreditForm = () => {
     { id: "30", name: "30 дней" },
   ]);
   const [freePeriodData, setFreePeriodData] = useState(freePeriod);
-  const [interestsData, setInterestsData] = useState(interests);
-  const [calcAmount, setCalcAmount] = useState(50000); // id_amount_requested
+  const [interestsData, setInterestsData] = useState(interests || 1.00);
+  const [calcAmount, setCalcAmount] = useState(15000); // id_amount_requested
   const [calcPeriod, setCalcPeriod] = useState(1); // id_period_requested
-  // const [calcPromocode, setPromocode] = useState(); // id_promocode_code
 
   function calcInterests() {
     const i =
       ((calcAmount * interests) / 100) *
       (calcPeriod - freePeriodData);
-    console.log("interests", i);
     setInterestsData(i);
   }
-
-  // get_promocode_product(_event):
-  //     calc_promocode.value = calc_promocode.value.upper()
-  //     if len(calc_promocode.value) > 4:
-  //         url = f"{API}/promocodes/promocode/{calc_promocode.value}"
-  //         ajax.get(url, oncomplete=set_promocode_product, mode="json")
-  //         change_table(None)
 
   useLayoutEffect(() => {
     dispatch(getDefaultProductAsync());
@@ -45,6 +39,9 @@ const AmountOfCreditForm = () => {
 
   useEffect(() => {
     calcInterests();
+    localStorage.setItem('calcPeriod', calcPeriod?.toString());
+    localStorage.setItem('calcAmount', calcAmount?.toString());
+    localStorage.setItem('interest', interestsData?.toString());
   }, [calcAmount, interestsData, calcPeriod, freePeriodData]);
 
   return (
@@ -77,17 +74,17 @@ const AmountOfCreditForm = () => {
         <AppSelect optionsList={days} mode="grey" onInput={setCalcPeriod} />
       </div>
       <div className="main__button-border main__button-border_black">
-        <a href="https://platform.expressmoney.com/loans/" target="_blank">
-          <AppButton mode="black">
+        {/*<a href="https://platform.expressmoney.com/loans/" target="_blank">*/}
+          <AppButton mode="black" onClick={() => makeAApplication({navigate, routerPath: RouterPath.application})}>
             ОФОРМИТЬ ЗАЯВКУ
             <SvgSelector id="arrow-in-round" />
           </AppButton>
-        </a>
+        {/*</a>*/}
       </div>
       <div className="amount-of-credit-form__bottom">
       {/*  <AppCheckbox label="Карта лояльности" />*/}
       <div className="amount-of-credit-form__bottom-percent">
-        {interests}% в сутки
+        {interests || 1.00}% в сутки
       </div>
       </div>
     </div>
