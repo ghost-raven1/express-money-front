@@ -1,6 +1,6 @@
 import AppInput from "../../components/AppInput/AppInput.jsx";
 import AppButton from "../../components/AppButton/AppButton.jsx";
-import { useState } from "react";
+import {useEffect, useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getTokenAsync, sendPasswordAsync } from "../../store/reducers/auth.js";
 import "./AuthPage.scss";
@@ -13,42 +13,35 @@ const AuthPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { userId } = useSelector((state) => state.usersReducer);
-  const [username, setUsername] = useState("+79528078160");
-  const [password, setPassword] = useState("tree199522");
+  const [username, setUsername] = useState("+79528074792");
+  const [password, setPassword] = useState("");
   const [step, setStep] = useState(1);
   function sendData() {
     const errors = [];
-    if (!password?.length) errors.push("Не введен пароль");
     if (!username?.length) errors.push("Не заполнено имя пользователя");
     if (errors?.length > 0) {
       for (const error of errors) console.error(error);
     }
     if (step === 1) {
       if (!errors?.length) {
+        setStep(step + 1);
         dispatch(
-          getUserByIdAsync({
-            username,
+          sendPasswordAsync({
+            user: userId,
           })
         );
-        setStep(step + 1);
       }
     }
     if (step === 2) {
       dispatch(
-        sendPasswordAsync({
-          user: userId,
+        getTokenAsync({
+          data: {
+            username,
+            password,
+          },
         })
       ).then(() => {
-        dispatch(
-          getTokenAsync({
-            data: {
-              username,
-              password,
-            },
-          })
-        ).then(() => {
-          navigate(RouterPath.application);
-        });
+        navigate(RouterPath.application);
       });
     }
   }
@@ -57,6 +50,15 @@ const AuthPage = () => {
     if (step === 1) return "Получить пароль";
     if (step === 2) return "Войти";
   }
+
+  useEffect(() => {
+    if (username?.length === 12)
+    dispatch(
+        getUserByIdAsync({
+          username,
+        })
+    );
+  }, [username])
 
   return (
     <div className="auth">
