@@ -63,17 +63,17 @@ const ApplicationPage = () => {
   const [yearPassId, setYearPassId] = useState(
     getNumberFromDate({ type: "year", date: userProfile?.passport_date })
   );
-  const [firstName, setFirstName] = useState(userProfile?.first_name);
-  const [middleName, setMiddleName] = useState(userProfile?.middle_name);
-  const [lastName, setLastName] = useState(userProfile?.last_name);
-  const [snils, setSnils] = useState(userProfile?.snils);
-  const [income, setIncome] = useState(userProfile?.income);
+  const [firstName, setFirstName] = useState(userProfile?.first_name || 'test');
+  const [middleName, setMiddleName] = useState(userProfile?.middle_name || 'test');
+  const [lastName, setLastName] = useState(userProfile?.last_name || 'test');
+  const [snils, setSnils] = useState(userProfile?.snils || '156-936-160 98');
+  const [income, setIncome] = useState(userProfile?.income || 150000);
   const [passportCode, setPassportCode] = useState(userProfile?.passport_code);
   const [passportNumber, setPassportNumber] = useState(
-    userProfile?.passport_number
+    userProfile?.passport_number || '123-005'
   );
   const [passportSerial, setPassportSerial] = useState(
-    userProfile?.passport_serial
+    userProfile?.passport_serial || '6606'
   );
   const [state, setState] = useState(userProfile?.state);
   const [city, setCity] = useState(userProfile?.city);
@@ -82,11 +82,11 @@ const ApplicationPage = () => {
   const [streetApartment, setStreetApartment] = useState(
     userProfile?.street_apartment
   );
-  const [cardNumber, setCardNumber] = useState();
-  const [cardOwnerName, setCardOwnerName] = useState();
-  const [CVV, setCVV] = useState();
-  const [cardYear, setCardYear] = useState();
-  const [cardMonth, setCardMonth] = useState();
+  const [cardNumber, setCardNumber] = useState('');
+  const [cardOwnerName, setCardOwnerName] = useState('');
+  const [CVV, setCVV] = useState('');
+  const [cardYear, setCardYear] = useState('');
+  const [cardMonth, setCardMonth] = useState('');
   const [cardCryptogram, setCardCryptogram] = useState("");
 
   function stepperLineStyles(isActive) {
