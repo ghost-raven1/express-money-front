@@ -44,6 +44,7 @@ const AppLayout = ({ mode, isShowNavbar }) => {
   }
 
   useEffect(() => {
+    updateTokens();
     if (+localStorage.getItem("access_lifetime") === 0) {
       setAccessLifeTime(+localStorage.getItem("access_lifetime_total"));
     }

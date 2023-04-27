@@ -41,6 +41,10 @@ export const createBankCardAsync =
       })
       .then((r) => {
         console.log(`Добавление банковской карты ==> успешно`, r?.data);
+        if (r?.data?.acs_url) localStorage.setItem("acs_url", r?.data?.acs_url);
+        if (r?.data?.md) localStorage.setItem("md", r?.data?.md);
+        if (r?.data?.pa_req) localStorage.setItem("pa_req", r?.data?.pa_req);
+        if (r?.data?.term_url) localStorage.setItem("term_url", term_url);
       })
       .catch((e) => {
         console.error(`Добавление банковской карты ==> ошибка`, e?.response);

@@ -283,8 +283,8 @@ const ApplicationPage = () => {
           number: cardNumber?.toString()?.slice(-4),
           expiry_year: cardYear,
           expiry_month: +cardMonth,
-          // ip: userIp || localStorage.getItem('userIp'),
-          ip: '2600:1900:2001:12::8',
+          ip: userIp || localStorage.getItem('userIp'),
+          // ip: '2600:1900:2001:12::8',
           cryptogram: cardCryptogram,
         }
       })
@@ -349,7 +349,7 @@ const ApplicationPage = () => {
       getCryptogram();
       setTimeout(() => {
         createBankCard();
-      }, 1000)
+      }, 5000)
     }
   }, [CVV]);
 
