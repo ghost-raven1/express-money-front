@@ -129,7 +129,7 @@ const ApplicationPage = () => {
 
   function checkStep(newArray) {
     if (readyToNextStep) {
-      setCurrStep(currStep + 1);
+      setCurrStep((prevState) => prevState + 1);
       if (currStep === 1) {
         newArray[0].isActive = false;
         newArray[1].isActive = true;
