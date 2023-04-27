@@ -35,7 +35,6 @@ const AppBreadcrumbs = () => {
     // ) {
     //   return districtInfo?.district?.name;
     // }
-    console.log('path', path)
     return path;
   }
 

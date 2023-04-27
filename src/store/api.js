@@ -1,9 +1,12 @@
 import axios from "axios";
 import { AxiosTimeout } from "../utils/constants";
 
+export const API_URL = 'https://prod-dv8m8he4.ew.gateway.dev';
+// export const API_URL = 'https://dev1-6gjdyirp.ew.gateway.dev';
+
 const api = axios.create({
-    // baseURL: 'https://dev1-6gjdyirp.ew.gateway.dev',
-    baseURL: 'https://prod-dv8m8he4.ew.gateway.dev',
+    withCredentials: true,
+    baseURL: API_URL,
     timeout: AxiosTimeout,
     timeoutErrorMessage: "Сервер не отвечает",
 });

@@ -8,9 +8,17 @@ const authSlice = createSlice({
     userId: "",
   },
   reducers: {
-    setToken(state, value) {
+    setTokens(state, value) {
       localStorage.setItem("access", value.payload?.access);
-      localStorage.setItem("refresh", value.payload?.refresh);
+      if (!!value.payload?.refresh) localStorage.setItem("refresh", value.payload?.refresh);
+      if (!!value.payload?.refresh_lifetime) {
+          localStorage.setItem("refresh_lifetime", value.payload?.refresh_lifetime);
+          localStorage.setItem("refresh_lifetime_total", value.payload?.refresh_lifetime)
+      }
+      if (!!value.payload?.access_lifetime) {
+          localStorage.setItem("access_lifetime", value.payload?.access_lifetime);
+          localStorage.setItem("access_lifetime_total", value.payload?.access_lifetime);
+      }
     },
     setUserId(state, value) {
       state.userId = value.payload;
@@ -25,8 +33,8 @@ export const getTokenAsync =
     await api
       .post(`/token`, data)
       .then((r) => {
-        console.log("Получение токена и вход ==> успешно");
-        dispatch(setToken(r?.data));
+        console.log("Получение токена и вход ==> успешно", r?.data);
+        dispatch(setTokens(r?.data));
       })
       .catch((e) => {
         console.error(
@@ -43,8 +51,7 @@ export const postTokenRefreshAsync =
       .post(`/token_refresh`, params)
       .then((r) => {
         console.log("Обновление токена ==> успешно", r?.data);
-        // localStorage.setItem("access", "");
-        // localStorage.setItem("refresh", "");
+        dispatch(setTokens(r?.data));
       })
       .catch((e) => {
         console.error("Обновление токена ==> ошибка", e);
@@ -77,6 +84,6 @@ export const createUserAsync =
       });
   };
 
-export const { setToken, setUserId } = authSlice.actions;
+export const { setTokens, setUserId } = authSlice.actions;
 
 export default authSlice.reducer;
