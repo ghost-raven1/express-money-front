@@ -18,7 +18,6 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   createUserProfileAsync,
   editUserProfileAsync,
-  getLoansStatusAsync,
   getUserFilesAsync,
   getUserProfileAsync,
 } from "../../store/reducers/profiles.js";
@@ -128,8 +127,9 @@ const ApplicationPage = () => {
   }
 
   function checkStep(newArray) {
+    console.log('Текущий шаг заявки', currStep);
     if (readyToNextStep) {
-      setCurrStep((prevState) => prevState + 1);
+      setCurrStep(currStep + 1);
       if (currStep === 1) {
         newArray[0].isActive = false;
         newArray[1].isActive = true;
@@ -145,15 +145,15 @@ const ApplicationPage = () => {
     }
   }
 
-  function getLoansStatus() {
-    dispatch(
-      getLoansStatusAsync({
-        passport_serial: passportSerial,
-        passport_number: passportNumber,
-        snils,
-      })
-    );
-  }
+  // function getLoansStatus() {
+  //   dispatch(
+  //     getLoansStatusAsync({
+  //       passport_serial: passportSerial,
+  //       passport_number: passportNumber,
+  //       snils,
+  //     })
+  //   );
+  // }
 
   function createUserProfile() {
     dispatch(
@@ -303,7 +303,7 @@ const ApplicationPage = () => {
       });
       getUserIp();
     }
-    if (currStep === 1) getLoansStatus();
+    // if (currStep === 1) getLoansStatus();
     if (currStep === 2) getUserFiles();
     if (currStep === 3) getBankCardList();
   }, [currStep]);
