@@ -25,7 +25,7 @@ export const RouterPath = {
     application: '/application',
     profile: '/profile',
     auth: '/auth',
-    registration: '/registration'
+    registration: '/registration',
     // districtId: "districts/:id"
 }
 

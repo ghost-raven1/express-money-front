@@ -85,7 +85,7 @@ const AppLayout = ({ mode, isShowNavbar }) => {
 
     return () => {
       clearInterval(intervalUpdateAccessToken);
-      localStorage.setItem("access_lifetime", accessLifeTime.toString());
+      localStorage.setItem("access_lifetime", accessLifeTime?.toString());
     };
   }, [accessLifeTime]);
 
@@ -104,7 +104,7 @@ const AppLayout = ({ mode, isShowNavbar }) => {
     }, 1000);
     return () => {
       clearInterval(intervalUpdateRefreshToken);
-      localStorage.setItem("refresh_lifetime", refreshLifeTime.toString());
+      localStorage.setItem("refresh_lifetime", refreshLifeTime?.toString());
     };
   }, [refreshLifeTime]);
 

@@ -12,8 +12,8 @@ const AppUploader = ({ type, maxFiles, disabled }) => {
 
   const onDrop = useCallback((acceptedFiles) => {
     acceptedFiles.map((file) => {
-      // if (!!files?.length && maxFiles > files?.length) {
-        setFiles((prevState) => [...prevState, { id: cuid(), file }]);
+      if (!!files?.length) setFiles((prevState) => [...prevState, { id: cuid(), file }]);
+      else setFiles([{ id: cuid(), file }])
         const reader = new FileReader();
         reader.onload = function (e) {
           setFilesPrev((prevState) => [
@@ -23,24 +23,28 @@ const AppUploader = ({ type, maxFiles, disabled }) => {
         };
         reader.readAsDataURL(file);
         return file;
-      // }
     });
   }, []);
 
   function uploadPassport() {
     if (files?.length > 0) {
       const file = files[0]?.file;
-      const formData = new FormData();
-      formData.append('file', file);
-      formData.append('user_id', localStorage.getItem("userId"));
-      formData.append('name', file?.name?.split('.')[0]);
-      formData.append('type', '4');
-      formData.append('is_public', 'false');
-      dispatch(
-        uploadPassportAsync({
-          data: formData
-        })
-      );
+     if (file?.name !== localStorage?.getItem('passport_file_name')) {
+       const formData = new FormData();
+       formData.append('file', file);
+       formData.append('user_id', localStorage.getItem("userId"));
+       formData.append('name', file?.name?.split('.')[0]);
+       formData.append('type', '4');
+       formData.append('is_public', 'false');
+       dispatch(
+           uploadPassportAsync({
+             data: formData
+           })
+       );
+       localStorage.setItem('passport_file_name', file?.name)
+      } else {
+       console.error('Ошибка добавления паспорта! Файл называется так же как и в прошлый раз!')
+     }
     }
   }
 
@@ -51,7 +55,7 @@ const AppUploader = ({ type, maxFiles, disabled }) => {
         if (!!newArray?.find((item) => item?.id === id)) {
           return newArray?.filter((item) => item?.id !== id);
         }
-      }
+      } else return [];
     });
     setFilesPrev((prevSelected) => {
       if (!!filesPrev?.length) {
@@ -60,6 +64,7 @@ const AppUploader = ({ type, maxFiles, disabled }) => {
           return newArray?.filter((item) => item?.id !== id);
         }
       }
+      else return [];
     });
   }
 

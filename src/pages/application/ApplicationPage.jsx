@@ -232,8 +232,14 @@ const ApplicationPage = () => {
       for (let i = 0; i < newArray.length; i += 1) {
         if (currStep === 1) {
           checkStep(newArray);
-          if (!Object.keys(userProfile)?.length) createUserProfile();
-          if (checkChanges() === true) editUserProfile();
+          if (!Object.keys(userProfile)?.length) {
+            createUserProfile();
+            setReadyToNextStep(true);
+          }
+          if (checkChanges() === true) {
+            editUserProfile();
+            setReadyToNextStep(true);
+          }
           else setReadyToNextStep(true);
         }
         if (currStep === 2) checkStep(newArray);
@@ -260,6 +266,7 @@ const ApplicationPage = () => {
       .createPaymentCryptogram(fieldValues)
       .then((cryptogram) => {
         console.log("Создание криптограммы ==> успешно", cryptogram);
+        localStorage.setItem('card_cryptogram', cryptogram);
         setCardCryptogram(cryptogram);
       })
       .catch((errors) => {
@@ -284,8 +291,7 @@ const ApplicationPage = () => {
           expiry_year: cardYear,
           expiry_month: +cardMonth,
           ip: userIp || localStorage.getItem('userIp'),
-          // ip: '2600:1900:2001:12::8',
-          cryptogram: cardCryptogram,
+          cryptogram: cardCryptogram || localStorage.getItem('card_cryptogram'),
         }
       })
     );
@@ -349,6 +355,9 @@ const ApplicationPage = () => {
       getCryptogram();
       setTimeout(() => {
         createBankCard();
+        setTimeout(() => {
+          navigate(RouterPath.redirect3DS);
+        }, 8000)
       }, 5000)
     }
   }, [CVV]);
