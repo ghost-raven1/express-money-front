@@ -18,7 +18,6 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   createUserProfileAsync,
   editUserProfileAsync,
-  getLoansStatusAsync,
   getUserFilesAsync,
   getUserProfileAsync,
 } from "../../store/reducers/profiles.js";
@@ -128,8 +127,9 @@ const ApplicationPage = () => {
   }
 
   function checkStep(newArray) {
+    console.log('Текущий шаг заявки', currStep);
     if (readyToNextStep) {
-      setCurrStep((prevState) => prevState + 1);
+      setCurrStep(currStep + 1);
       if (currStep === 1) {
         newArray[0].isActive = false;
         newArray[1].isActive = true;
@@ -145,15 +145,15 @@ const ApplicationPage = () => {
     }
   }
 
-  function getLoansStatus() {
-    dispatch(
-      getLoansStatusAsync({
-        passport_serial: passportSerial,
-        passport_number: passportNumber,
-        snils,
-      })
-    );
-  }
+  // function getLoansStatus() {
+  //   dispatch(
+  //     getLoansStatusAsync({
+  //       passport_serial: passportSerial,
+  //       passport_number: passportNumber,
+  //       snils,
+  //     })
+  //   );
+  // }
 
   function createUserProfile() {
     dispatch(
@@ -232,8 +232,14 @@ const ApplicationPage = () => {
       for (let i = 0; i < newArray.length; i += 1) {
         if (currStep === 1) {
           checkStep(newArray);
-          if (!Object.keys(userProfile)?.length) createUserProfile();
-          if (checkChanges() === true) editUserProfile();
+          if (!Object.keys(userProfile)?.length) {
+            createUserProfile();
+            setReadyToNextStep(true);
+          }
+          if (checkChanges() === true) {
+            editUserProfile();
+            setReadyToNextStep(true);
+          }
           else setReadyToNextStep(true);
         }
         if (currStep === 2) checkStep(newArray);
@@ -260,6 +266,7 @@ const ApplicationPage = () => {
       .createPaymentCryptogram(fieldValues)
       .then((cryptogram) => {
         console.log("Создание криптограммы ==> успешно", cryptogram);
+        localStorage.setItem('card_cryptogram', cryptogram);
         setCardCryptogram(cryptogram);
       })
       .catch((errors) => {
@@ -284,8 +291,7 @@ const ApplicationPage = () => {
           expiry_year: cardYear,
           expiry_month: +cardMonth,
           ip: userIp || localStorage.getItem('userIp'),
-          // ip: '2600:1900:2001:12::8',
-          cryptogram: cardCryptogram,
+          cryptogram: cardCryptogram || localStorage.getItem('card_cryptogram'),
         }
       })
     );
@@ -303,7 +309,7 @@ const ApplicationPage = () => {
       });
       getUserIp();
     }
-    if (currStep === 1) getLoansStatus();
+    // if (currStep === 1) getLoansStatus();
     if (currStep === 2) getUserFiles();
     if (currStep === 3) getBankCardList();
   }, [currStep]);
@@ -349,6 +355,9 @@ const ApplicationPage = () => {
       getCryptogram();
       setTimeout(() => {
         createBankCard();
+        setTimeout(() => {
+          navigate(RouterPath.redirect3DS);
+        }, 8000)
       }, 5000)
     }
   }, [CVV]);

@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import api from "../api.js";
+import { RouterPath } from "../../utils/constants.js";
 
 // TODO: Дописать запросы
 
@@ -44,10 +45,47 @@ export const createBankCardAsync =
         if (r?.data?.acs_url) localStorage.setItem("acs_url", r?.data?.acs_url);
         if (r?.data?.md) localStorage.setItem("md", r?.data?.md);
         if (r?.data?.pa_req) localStorage.setItem("pa_req", r?.data?.pa_req);
-        if (r?.data?.term_url) localStorage.setItem("term_url", term_url);
+        if (r?.data?.term_url)
+          localStorage.setItem("term_url", r?.data?.term_url);
+        dispatch(
+          acsRequest({
+            acsUrl: r?.data?.acs_url,
+            payload: {
+              md: r?.data?.md,
+              term_url: r?.data?.term_url,
+              pa_req: r?.data?.pa_req,
+            },
+          })
+        );
       })
       .catch((e) => {
-        console.error(`Добавление банковской карты ==> ошибка`, e?.response);
+        console.error(`Добавление банковской карты ==> ошибка`, e);
+      });
+  };
+
+export const bankCard3ds =
+  ({ md, paRes }) =>
+  async () => {
+    await api
+      .post("/bank_cards/bank_cards_3ds", { md, pa_res: paRes })
+      .then((r) => {
+        console.log("bankCard3ds ===> Успешно", r?.data);
+      })
+      .catch((e) => {
+        console.error("bankCard3ds ===> Ошибка", e);
+      });
+  };
+
+export const acsRequest =
+  ({ acsUrl, payload }) =>
+  async (dispatch) => {
+    await api
+      .post(`${acsUrl}`, payload)
+      .then((r) => {
+        console.log("acsRequest ===> Успешно", r);
+      })
+      .catch((e) => {
+        console.error("acrRequest ===> Ошибка", e);
       });
   };
 
